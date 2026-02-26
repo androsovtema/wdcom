@@ -2129,3 +2129,24 @@ section {
 .contact-subtitle-margin {
   margin-bottom: var(--space-sm);
 }
+
+/* ====================
+   CAROUSEL MOBILE FIXES
+   ==================== */
+
+@media (max-width: 768px) {
+  /* Уменьшаем высоту карусели на ~33% (280px -> 190px) */
+  .carousel-item {
+    height: 190px;
+  }
+  
+  /* Убираем блеклость на мобильных */
+  .carousel-wrapper {
+    opacity: 1;
+  }
+  
+  /* Отключаем pause при наведении/нажатии на мобильных */
+  .carousel-wrapper:hover .carousel-track {
+    animation-play-state: running;
+  }
+}
