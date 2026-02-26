@@ -250,26 +250,29 @@ img.logo-mobile {
   background: var(--cream);
 }
 
-.nav.open {
-  position: fixed;
-  inset: 0;
-  background: var(--deep-forest);
-  color: var(--cream);
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 32px;
-  font-size: 22px;
-  display: flex;
-  opacity: 1;
-}
+/* Десктопное меню (вне медиа-запроса мобильных) */
+@media (min-width: 769px) {
+  .nav.open {
+    position: fixed;
+    inset: 0;
+    background: var(--deep-forest);
+    color: var(--cream);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    font-size: 22px;
+    display: flex;
+    opacity: 1;
+  }
 
-.nav.open a,
-.nav.open .btn-start {
-  font: inherit;
-  color: var(--cream);
-  background: transparent;
-  border-color: rgba(245, 242, 235, 0.3);
+  .nav.open a,
+  .nav.open .btn-start {
+    font: inherit;
+    color: var(--cream);
+    background: transparent;
+    border-color: rgba(245, 242, 235, 0.3);
+  }
 }
 
 /*************************
@@ -1859,6 +1862,86 @@ section {
     display: none;
   }
 
+  /* Мобильное меню - анимация открытия */
+  .nav {
+    display: none;
+  }
+
+  .nav.open {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100vh;
+    height: 100dvh;
+    width: 100vw;
+    background: var(--deep-forest);
+    color: var(--cream);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    font-size: 28px;
+    display: flex !important;
+    z-index: 1200;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    /* Анимация появления */
+    animation: menuSlideDown 0.4s var(--ease-out) forwards;
+  }
+
+  @keyframes menuSlideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .nav.open a {
+    color: var(--cream);
+    font-size: 22px;
+  }
+
+  /* Инвертированная кнопка "Начать проект" */
+  .nav.open .btn-start {
+    color: var(--deep-forest);
+    background: var(--cream);
+    border-color: var(--cream);
+    font-size: 16px;
+    padding: 12px 24px;
+  }
+
+  /* Шапка при открытом меню */
+  /* Шапка при открытом меню */
+  .header.open {
+    background: var(--deep-forest);
+    z-index: 1100;
+  }
+
+  /* Логотип поверх меню с цветом фона сайта */
+  .header.open .logo {
+    position: relative;
+    z-index: 1300;
+  }
+
+  .header.open .logo img {
+    filter: brightness(0) saturate(100%) invert(95%) sepia(8%) saturate(375%) hue-rotate(346deg) brightness(96%) contrast(92%);
+  }
+
+  .header.open .burger {
+    z-index: 1300;
+  }
+
+  .header.open .burger span {
+    background: var(--cream) !important;
+  }
+
   .burger {
     display: block;
   }
@@ -2148,5 +2231,44 @@ section {
   /* Отключаем pause при наведении/нажатии на мобильных */
   .carousel-wrapper:hover .carousel-track {
     animation-play-state: running;
+  }
+}
+
+
+/* Отключение скролла при открытом меню */
+body.menu-open {
+  overflow: hidden;
+  height: 100vh;
+}
+
+
+/* ====================
+   MOBILE MENU ANIMATIONS
+   ==================== */
+
+@media (max-width: 768px) {
+  /* Анимация пунктов меню */
+  .nav.open a,
+  .nav.open .btn-start {
+    opacity: 0;
+    animation: fadeInUp 0.4s var(--ease-out) forwards;
+  }
+
+  .nav.open a:nth-child(1) { animation-delay: 0.1s; }
+  .nav.open a:nth-child(2) { animation-delay: 0.2s; }
+  .nav.open .btn-start { 
+    animation-delay: 0.3s;
+    margin-top: 20px;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }
