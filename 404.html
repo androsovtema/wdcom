@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Страница не найдена — We Designerz">
+  <meta name="robots" content="noindex, follow">
+  
+  <title>404 — Страница не найдена | We Designerz</title>
+  <link rel="icon" type="image/png" href="./assets/icons/favicon.png" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="./styles.css" />
+  
+  <style>
+    .error-page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: var(--space-md);
+    }
+    
+    .error-code {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(120px, 20vw, 200px);
+      line-height: 1;
+      color: var(--cream-dark);
+      margin-bottom: var(--space-xs);
+      font-weight: 400;
+    }
+    
+    .error-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(32px, 5vw, 48px);
+      margin-bottom: var(--space-xs);
+      color: var(--deep-forest);
+      font-weight: 400;
+    }
+    
+    .error-text {
+      font-size: 16px;
+      color: var(--stone);
+      max-width: 400px;
+      margin-bottom: var(--space-sm);
+      font-weight: 300;
+      line-height: 1.7;
+    }
+    
+    .error-links {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Мгновенная установка состояния логотипа до отрисовки -->
+  <script>
+    (function() {
+      if (window.scrollY > 100) {
+        document.querySelector('.header').classList.add('scrolled');
+      }
+    })();
+  </script>
+  <!-- Header -->
+  <header class="header">
+    <a class="logo" href="index.html" aria-label="We Designerz — на главную">
+      <img src="./assets/logos/WDLogo.svg" alt="" class="logo-desktop" aria-hidden="true">
+      <img src="./assets/logos/WDLogoMobile.svg" alt="" class="logo-mobile" aria-hidden="true">
+    </a>
+
+    <nav class="nav" aria-label="Главная навигация">
+      <a href="projects.html">Проекты</a>
+      <a href="about.html">О нас</a>
+      <button class="btn-start" onclick="window.open('https://t.me/wedesignerz_bot', '_blank')">Начать проект</button>
+    </nav>
+
+    <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false" aria-controls="nav">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+
+  <main>
+    <section class="error-page">
+      <div class="error-code">404</div>
+      <h1 class="error-title">Страница не найдена</h1>
+      <p class="error-text">
+        Похоже, мы не можем найти то, что вы ищете. 
+        Возможно, страница была удалена или адрес был введён неправильно.
+      </p>
+      <div class="error-links">
+        <a href="index.html" class="btn-primary">На главную</a>
+        <a href="projects.html" class="text-link">Смотреть проекты</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-logo">We Designerz</div>
+    <div class="footer-links">
+      <a href="https://t.me/wedesignerz_bot" target="_blank" rel="noopener noreferrer">Telegram</a>
+      <a href="https://www.youtube.com/@wedesignerz/" target="_blank" rel="noopener noreferrer">YouTube</a>
+    </div>
+  </footer>
+
+  <script src="./main.js"></script>
+</body>
+
+</html>

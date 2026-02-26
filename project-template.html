@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="[Название проекта] — кейс студии We Designerz. [Краткое описание проекта]">
+  <meta name="keywords" content="кейс, портфолио, дизайн проект, [теги проекта]">
+  <meta name="author" content="We Designerz">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="[Название проекта] — We Designerz">
+  <meta property="og:description" content="[Краткое описание проекта для соцсетей]">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://wedesignerz.com/projects/[slug]">
+  <meta property="og:image" content="../assets/images/projects/[project]/og-image.jpg">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="[Название проекта] — We Designerz">
+  <meta name="twitter:description" content="[Краткое описание проекта]">
+  <meta name="twitter:image" content="../assets/images/projects/[project]/og-image.jpg">
+  
+  <title>[Название проекта] — We Designerz</title>
+  <link rel="icon" type="image/png" href="../assets/icons/favicon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/favicon.png" />
+  <link rel="apple-touch-icon" href="../assets/icons/favicon.png" />
+  <link rel="canonical" href="https://wedesignerz.com/projects/[slug]">
+
+  <!-- Google Fonts: Cormorant Garamond + Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+
+<body>
+  <!-- Мгновенная установка состояния логотипа до отрисовки -->
+  <script>
+    (function() {
+      if (window.scrollY > 100) {
+        document.querySelector('.header').classList.add('scrolled');
+      }
+    })();
+  </script>
+  <!-- Header -->
+  <header class="header">
+    <a class="logo" href="../index.html" aria-label="We Designerz — на главную">
+      <img src="../assets/logos/WDLogo.svg" alt="" class="logo-desktop" aria-hidden="true">
+      <img src="../assets/logos/WDLogoMobile.svg" alt="" class="logo-mobile" aria-hidden="true">
+    </a>
+
+    <nav class="nav" aria-label="Главная навигация">
+      <a href="../projects.html">Проекты</a>
+      <a href="../about.html">О нас</a>
+      <button class="btn-start" onclick="window.open('https://t.me/wedesignerz_bot', '_blank')">Начать проект</button>
+    </nav>
+
+    <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false" aria-controls="nav">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+
+  <main>
+    <!-- Back Button -->
+    <div class="back-nav">
+      <a href="../projects.html" class="text-link">← Назад к проектам</a>
+    </div>
+
+    <!-- Project Hero -->
+    <section class="project-hero" id="hero">
+      <div class="section-label">Проект</div>
+      <h1>[Название клиента]</h1>
+      <p class="project-brief">[Что заказывали — краткое описание задачи в 1-2 предложениях]</p>
+      
+      <div class="project-meta">
+        <div class="meta-item">
+          <span class="meta-label">Дата</span>
+          <span class="meta-value">[Месяц Год]</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Команда</span>
+          <span class="meta-value">[Имена участников]</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Направления</span>
+          <div class="meta-tags">
+            <span class="meta-tag">[Тег 1]</span>
+            <span class="meta-tag">[Тег 2]</span>
+            <span class="meta-tag">[Тег 3]</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why What How -->
+    <section class="project-concept" id="concept">
+      <div class="www-grid">
+        <div class="www-column">
+          <h2 class="www-title">Why</h2>
+          <p class="www-text">[Почему этот проект появился? Какую проблему решал клиент? Что его мотивировало? Опишите контекст и боль клиента.]</p>
+        </div>
+        <div class="www-column">
+          <h2 class="www-title">What</h2>
+          <p class="www-text">[Что мы сделали? Какое решение предложили? Опишите продукт/результат простыми словами.]</p>
+        </div>
+        <div class="www-column">
+          <h2 class="www-title">How</h2>
+          <p class="www-text">[Как мы это сделали? Какие инструменты и методы использовали? Кратко опишите процесс.]</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Project Gallery -->
+    <section class="project-gallery" id="gallery">
+      <div class="section-label">Процесс и результат</div>
+      <h2>Как это выглядит</h2>
+      
+      <div class="gallery-grid">
+        <!-- Главное изображение проекта -->
+        <div class="gallery-item gallery-featured">
+          <img src="../assets/images/projects/[project]/featured.jpg" alt="[Описание главного изображения]" loading="lazy" decoding="async">
+        </div>
+        
+        <!-- Дополнительные изображения -->
+        <div class="gallery-item">
+          <img src="../assets/images/projects/[project]/image1.jpg" alt="[Описание]" loading="lazy" decoding="async">
+        </div>
+        <div class="gallery-item">
+          <img src="../assets/images/projects/[project]/image2.jpg" alt="[Описание]" loading="lazy" decoding="async">
+        </div>
+        
+        <!-- Широкое изображение -->
+        <div class="gallery-item gallery-wide">
+          <img src="../assets/images/projects/[project]/wide.jpg" alt="[Описание]" loading="lazy" decoding="async">
+        </div>
+        
+        <!-- Ещё изображения -->
+        <div class="gallery-item">
+          <img src="../assets/images/projects/[project]/image3.jpg" alt="[Описание]" loading="lazy" decoding="async">
+        </div>
+        <div class="gallery-item">
+          <img src="../assets/images/projects/[project]/image4.jpg" alt="[Описание]" loading="lazy" decoding="async">
+        </div>
+        
+        <!-- Процесс/скетчи -->
+        <div class="gallery-item gallery-wide">
+          <img src="../assets/images/projects/[project]/process.jpg" alt="[Описание процесса]" loading="lazy" decoding="async">
+        </div>
+        
+        <!-- Финальные результаты -->
+        <div class="gallery-item">
+          <img src="../assets/images/projects/[project]/result1.jpg" alt="[Описание результата]" loading="lazy" decoding="async">
+        </div>
+        <div class="gallery-item">
+          <img src="../assets/images/projects/[project]/result2.jpg" alt="[Описание результата]" loading="lazy" decoding="async">
+        </div>
+      </div>
+    </section>
+
+    <!-- Results / Metrics -->
+    <section class="project-results" id="results">
+      <div class="section-label">Результаты</div>
+      <h2>Что получилось</h2>
+      
+      <div class="metrics-grid">
+        <!-- Метрика 1 -->
+        <div class="metric-card">
+          <span class="metric-number">[Число]</span>
+          <span class="metric-label">[Что измеряем]</span>
+          <p class="metric-description">[Краткое пояснение к метрике]</p>
+        </div>
+        
+        <!-- Метрика 2 -->
+        <div class="metric-card">
+          <span class="metric-number">[Число]</span>
+          <span class="metric-label">[Что измеряем]</span>
+          <p class="metric-description">[Краткое пояснение к метрике]</p>
+        </div>
+        
+        <!-- Метрика 3 -->
+        <div class="metric-card">
+          <span class="metric-number">[Число]</span>
+          <span class="metric-label">[Что измеряем]</span>
+          <p class="metric-description">[Краткое пояснение к метрике]</p>
+        </div>
+        
+        <!-- Метрика 4 (опционально) -->
+        <div class="metric-card">
+          <span class="metric-number">[Число]</span>
+          <span class="metric-label">[Что измеряем]</span>
+          <p class="metric-description">[Краткое пояснение к метрике]</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Client Quote (опционально) -->
+    <section class="project-quote" id="quote">
+      <blockquote class="quote-block">
+        <p class="quote-text">«[Цитата клиента о проекте. Если есть аудио-отзыв, можно добавить кнопку воспроизведения.]»</p>
+        <footer class="quote-author">
+          <img src="../assets/images/clients/[client].jpg" alt="[Имя клиента]" class="quote-photo" loading="lazy" decoding="async">
+          <div class="quote-info">
+            <span class="quote-name">[Имя клиента]</span>
+            <span class="quote-role">[Должность, компания]</span>
+          </div>
+        </footer>
+      </blockquote>
+    </section>
+
+    <!-- Next Project -->
+    <section class="next-project" id="next">
+      <div class="section-label">Следующий проект</div>
+      <a href="[next-project].html" class="next-project-link">
+        <span class="next-project-name">[Название следующего проекта]</span>
+        <span class="next-project-arrow">→</span>
+      </a>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section" id="cta">
+      <h2>Хотите так же?</h2>
+      <p class="contact-subtitle contact-subtitle-margin">
+        Расскажите о вашем проекте — мы подумаем вместе, как сделать его успешным.
+      </p>
+      <a href="https://t.me/wedesignerz_bot" target="_blank" class="btn-primary" rel="noopener noreferrer">Начать проект</a>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-logo">We Designerz</div>
+    <div class="footer-links">
+      <a href="https://t.me/wedesignerz_bot" target="_blank" rel="noopener noreferrer">Telegram</a>
+      <a href="https://www.youtube.com/@wedesignerz/" target="_blank" rel="noopener noreferrer">YouTube</a>
+    </div>
+  </footer>
+
+  <script src="../main.js"></script>
+</body>
+
+</html>

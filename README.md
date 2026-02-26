@@ -1,2 +1,0 @@
-# WeDesignerz
-Design Studio Website

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="We Designerz — студия дизайна. Веб-дизайн, брендинг, презентации, UX/UI. Дизайн, который не тормозит ваш бизнес. Работаем быстро, точно, без лишних итераций.">
+  <meta name="keywords" content="дизайн студия, веб-дизайн, брендинг, UX/UI, презентации, графический дизайн">
+  <meta name="author" content="We Designerz">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="We Designerz — Дизайн, который не тормозит ваш бизнес">
+  <meta property="og:description" content="Студия дизайна. Веб-дизайн, брендинг, презентации, UX/UI. Работаем быстро и точно.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://wedesignerz.com">
+  <meta property="og:image" content="./assets/images/og-image.jpg">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="We Designerz — Дизайн, который не тормозит ваш бизнес">
+  <meta name="twitter:description" content="Студия дизайна. Веб-дизайн, брендинг, презентации, UX/UI.">
+  <meta name="twitter:image" content="./assets/images/og-image.jpg">
+  
+  <title>We Designerz — Дизайн, который не тормозит ваш бизнес</title>
+  <link rel="icon" type="image/png" href="./assets/icons/favicon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/icons/favicon.png" />
+  <link rel="apple-touch-icon" href="./assets/icons/favicon.png" />
+  <link rel="canonical" href="https://wedesignerz.com/">
+
+  <!-- Google Fonts: Cormorant Garamond + Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body>
+  <!-- Мгновенная установка состояния логотипа до отрисовки -->
+  <script>
+    (function() {
+      if (window.scrollY > 100) {
+        document.querySelector('.header').classList.add('scrolled');
+      }
+    })();
+  </script>
+  <!-- Header -->
+  <header class="header">
+    <a class="logo" href="index.html" aria-label="We Designerz — на главную">
+      <img src="./assets/logos/WDLogo.svg" alt="" class="logo-desktop" aria-hidden="true">
+      <img src="./assets/logos/WDLogoMobile.svg" alt="" class="logo-mobile" aria-hidden="true">
+    </a>
+
+    <nav class="nav" aria-label="Главная навигация">
+      <a href="projects.html">Проекты</a>
+      <a href="about.html">О нас</a>
+      <button class="btn-start" onclick="window.open('https://t.me/wedesignerz_bot', '_blank')">Начать проект</button>
+    </nav>
+
+    <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false" aria-controls="nav">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero" id="hero">
+      <h1>
+        Дизайн, который не тормозит ваш
+        <span class="dynamic-text-wrapper">
+          <span class="dynamic-text active">бизнес.</span>
+          <span class="dynamic-text">продукт.</span>
+          <span class="dynamic-text">запуск.</span>
+          <span class="dynamic-text">стартап.</span>
+          <span class="dynamic-text">маркетинг.</span>
+        </span>
+      </h1>
+      <p class="hero-subtitle">
+        Мы берём задачу — и доводим до результата быстро, точно, без лишних итераций. За процессом стоят технологии. За
+        результатом — люди.
+      </p>
+      <a href="https://t.me/wedesignerz_bot" target="_blank" class="btn-primary btn-start-align">Начать проект</a>
+    </section>
+
+    <!-- Services -->
+    <section class="services" id="services">
+      <div class="section-label">Услуги</div>
+      <h2>Делаем всё, что касается визуального облика бизнеса.</h2>
+
+      <div class="services-list">
+        Веб-дизайн и разработка · Брендинг · Презентации · UX/UI · Графический дизайн · Дизайн-поддержка
+      </div>
+
+      <!-- Карусель работ -->
+      <div class="carousel-wrapper" role="region" aria-label="Галерея работ">
+        <div class="carousel-track">
+          <!-- Первый набор изображений -->
+          <div class="carousel-item"><img src="./assets/images/carousel/1. yasna1.jpg" alt="Yasna — веб-дизайн" loading="lazy" decoding="async"></div>
+          <div class="carousel-item"><img src="./assets/images/carousel/2. talant1.jpg" alt="Talant — брендинг" loading="lazy" decoding="async"></div>
+          <div class="carousel-item"><img src="./assets/images/carousel/3. wd1.jpg" alt="We Designerz — сайт студии" loading="lazy" decoding="async"></div>
+          <div class="carousel-item"><img src="./assets/images/carousel/4. kintamani2.jpg" alt="Kintamani — кофейня" loading="lazy" decoding="async"></div>
+          <div class="carousel-item"><img src="./assets/images/carousel/5. yasna2.jpg" alt="Yasna — дизайн" loading="lazy" decoding="async"></div>
+          <div class="carousel-item"><img src="./assets/images/carousel/6. kintamani1.jpg" alt="Kintamani — брендинг" loading="lazy" decoding="async"></div>
+          <div class="carousel-item"><img src="./assets/images/carousel/7. eazyenergy1.jpg" alt="Eazy Energy — упаковка" loading="lazy" decoding="async"></div>
+          <div class="carousel-item"><img src="./assets/images/carousel/8. ceskylev1.jpg" alt="Cesky Lev — веб-дизайн" loading="lazy" decoding="async"></div>
+          <div class="carousel-item"><img src="./assets/images/carousel/9. wd2.jpg" alt="We Designerz — проект" loading="lazy" decoding="async"></div>
+          <div class="carousel-item"><img src="./assets/images/carousel/10. viril1.jpg" alt="Viril — лендинг" loading="lazy" decoding="async"></div>
+          <div class="carousel-item"><img src="./assets/images/carousel/11. kintamani3.jpg" alt="Kintamani — дизайн" loading="lazy" decoding="async"></div>
+          <div class="carousel-item"><img src="./assets/images/carousel/12. kintamani2.jpg" alt="Kintamani — проект" loading="lazy" decoding="async"></div>
+          <!-- Дублирование для бесконечного цикла -->
+          <div class="carousel-item"><img src="./assets/images/carousel/1. yasna1.jpg" alt="" loading="lazy" decoding="async" aria-hidden="true"></div>
+          <div class="carousel-item"><img src="./assets/images/carousel/2. talant1.jpg" alt="" loading="lazy" decoding="async" aria-hidden="true"></div>
+          <div class="carousel-item"><img src="./assets/images/carousel/3. wd1.jpg" alt="" loading="lazy" decoding="async" aria-hidden="true"></div>
+          <div class="carousel-item"><img src="./assets/images/carousel/4. kintamani2.jpg" alt="" loading="lazy" decoding="async" aria-hidden="true"></div>
+          <div class="carousel-item"><img src="./assets/images/carousel/5. yasna2.jpg" alt="" loading="lazy" decoding="async" aria-hidden="true"></div>
+          <div class="carousel-item"><img src="./assets/images/carousel/6. kintamani1.jpg" alt="" loading="lazy" decoding="async" aria-hidden="true"></div>
+          <div class="carousel-item"><img src="./assets/images/carousel/7. eazyenergy1.jpg" alt="" loading="lazy" decoding="async" aria-hidden="true"></div>
+          <div class="carousel-item"><img src="./assets/images/carousel/8. ceskylev1.jpg" alt="" loading="lazy" decoding="async" aria-hidden="true"></div>
+          <div class="carousel-item"><img src="./assets/images/carousel/9. wd2.jpg" alt="" loading="lazy" decoding="async" aria-hidden="true"></div>
+          <div class="carousel-item"><img src="./assets/images/carousel/10. viril1.jpg" alt="" loading="lazy" decoding="async" aria-hidden="true"></div>
+          <div class="carousel-item"><img src="./assets/images/carousel/11. kintamani3.jpg" alt="" loading="lazy" decoding="async" aria-hidden="true"></div>
+          <div class="carousel-item"><img src="./assets/images/carousel/12. kintamani2.jpg" alt="" loading="lazy" decoding="async" aria-hidden="true"></div>
+        </div>
+      </div>
+
+      <p class="services-note">
+        То, что раньше требовало программиста — теперь делает дизайнер. То, что занимало неделю — теперь занимает день.
+        Инструменты изменились. Мы используем лучшие из них.
+      </p>
+
+      <a href="projects.html" class="text-link">Все проекты</a>
+    </section>
+
+    <!-- How We Work -->
+    <section class="how-we-work" id="how">
+      <div class="section-label">Как мы работаем</div>
+      <h2>От первого сообщения до готового дизайна — без потерь по пути.</h2>
+
+      <div class="steps-grid">
+        <div class="step">
+          <div class="step-number">01</div>
+          <h3 class="step-title">Вы пишете в Telegram</h3>
+          <p class="step-text">Наш ИИ-агент задаёт нужные вопросы — понятным языком, без дизайнерского жаргона.</p>
+        </div>
+
+        <div class="step-divider" aria-hidden="true"></div>
+
+        <div class="step">
+          <div class="step-number">02</div>
+          <h3 class="step-title">Агент собирает бриф</h3>
+          <p class="step-text">Собирает материалы, формирует бриф и передаёт его дизайнеру уже в готовом виде.</p>
+        </div>
+
+        <div class="step-divider" aria-hidden="true"></div>
+
+        <div class="step">
+          <div class="step-number">03</div>
+          <h3 class="step-title">Дизайнер приступает</h3>
+          <p class="step-text">Получает полную картину с первого раза. Вы не объясняете одно и то же дважды.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Us -->
+    <section class="why-us" id="why">
+      <div class="section-label">Почему мы</div>
+      <div class="why-grid">
+        <div class="why-left">
+          <h2>Вы можете сделать это сами. Но зачем?</h2>
+          <p class="why-intro">Сегодня любой может собрать сайт, создать лого или сверстать презентацию — с помощью тех
+            же инструментов, что используем мы. Разница в том, что у вас на это уйдёт время, а результат будет «сойдёт».
+          </p>
+        </div>
+
+        <div class="why-right">
+          <ul class="why-list">
+            <li>— Презентация за часы, не за неделю</li>
+            <li>— Лендинг без программиста</li>
+            <li>— Сайт без подписки на конструктор</li>
+            <li>— Прототип, а не эскиз</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Clients Logos -->
+    <section class="clients-logos" id="clients-logos">
+      <div class="section-label">Нам доверяют</div>
+      <div class="logos-grid">
+        <div class="logo-item logo-large"><img src="./assets/logos/ceskylev.svg" alt="Cesky Lev" loading="lazy" decoding="async"></div>
+        <div class="logo-item logo-tilt-left"><img src="./assets/logos/tbank.svg" alt="T-Bank" loading="lazy" decoding="async"></div>
+        <div class="logo-item"><img src="./assets/logos/eazy-energy.svg" alt="Eazy Energy" loading="lazy" decoding="async"></div>
+        <div class="logo-item logo-offset-up"><img src="./assets/logos/bloggers.svg" alt="Bloggers" loading="lazy" decoding="async"></div>
+        <div class="logo-item logo-tilt-right"><img src="./assets/logos/viril.svg" alt="Viril" loading="lazy" decoding="async"></div>
+        <div class="logo-item logo-offset-down"><img src="./assets/logos/deeptutoring.svg" alt="Deep Tutoring" loading="lazy" decoding="async"></div>
+        <div class="logo-item"><img src="./assets/logos/fias.svg" alt="FIAS" loading="lazy" decoding="async"></div>
+        <div class="logo-item logo-tilt-left"><img src="./assets/logos/fvp.svg" alt="FVP" loading="lazy" decoding="async"></div>
+        <div class="logo-item logo-large"><img src="./assets/logos/alexvillas.svg" alt="Alex Villas" loading="lazy" decoding="async"></div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing" id="pricing">
+      <div class="section-label">Тарифы</div>
+      <h2>Разовый проект или постоянная поддержка — выбирайте формат.</h2>
+
+      <div class="pricing-comparison">
+        <div class="pricing-light">
+          <h3>Проект</h3>
+          <p>Конкретная задача, конкретный результат. Подходит, если нужно сделать что-то одно и быстро.</p>
+        </div>
+
+        <div class="pricing-dark">
+          <h3>Поддержка</h3>
+          <p>Мы работаем как ваша внутренняя дизайн-команда. Фиксированный бюджет в месяц, приоритет в очереди, не нужно
+            каждый раз объяснять кто вы и что у вас за бренд. Чем дольше работаем — тем быстрее и точнее результат.</p>
+        </div>
+      </div>
+
+      <div class="pricing-cta">
+        <a href="https://t.me/wedesignerz_bot?start=pricing" target="_blank" class="text-link">Выбрать</a>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+      <div class="section-label">Контакты</div>
+      <h2>Есть задача? Просто напишите.</h2>
+
+      <p class="contact-subtitle">
+        Не нужно заполнять длинные формы или ждать ответа по email. Напишите в Telegram — наш агент сразу начнёт
+        разбираться в задаче, а вы получите ответ в тот же день.
+      </p>
+
+      <a href="https://t.me/wedesignerz_bot" target="_blank" class="btn-primary"
+        class="btn-margin-xs">Начать проект</a>
+
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-logo">We Designerz</div>
+    <div class="footer-links">
+      <a href="https://t.me/wedesignerz_bot" target="_blank" rel="noopener noreferrer">Telegram</a>
+      <a href="https://www.youtube.com/@wedesignerz/" target="_blank" rel="noopener noreferrer">YouTube</a>
+    </div>
+  </footer>
+
+  <script src="./main.js"></script>
+</body>
+
+</html>

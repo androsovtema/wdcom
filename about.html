@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="О студии We Designerz. Небольшая команда дизайнеров с опытом с 2021 года. Веб-дизайн, UX, брендинг, презентации. Узнайте, кто стоит за проектами.">
+  <meta name="keywords" content="We Designerz, о студии, дизайн команда, веб-дизайн студия, брендинг">
+  <meta name="author" content="We Designerz">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="О нас — We Designerz">
+  <meta property="og:description" content="Узнайте, кто стоит за проектами We Designerz. Команда дизайнеров с опытом с 2021 года.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://wedesignerz.com/about.html">
+  <meta property="og:image" content="./assets/images/og-image.jpg">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="О нас — We Designerz">
+  <meta name="twitter:description" content="Узнайте, кто стоит за проектами We Designerz.">
+  <meta name="twitter:image" content="./assets/images/og-image.jpg">
+  
+  <title>О нас — We Designerz</title>
+  <link rel="icon" type="image/png" href="./assets/icons/favicon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/icons/favicon.png" />
+  <link rel="apple-touch-icon" href="./assets/icons/favicon.png" />
+  <link rel="canonical" href="https://wedesignerz.com/about.html">
+
+  <!-- Google Fonts: Cormorant Garamond + Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body>
+  <!-- Мгновенная установка состояния логотипа до отрисовки -->
+  <script>
+    (function() {
+      if (window.scrollY > 100) {
+        document.querySelector('.header').classList.add('scrolled');
+      }
+    })();
+  </script>
+  <!-- Header -->
+  <header class="header">
+    <a class="logo" href="index.html" aria-label="We Designerz — на главную">
+      <img src="./assets/logos/WDLogo.svg" alt="" class="logo-desktop" aria-hidden="true">
+      <img src="./assets/logos/WDLogoMobile.svg" alt="" class="logo-mobile" aria-hidden="true">
+    </a>
+
+    <nav class="nav" aria-label="Главная навигация">
+      <a href="projects.html">Проекты</a>
+      <a href="about.html">О нас</a>
+      <button class="btn-start" onclick="window.open('https://t.me/wedesignerz_bot', '_blank')">Начать проект</button>
+    </nav>
+
+    <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false" aria-controls="nav">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero hero-compact" id="hero">
+      <h1>
+        <span class="dynamic-text-wrapper" class="dynamic-text-wrapper-short">
+          <span class="dynamic-text active dynamic-text-en">We Designerz</span>
+          <span class="dynamic-text">Мы Дизайнеры</span>
+        </span>
+        — студия с опытом и взглядом в будущее.
+      </h1>
+    </section>
+
+    <!-- Manifest -->
+    <section class="manifest" id="manifest">
+      <p class="manifest-text">Опыт с 2021 года научил нас одному: клиент приходит не за красивой картинкой. Он
+        приходит, чтобы его бизнес выглядел убедительно, работал понятно и не требовал бесконечных доработок. Мы про
+        это.</p>
+    </section>
+
+    <!-- Team -->
+    <section class="team" id="team">
+      <div class="section-label">С кем вы работаете</div>
+      <h2>Команда</h2>
+      <div class="team-grid">
+        <div class="team-member">
+          <img src="./assets/images/team/Alina.jpg" alt="Алина — Графический дизайнер" class="team-photo" loading="lazy" decoding="async">
+          <div class="team-info">
+            <div class="team-name">Алина</div>
+            <div class="team-role">Графический дизайнер · Обожает эстетику Японии, мангу и аниме. Мечтает о розовом
+              спортбайке.</div>
+          </div>
+        </div>
+        <div class="team-member">
+          <img src="./assets/images/team/Artem.jpg" alt="Артём — Арт-директор" class="team-photo" loading="lazy" decoding="async">
+          <div class="team-info">
+            <div class="team-name">Артём</div>
+            <div class="team-role">Арт-директор · Человек-брейншторм. Думает даже когда уверен, что не думает.</div>
+          </div>
+        </div>
+        <div class="team-member">
+          <img src="./assets/images/team/Andrey.jpg" alt="Андрей — Продюсер" class="team-photo" loading="lazy" decoding="async">
+          <div class="team-info">
+            <div class="team-name">Андрей</div>
+            <div class="team-role">Продюсер · Душнила в хорошем смысле. Заботится о комфорте клиентов и счастье команды
+              дизайна.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Who We Are -->
+    <section class="who-we-are" id="who-we-are">
+      <div class="section-label">Студия</div>
+      <h2>Небольшая студия. Осознанно.</h2>
+      <div class="who-text">
+        <p>We Designerz — небольшая команда дизайнеров. Мы работаем с визуальными коммуникациями: веб-дизайн, UX,
+          product, брендинг, презентации, айдентика.</p>
+        <p>Небольшой размер — осознанный выбор. Каждый проект ведёт конкретный человек. Вы всегда знаете, кто работает
+          над вашей задачей, и можете спросить напрямую.</p>
+      </div>
+    </section>
+
+    <!-- Visual Language -->
+    <section class="visual-language" id="visual-language">
+      <div class="section-label">О визуальном языке</div>
+      <h2>Почему мы выглядим так</h2>
+
+      <div class="visual-grid">
+        <div class="visual-text">
+          <p>Природные цвета, натуральные фактуры, спокойный ритм.</p>
+          <p>Это осознанный выбор, который отражает то, как мы думаем о дизайне в целом. Человек с рождения доверяет
+            тому,
+            что напоминает природу. Мы хотим, чтобы работать с нами было не только быстро и качественно, но и приятно.
+            Как
+            будто всё под контролем. Как будто так и должно быть.</p>
+        </div>
+
+        <div class="palette-showcase">
+          <div class="swatch-item">
+            <div class="swatch-circle swatch-moss">
+              <span class="swatch-label">Мох</span>
+            </div>
+          </div>
+          <div class="swatch-item">
+            <div class="swatch-circle swatch-clay">
+              <span class="swatch-label">Глина</span>
+            </div>
+          </div>
+          <div class="swatch-item">
+            <div class="swatch-circle swatch-stone">
+              <span class="swatch-label">Камень</span>
+            </div>
+          </div>
+          <div class="swatch-item">
+            <div class="swatch-circle swatch-sand">
+              <span class="swatch-label">Песок</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How We Work -->
+    <section class="how-we-work" id="how-we-work">
+      <div class="section-label">Про инструменты</div>
+      <h2>Рутину — машинам. Решения — людям.</h2>
+      <div class="process-text">
+        <p>Брифинг у нас начинается ещё до первого созвона. ИИ-агент встречает клиента, задаёт нужные вопросы понятным
+          языком и собирает полноценное задание. Дизайнер получает его уже готовым — с контекстом, материалами,
+          референсами. Без потери деталей. Без лишних итераций.</p>
+        <p>Попробуйте сами — это занимает пару минут.</p>
+      </div>
+      <a href="https://t.me/wedesignerz_bot" target="_blank" class="text-link" rel="noopener noreferrer">Написать агенту</a>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="testimonials">
+      <div class="section-label">Что говорят клиенты</div>
+      <h2>Отзывы</h2>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <img src="./assets/images/clients/Gabar.jpg" alt="Габар — YouTube-блогер" class="testimonial-photo" loading="lazy" decoding="async">
+            <div class="testimonial-meta">
+              <div class="testimonial-name">Габар</div>
+              <div class="testimonial-role">YouTube-блогер</div>
+            </div>
+          </div>
+          <div class="testimonial-project">
+            <strong>Что заказывал:</strong> Фирменный стиль и упаковка энергетического напитка Eazy Energy
+          </div>
+          <p class="testimonial-quote">«Работа была сделана очень быстро, при этом качество превзошло ожидания. Дизайн
+            получился именно таким, каким я его представлял — современным, дерзким, запоминающимся.»</p>
+          <button class="audio-btn" data-audio="./assets/audio/clients/Gabar.mp3" aria-label="Послушать отзыв Габара">Послушать отзыв</button>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <img src="./assets/images/clients/Maria.jpg" alt="Мария — CEO MaYu" class="testimonial-photo" loading="lazy" decoding="async">
+            <div class="testimonial-meta">
+              <div class="testimonial-name">Мария</div>
+              <div class="testimonial-role">CEO MaYu</div>
+            </div>
+          </div>
+          <div class="testimonial-project">
+            <strong>Что заказывала:</strong> Дизайн для мероприятия в Давосе во время WEF 2025
+          </div>
+          <p class="testimonial-quote">«Наконец-то нашла команду, которая не просто рисует красиво, а думает о бизнесе.
+            Поняли нашу аудиторию с полуслова, предложили решения, о которых мы даже не думали.»</p>
+          <button class="audio-btn" data-audio="./assets/audio/clients/Maria.mp3" aria-label="Послушать отзыв Марии">Послушать отзыв</button>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <img src="./assets/images/clients/Maxim.jpg" alt="Максим — Руководитель FIAS" class="testimonial-photo" loading="lazy" decoding="async">
+            <div class="testimonial-meta">
+              <div class="testimonial-name">Максим</div>
+              <div class="testimonial-role">Руководитель FIAS</div>
+            </div>
+          </div>
+          <div class="testimonial-project">
+            <strong>Что заказывал:</strong> Оформление электронных экранов в комплексе FIAS
+          </div>
+          <p class="testimonial-quote">«Ответ был мгновенным. Сделали работу за 2 дня. В правках не было
+            необходимости.
+            Рекомендую всем, кто ценит своё время.»</p>
+          <button class="audio-btn" data-audio="./assets/audio/clients/Maxim.mp3" aria-label="Послушать отзыв Максима">Послушать отзыв</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section" id="cta">
+      <h2>Познакомились? Теперь — к делу.</h2>
+      <a href="https://t.me/wedesignerz_bot" target="_blank" class="btn-primary" rel="noopener noreferrer">Начать проект</a>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-logo">We Designerz</div>
+    <div class="footer-links">
+      <a href="https://t.me/wedesignerz_bot" target="_blank" rel="noopener noreferrer">Telegram</a>
+      <a href="https://www.youtube.com/@wedesignerz/" target="_blank" rel="noopener noreferrer">YouTube</a>
+    </div>
+  </footer>
+
+  <script src="./main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Yasna — кейс студии We Designerz. Веб-дизайн и разработка сайта для wellness-платформы. Спокойная визуальная система, фокус на конверсию.">
+  <meta name="keywords" content="Yasna, веб-дизайн, wellness, кейс, портфолио">
+  <meta name="author" content="We Designerz">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Yasna — We Designerz">
+  <meta property="og:description" content="Веб-дизайн и разработка сайта для wellness-платформы.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://wedesignerz.com/projects/yasna">
+  <meta property="og:image" content="../assets/images/projects/yasna/og-image.jpg">
+  
+  <title>Yasna — We Designerz</title>
+  <link rel="icon" type="image/png" href="../assets/icons/favicon.png" />
+  <link rel="canonical" href="https://wedesignerz.com/projects/yasna">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+
+<body>
+  <!-- Мгновенная установка состояния логотипа до отрисовки -->
+  <script>
+    (function() {
+      if (window.scrollY > 100) {
+        document.querySelector('.header').classList.add('scrolled');
+      }
+    })();
+  </script>
+  <!-- Header -->
+  <header class="header">
+    <a class="logo" href="../index.html" aria-label="We Designerz — на главную">
+      <img src="../assets/logos/WDLogo.svg" alt="" class="logo-desktop" aria-hidden="true">
+      <img src="../assets/logos/WDLogoMobile.svg" alt="" class="logo-mobile" aria-hidden="true">
+    </a>
+
+    <nav class="nav" aria-label="Главная навигация">
+      <a href="../projects.html">Проекты</a>
+      <a href="../about.html">О нас</a>
+      <button class="btn-start" onclick="window.open('https://t.me/wedesignerz_bot', '_blank')">Начать проект</button>
+    </nav>
+
+    <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+
+  <main>
+    <!-- Back Button -->
+    <div class="back-nav">
+      <a href="../projects.html" class="text-link">← Назад к проектам</a>
+    </div>
+
+    <!-- Project Hero -->
+    <section class="project-hero" id="hero">
+      <div class="section-label">Проект</div>
+      <h1>Yasna</h1>
+      <p class="project-brief">Сайт для wellness-платформы, объединяющей психологов, коучей и специалистов по работе с телом. Задача — создать пространство, в котором клиенты чувствуют себя в безопасности и легко находят подходящего специалиста.</p>
+      
+      <div class="project-meta">
+        <div class="meta-item">
+          <span class="meta-label">Дата</span>
+          <span class="meta-value">Ноябрь 2024</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Команда</span>
+          <span class="meta-value">Артём, Алина</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Направления</span>
+          <div class="meta-tags">
+            <span class="meta-tag">Веб-дизайн</span>
+            <span class="meta-tag">Разработка</span>
+            <span class="meta-tag">UX</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why What How -->
+    <section class="project-concept" id="concept">
+      <div class="www-grid">
+        <div class="www-column">
+          <h2 class="www-title">Why</h2>
+          <p class="www-text">Люди, ищущие помощи психолога или коуча, часто испытывают тревожность. Им нужно пространство, которое не давит, не требует немедленных действий, а даёт почувствовать контроль и безопасность. Существующие платформы перегружены информацией и выглядят слишком "медицински".</p>
+        </div>
+        <div class="www-column">
+          <h2 class="www-title">What</h2>
+          <p class="www-text">Минималистичный сайт с тёплой цветовой палитрой и плавными переходами. Главная страница знакомит с концепцией платформы, а каталог специалистов позволяет фильтровать по направлению, формату работы и языку. Каждый специалист имеет подробный профиль с видео-визиткой.</p>
+        </div>
+        <div class="www-column">
+          <h2 class="www-title">How</h2>
+          <p class="www-text">Начали с глубинных интервью с целевой аудиторией. Создали пользовательские сценарии и прототипы. Тестировали на фокус-группах. Визуальная концепция родилась из аналогий с природными материалами — камень, мох, глина. Разработка на чистом HTML/CSS/JS без тяжёлых фреймворков для максимальной скорости.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Project Gallery -->
+    <section class="project-gallery" id="gallery">
+      <div class="section-label">Процесс и результат</div>
+      <h2>Как это выглядит</h2>
+      
+      <div class="gallery-grid">
+        <div class="gallery-item gallery-featured">
+          <img src="../assets/images/carousel/1. yasna1.jpg" alt="Yasna — главная страница" loading="lazy" decoding="async">
+        </div>
+        
+        <div class="gallery-item">
+          <img src="../assets/images/carousel/5. yasna2.jpg" alt="Yasna — каталог специалистов" loading="lazy" decoding="async">
+        </div>
+        
+        <div class="gallery-item">
+          <img src="../assets/images/projects/yasna/profile.jpg" alt="Yasna — профиль специалиста" loading="lazy" decoding="async">
+        </div>
+        
+        <div class="gallery-item gallery-wide">
+          <img src="../assets/images/projects/yasna/process.jpg" alt="Yasna — процесс работы" loading="lazy" decoding="async">
+        </div>
+        
+        <div class="gallery-item">
+          <img src="../assets/images/projects/yasna/mobile.jpg" alt="Yasna — мобильная версия" loading="lazy" decoding="async">
+        </div>
+        
+        <div class="gallery-item">
+          <img src="../assets/images/projects/yasna/details.jpg" alt="Yasna — детали интерфейса" loading="lazy" decoding="async">
+        </div>
+      </div>
+    </section>
+
+    <!-- Results / Metrics -->
+    <section class="project-results" id="results">
+      <div class="section-label">Результаты</div>
+      <h2>Что получилось</h2>
+      
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <span class="metric-number">+340%</span>
+          <span class="metric-label">Рост записей</span>
+          <p class="metric-description">Увеличение числа записей на консультации в первый месяц после запуска</p>
+        </div>
+        
+        <div class="metric-card">
+          <span class="metric-number">2.4с</span>
+          <span class="metric-label">Время загрузки</span>
+          <p class="metric-description">Среднее время полной загрузки страницы на мобильных устройствах</p>
+        </div>
+        
+        <div class="metric-card">
+          <span class="metric-number">68%</span>
+          <span class="metric-label">Конверсия</span>
+          <p class="metric-description">Процент посетителей, которые дошли до страницы выбора специалиста</p>
+        </div>
+        
+        <div class="metric-card">
+          <span class="metric-number">4.9★</span>
+          <span class="metric-label">Оценка UX</span>
+          <p class="metric-description">Средняя оценка удобства использования по результатам опроса пользователей</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Next Project -->
+    <section class="next-project" id="next">
+      <div class="section-label">Следующий проект</div>
+      <a href="talant.html" class="next-project-link">
+        <span class="next-project-name">Talant</span>
+        <span class="next-project-arrow">→</span>
+      </a>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section" id="cta">
+      <h2>Хотите так же?</h2>
+      <p class="contact-subtitle contact-subtitle-margin">
+        Расскажите о вашем проекте — мы подумаем вместе, как сделать его успешным.
+      </p>
+      <a href="https://t.me/wedesignerz_bot" target="_blank" class="btn-primary" rel="noopener noreferrer">Начать проект</a>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-logo">We Designerz</div>
+    <div class="footer-links">
+      <a href="https://t.me/wedesignerz_bot" target="_blank" rel="noopener noreferrer">Telegram</a>
+      <a href="https://www.youtube.com/@wedesignerz/" target="_blank" rel="noopener noreferrer">YouTube</a>
+    </div>
+  </footer>
+
+  <script src="../main.js"></script>
+</body>
+
+</html>
