@@ -997,6 +997,28 @@ section {
   transform: translateX(4px);
 }
 
+/* Back link with animated left arrow */
+.back-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.3s var(--ease-out);
+}
+
+.back-link::before {
+  content: '←';
+  transition: transform 0.3s var(--ease-out);
+}
+
+.back-link:hover {
+  color: var(--deep-forest);
+}
+
+.back-link:hover::before {
+  transform: translateX(-4px);
+}
+
 .contact-meta {
   font-size: 13px;
   color: var(--stone-light);
