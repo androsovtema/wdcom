@@ -3,7 +3,7 @@
  * Общие функции для всех страниц
  */
 
-(function() {
+(function () {
   'use strict';
 
   /* ====================
@@ -16,7 +16,7 @@
 
   function toggleMenu(isOpen) {
     if (!burger || !nav || !header) return;
-    
+
     burger.classList.toggle('open', isOpen);
     nav.classList.toggle('open', isOpen);
     header.classList.toggle('open', isOpen);
@@ -42,9 +42,9 @@
 
     // Закрытие при клике вне меню
     document.addEventListener('click', (e) => {
-      if (nav.classList.contains('open') && 
-          !nav.contains(e.target) && 
-          !burger.contains(e.target)) {
+      if (nav.classList.contains('open') &&
+        !nav.contains(e.target) &&
+        !burger.contains(e.target)) {
         closeMenu();
       }
     });
@@ -62,16 +62,16 @@
      ==================== */
   let lastScroll = 0;
   let ticking = false;
-  
+
   function handleScroll() {
     if (!header) return;
-    
+
     const currentScroll = window.scrollY;
 
     // Добавляем/удаляем класс только если состояние изменилось
     const shouldBeScrolled = currentScroll > 100;
     const isScrolled = header.classList.contains('scrolled');
-    
+
     if (shouldBeScrolled && !isScrolled) {
       header.classList.add('scrolled');
     } else if (!shouldBeScrolled && isScrolled) {
@@ -94,10 +94,10 @@
      SMOOTH SCROLL
      ==================== */
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
+    anchor.addEventListener('click', function (e) {
       const targetId = this.getAttribute('href');
       if (targetId === '#') return;
-      
+
       const target = document.querySelector(targetId);
       if (target) {
         e.preventDefault();
@@ -113,7 +113,7 @@
      DYNAMIC TEXT ANIMATION (Hero)
      ==================== */
   const words = document.querySelectorAll('.dynamic-text');
-  
+
   if (words.length > 0) {
     let wordIndex = 0;
 
@@ -155,7 +155,7 @@
     audioBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         const audioSrc = btn.getAttribute('data-audio');
-        
+
         if (!audioSrc) {
           console.warn('Audio button has no data-audio attribute:', btn);
           return;
@@ -199,7 +199,7 @@
             btn.textContent = 'Ошибка загрузки';
             currentAudio = null;
             currentBtn = null;
-            
+
             // Возвращаем текст через 2 секунды
             setTimeout(() => {
               btn.textContent = 'Послушать отзыв';
@@ -208,7 +208,7 @@
 
           // Пробуем воспроизвести
           const playPromise = currentAudio.play();
-          
+
           if (playPromise !== undefined) {
             playPromise
               .then(() => {
@@ -221,7 +221,7 @@
                 btn.textContent = 'Ошибка воспроизведения';
                 currentAudio = null;
                 currentBtn = null;
-                
+
                 setTimeout(() => {
                   btn.textContent = 'Послушать отзыв';
                 }, 2000);
@@ -262,7 +262,7 @@
         // Filter projects
         projectCards.forEach(card => {
           const cardTags = card.getAttribute('data-tags');
-          
+
           if (filter === 'all') {
             card.style.display = 'block';
             setTimeout(() => {

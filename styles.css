@@ -125,15 +125,15 @@ h4 {
 
 /* Desktop/Tablet logo */
 img.logo-desktop {
-  width: 170px;
-  height: 24px;
+  width: 141.7px;
+  height: 20px;
   display: block;
 }
 
 /* Mobile logo (скрыт по умолчанию) */
 img.logo-mobile {
-  width: 65.3px;
-  height: 24px;
+  width: 54.4px;
+  height: 20px;
   display: none;
 }
 
@@ -149,7 +149,7 @@ img.logo-mobile {
   img.logo-desktop {
     display: none;
   }
-  
+
   img.logo-mobile {
     display: block;
   }
@@ -314,7 +314,8 @@ section {
   min-height: calc(70vh - 80px);
 }
 
-.hero h1 {
+.hero h1,
+.projects-hero h1 {
   font-size: clamp(42px, 6vw, 72px);
   max-width: 900px;
   margin-bottom: var(--space-xs);
@@ -384,7 +385,7 @@ section {
   font-style: italic;
   overflow: hidden;
   height: 1.15em;
-  width: 6.5em;
+  width: 5.5em;
   padding-right: 0.15em;
 }
 
@@ -798,6 +799,156 @@ section {
 .text-link {
   font-size: 14px;
   color: var(--moss);
+}
+
+/*************************
+ *  PROJECTS GRID  *
+ *************************/
+.projects-hero {
+  padding-top: var(--space-lg);
+  padding-bottom: var(--space-sm);
+}
+
+.projects-filter {
+  padding-top: 0;
+  padding-bottom: var(--space-sm);
+}
+
+.filter-label {
+  font-size: 14px;
+  color: var(--stone-light);
+  margin-bottom: 16px;
+}
+
+.filter-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.filter-tag {
+  background: transparent;
+  border: 1px solid rgba(90, 107, 78, 0.2);
+  color: var(--stone);
+  padding: 8px 16px;
+  border-radius: 4px 6px 5px 3px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s var(--ease-out);
+  font-family: 'Inter', sans-serif;
+}
+
+.filter-tag:hover {
+  border-color: var(--moss);
+  color: var(--moss);
+}
+
+.filter-tag.active {
+  background: var(--moss);
+  color: var(--cream);
+  border-color: var(--moss);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 80px 60px;
+}
+
+/* Первая карточка — на всю ширину */
+.project-card:first-child {
+  grid-column: span 2;
+}
+
+/* Первая карточка — горизонтальный aspect ratio */
+.project-card:first-child .project-image {
+  aspect-ratio: 21/9;
+}
+
+.project-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.4s var(--ease-out);
+}
+
+.project-link:hover {
+  transform: translateY(-8px);
+}
+
+.project-image {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  border-radius: 4px 6px 5px 3px;
+  margin-bottom: 24px;
+  transition: opacity 0.4s var(--ease-out), filter 0.4s var(--ease-out);
+}
+
+.project-link:hover .project-image {
+  opacity: 0.9;
+}
+
+.project-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.project-name {
+  font-size: 28px;
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--charcoal);
+  margin: 0;
+}
+
+.project-category {
+  font-size: 14px;
+  color: var(--moss);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+.project-description {
+  font-size: 15px;
+  color: var(--stone);
+  line-height: 1.6;
+  margin: 0;
+  max-width: 90%;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.project-tag {
+  font-size: 12px;
+  color: var(--stone-light);
+  background: rgba(90, 107, 78, 0.05);
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .project-card:first-child {
+    grid-column: span 1;
+  }
+
+  .project-card:first-child .project-image {
+    aspect-ratio: 4/3;
+  }
+}
+
+.text-link {
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -1670,6 +1821,7 @@ section {
  *  RESPONSIVE  *
  *************************/
 @media (max-width: 968px) {
+
   .team-grid,
   .testimonials-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -1883,6 +2035,7 @@ section {
 }
 
 @media (max-width: 480px) {
+
   .hero h1,
   .projects-hero h1 {
     font-size: 28px;
@@ -1921,6 +2074,7 @@ section {
  *  REDUCED MOTION  *
  *************************/
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
@@ -1975,4 +2129,3 @@ section {
 .contact-subtitle-margin {
   margin-bottom: var(--space-sm);
 }
-
