@@ -60,13 +60,13 @@ body::before {
 }
 
 a {
-  color: var(--moss);
+  color: var(--moss-light);
   text-decoration: none;
   transition: color 0.3s var(--ease-out);
 }
 
 a:hover {
-  color: var(--deep-forest);
+  color: var(--moss);
 }
 
 img {
@@ -489,7 +489,7 @@ section {
   font-family: 'Cormorant Garamond', serif;
   font-size: 64px;
   line-height: 1;
-  color: var(--cream-dark);
+  color: var(--moss-light);
   margin-bottom: 16px;
   font-weight: 400;
 }
@@ -511,7 +511,7 @@ section {
 
 .step-divider {
   width: 1px;
-  background: rgba(90, 107, 78, 0.15);
+  background: var(--moss);
   align-self: stretch;
 }
 
@@ -755,22 +755,8 @@ section {
   right: 50%;
   margin-left: -50vw;
   margin-right: -50vw;
-  opacity: 0.6;
-  transition: opacity 0.5s var(--ease-out);
-  /* Фон-заглушка на время загрузки */
+  padding: 40px 0;
   background: var(--cream-warm);
-}
-
-.carousel-wrapper:hover {
-  opacity: 1;
-}
-
-.carousel-wrapper.loaded {
-  opacity: 0.6;
-}
-
-.carousel-wrapper.loaded:hover {
-  opacity: 1;
 }
 
 .carousel-track {
@@ -879,7 +865,7 @@ section {
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(300px, 1fr));
   gap: 80px 60px;
 }
 
@@ -1870,6 +1856,14 @@ section {
 /*************************
  *  RESPONSIVE  *
  *************************/
+
+/* Tablet landscape - keep 2 columns but reduce gap */
+@media (max-width: 1200px) {
+  .projects-grid {
+    gap: 48px 32px;
+  }
+}
+
 @media (max-width: 968px) {
 
   .team-grid,
@@ -1880,6 +1874,10 @@ section {
   .projects-grid {
     grid-template-columns: 1fr;
     gap: 48px;
+  }
+
+  .project-card:first-child {
+    grid-column: span 1;
   }
 
   .www-grid {
@@ -2272,10 +2270,9 @@ section {
     height: 190px;
   }
 
-  /* Убираем блеклость на мобильных */
-  .carousel-wrapper,
-  .carousel-wrapper.loaded {
-    opacity: 1;
+  /* Уменьшаем padding на мобильных (пропорционально высоте) */
+  .carousel-wrapper {
+    padding: 24px 0;
   }
 
   /* Отключаем pause при наведении/нажатии на мобильных */
