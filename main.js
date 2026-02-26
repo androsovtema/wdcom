@@ -288,4 +288,57 @@
     });
   }
 
+  /* ====================
+     CAROUSEL IMAGE LOADING
+     ==================== */
+  const carouselWrapper = document.querySelector('.carousel-wrapper');
+  const carouselTrack = document.querySelector('.carousel-track');
+  const carouselImages = document.querySelectorAll('.carousel-item img');
+
+  if (carouselWrapper && carouselTrack && carouselImages.length > 0) {
+    let loadedCount = 0;
+    const totalImages = carouselImages.length;
+
+    // Функция для проверки загрузки всех изображений
+    function checkAllLoaded() {
+      loadedCount++;
+      
+      // Отмечаем загруженное изображение
+      const img = carouselImages[loadedCount - 1];
+      if (img) {
+        img.classList.add('loaded');
+        img.parentElement.classList.add('loaded');
+      }
+
+      // Когда все изображения загружены — запускаем анимацию
+      if (loadedCount >= totalImages) {
+        // Небольшая задержка для стабилизации рендера
+        setTimeout(() => {
+          carouselWrapper.classList.add('loaded');
+          carouselTrack.classList.add('animate');
+        }, 100);
+      }
+    }
+
+    // Отслеживаем загрузку каждого изображения
+    carouselImages.forEach(img => {
+      if (img.complete && img.naturalHeight !== 0) {
+        // Изображение уже загружено
+        checkAllLoaded();
+      } else {
+        // Ждём загрузки
+        img.addEventListener('load', checkAllLoaded, { once: true });
+        img.addEventListener('error', checkAllLoaded, { once: true }); // Не блокируем при ошибке
+      }
+    });
+
+    // Fallback: запускаем анимацию через 5 секунд даже если не все загрузились
+    setTimeout(() => {
+      if (!carouselTrack.classList.contains('animate')) {
+        carouselWrapper.classList.add('loaded');
+        carouselTrack.classList.add('animate');
+      }
+    }, 5000);
+  }
+
 })();

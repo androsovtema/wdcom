@@ -757,20 +757,35 @@ section {
   margin-right: -50vw;
   opacity: 0.6;
   transition: opacity 0.5s var(--ease-out);
+  /* Фон-заглушка на время загрузки */
+  background: var(--cream-warm);
 }
 
 .carousel-wrapper:hover {
   opacity: 1;
 }
 
+.carousel-wrapper.loaded {
+  opacity: 0.6;
+}
+
+.carousel-wrapper.loaded:hover {
+  opacity: 1;
+}
+
 .carousel-track {
   display: flex;
   gap: 24px;
-  animation: marquee 90s linear infinite;
   width: max-content;
+  /* Анимация отключена по умолчанию, включается через JS после загрузки */
+  animation: none;
 }
 
-.carousel-wrapper:hover .carousel-track {
+.carousel-track.animate {
+  animation: marquee 90s linear infinite;
+}
+
+.carousel-wrapper:hover .carousel-track.animate {
   animation-play-state: paused;
 }
 
@@ -789,6 +804,33 @@ section {
   flex-shrink: 0;
   border-radius: 4px 6px 5px 3px;
   overflow: hidden;
+  /* Стабильный размер во время загрузки */
+  background: var(--cream-dark);
+  position: relative;
+}
+
+/* Placeholder до загрузки изображения */
+.carousel-item::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, var(--cream-dark) 0%, var(--cream-warm) 50%, var(--cream-dark) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  z-index: 0;
+}
+
+.carousel-item.loaded::before {
+  display: none;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
 }
 
 .carousel-item img {
@@ -796,6 +838,16 @@ section {
   width: auto;
   display: block;
   object-fit: cover;
+  position: relative;
+  z-index: 1;
+  /* Плавное появление */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.carousel-item img.loaded,
+.carousel-item.loaded img {
+  opacity: 1;
 }
 
 /* Текстовая ссылка */
@@ -2226,13 +2278,20 @@ section {
   }
 
   /* Убираем блеклость на мобильных */
-  .carousel-wrapper {
+  .carousel-wrapper,
+  .carousel-wrapper.loaded {
     opacity: 1;
   }
 
   /* Отключаем pause при наведении/нажатии на мобильных */
-  .carousel-wrapper:hover .carousel-track {
+  .carousel-wrapper:hover .carousel-track,
+  .carousel-wrapper:hover .carousel-track.animate {
     animation-play-state: running;
+  }
+
+  /* Ускоренная анимация загрузки на мобильных */
+  .carousel-item::before {
+    animation-duration: 1s;
   }
 }
 
