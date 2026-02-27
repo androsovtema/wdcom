@@ -2265,6 +2265,11 @@ section {
 
 @media (max-width: 768px) {
 
+  /* Уменьшаем отступы back-nav на мобильных */
+  .back-nav {
+    padding: var(--space-xs) var(--space-xs) 0;
+  }
+
   /* Уменьшаем высоту карусели на ~33% (280px -> 190px) */
   .carousel-item {
     height: 190px;
