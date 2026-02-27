@@ -1697,16 +1697,16 @@ section {
 
 .gallery-featured {
   grid-column: span 2;
-  aspect-ratio: 21/9;
+  aspect-ratio: 16/9;
 }
 
 .gallery-wide {
   grid-column: span 2;
-  aspect-ratio: 21/9;
+  aspect-ratio: 16/9;
 }
 
 .gallery-item:not(.gallery-featured):not(.gallery-wide) {
-  aspect-ratio: 4/3;
+  aspect-ratio: 3/4;
 }
 
 /* Project Results */
