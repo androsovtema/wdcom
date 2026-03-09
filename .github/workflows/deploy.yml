@@ -13,30 +13,29 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
     
-    - name: Setup SSH
-      uses: webfactory/ssh-agent@v0.9.0
+    - name: Deploy to TimeWeb via SCP
+      uses: appleboy/scp-action@v0.1.7
       with:
-        ssh-private-key: ${{ secrets.TIMEWEB_SSH_KEY }}
-        log-public-key: false
-    
-    - name: Add server to known hosts
-      run: |
-        mkdir -p ~/.ssh
-        ssh-keyscan -H 5.129.199.33 >> ~/.ssh/known_hosts
-    
-    - name: Deploy to server
-      run: |
-        echo "Starting deployment..."
-        rsync -avz --delete \
-          --exclude='.git' \
-          --exclude='.github' \
-          --exclude='README.md' \
-          --exclude='.gitignore' \
-          ./ root@5.129.199.33:/var/www/wedesignerz/
-        echo "Deployment completed!"
+        host: 5.129.199.33
+        username: root
+        key: ${{ secrets.TIMEWEB_SSH_KEY }}
+        source: "."
+        target: "/var/www/wedesignerz"
+        rm: true
+        strip_components: 0
+        exclude: |
+          .git
+          .github
+          README.md
+          .gitignore
+          .DS_Store
     
     - name: Verify deployment
-      run: |
-        echo "Checking deployment status..."
-        ssh root@5.129.199.33 "ls -la /var/www/wedesignerz/ | head -5"
-        echo "Site is live at https://wedesignerz.com"
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: 5.129.199.33
+        username: root
+        key: ${{ secrets.TIMEWEB_SSH_KEY }}
+        script: |
+          echo "Deployment completed!"
+          ls -la /var/www/wedesignerz/
