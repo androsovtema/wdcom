@@ -13,15 +13,18 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
     
-    - name: Deploy to TimeWeb via SSH
-      uses: appleboy/ssh-action@v1.0.3
+    - name: Deploy to TimeWeb via SSH Deploy
+      uses: easingthemes/ssh-deploy@main
       with:
-        host: 5.129.199.33
-        username: root
-        key: ${{ secrets.TIMEWEB_SSH_KEY }}
-        script: |
+        SSH_PRIVATE_KEY: ${{ secrets.TIMEWEB_SSH_KEY }}
+        REMOTE_HOST: 5.129.199.33
+        REMOTE_USER: root
+        REMOTE_PORT: 22
+        SOURCE: "/"
+        TARGET: "/var/www/wedesignerz"
+        ARGS: "-avz --delete --exclude='.git' --exclude='.github' --exclude='README.md' --exclude='.gitignore'"
+        SCRIPT_BEFORE: |
           echo "Starting deployment..."
-          cd /var/www/wedesignerz
-          git pull origin main
+        SCRIPT_AFTER: |
           echo "Deployment completed!"
-          ls -la
+          ls -la /var/www/wedesignerz/
