@@ -1,0 +1,42 @@
+name: Deploy to TimeWeb Cloud
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup SSH
+      uses: webfactory/ssh-agent@v0.9.0
+      with:
+        ssh-private-key: ${{ secrets.TIMEWEB_SSH_KEY }}
+        log-public-key: false
+    
+    - name: Add server to known hosts
+      run: |
+        mkdir -p ~/.ssh
+        ssh-keyscan -H 5.129.199.33 >> ~/.ssh/known_hosts
+    
+    - name: Deploy to server
+      run: |
+        echo "Starting deployment..."
+        rsync -avz --delete \
+          --exclude='.git' \
+          --exclude='.github' \
+          --exclude='README.md' \
+          --exclude='.gitignore' \
+          ./ root@5.129.199.33:/var/www/wedesignerz/
+        echo "Deployment completed!"
+    
+    - name: Verify deployment
+      run: |
+        echo "Checking deployment status..."
+        ssh root@5.129.199.33 "ls -la /var/www/wedesignerz/ | head -5"
+        echo "Site is live at https://wedesignerz.com"
