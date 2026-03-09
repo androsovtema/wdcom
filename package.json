@@ -1,0 +1,21 @@
+{
+  "name": "wedesignerz",
+  "version": "1.0.0",
+  "description": "We Designerz - Design Studio",
+  "main": "main.js",
+  "scripts": {
+    "lint:js": "eslint '**/*.js'",
+    "lint:js:fix": "eslint '**/*.js' --fix",
+    "lint:css": "stylelint '**/*.css'",
+    "lint:css:fix": "stylelint '**/*.css' --fix"
+  },
+  "devDependencies": {
+    "eslint": "^9.0.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-n": "^16.6.2",
+    "eslint-plugin-promise": "^6.1.1",
+    "stylelint": "^16.5.0",
+    "stylelint-config-standard": "^36.0.0"
+  }
+}

@@ -3,333 +3,333 @@
  * Общие функции для всех страниц
  */
 
+/* global Audio */
+
 (function () {
-  'use strict';
+  'use strict'
 
   /* ====================
      BURGER MENU
      ==================== */
-  const burger = document.getElementById('burger');
-  const nav = document.querySelector('.nav');
-  const header = document.querySelector('.header');
-  const navLinks = document.querySelectorAll('.nav a');
+  const burger = document.getElementById('burger')
+  const nav = document.querySelector('.nav')
+  const header = document.querySelector('.header')
+  const navLinks = document.querySelectorAll('.nav a')
 
-  function toggleMenu(isOpen) {
-    if (!burger || !nav || !header) return;
+  function toggleMenu (isOpen) {
+    if (!burger || !nav || !header) return
 
-    burger.classList.toggle('open', isOpen);
-    nav.classList.toggle('open', isOpen);
-    header.classList.toggle('open', isOpen);
-    document.body.classList.toggle('menu-open', isOpen);
-    burger.setAttribute('aria-expanded', isOpen);
-    document.body.style.overflow = isOpen ? 'hidden' : '';
+    burger.classList.toggle('open', isOpen)
+    nav.classList.toggle('open', isOpen)
+    header.classList.toggle('open', isOpen)
+    document.body.classList.toggle('menu-open', isOpen)
+    burger.setAttribute('aria-expanded', isOpen)
+    document.body.style.overflow = isOpen ? 'hidden' : ''
   }
 
-  function closeMenu() {
-    toggleMenu(false);
+  function closeMenu () {
+    toggleMenu(false)
   }
 
   if (burger && nav && header) {
     // Открытие/закрытие по клику на бургер
     burger.addEventListener('click', () => {
-      const isOpen = !burger.classList.contains('open');
-      toggleMenu(isOpen);
-    });
+      const isOpen = !burger.classList.contains('open')
+      toggleMenu(isOpen)
+    })
 
     // Закрытие при клике на ссылку в меню
     navLinks.forEach(link => {
-      link.addEventListener('click', closeMenu);
-    });
+      link.addEventListener('click', closeMenu)
+    })
 
     // Закрытие при клике вне меню
     document.addEventListener('click', (e) => {
       if (nav.classList.contains('open') &&
         !nav.contains(e.target) &&
         !burger.contains(e.target)) {
-        closeMenu();
+        closeMenu()
       }
-    });
+    })
 
     // Закрытие по Escape
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && nav.classList.contains('open')) {
-        closeMenu();
+        closeMenu()
       }
-    });
+    })
   }
 
   /* ====================
      LOGO SCROLL ANIMATION
      ==================== */
-  let lastScroll = 0;
-  let ticking = false;
+  let ticking = false
 
-  function handleScroll() {
-    if (!header) return;
+  function handleScroll () {
+    if (!header) return
 
-    const currentScroll = window.scrollY;
+    const currentScroll = window.scrollY
 
     // Добавляем/удаляем класс только если состояние изменилось
-    const shouldBeScrolled = currentScroll > 100;
-    const isScrolled = header.classList.contains('scrolled');
+    const shouldBeScrolled = currentScroll > 100
+    const isScrolled = header.classList.contains('scrolled')
 
     if (shouldBeScrolled && !isScrolled) {
-      header.classList.add('scrolled');
+      header.classList.add('scrolled')
     } else if (!shouldBeScrolled && isScrolled) {
-      header.classList.remove('scrolled');
+      header.classList.remove('scrolled')
     }
 
-    lastScroll = currentScroll;
-    ticking = false;
+    ticking = false
   }
 
   // Throttle для производительности
   window.addEventListener('scroll', () => {
     if (!ticking) {
-      window.requestAnimationFrame(handleScroll);
-      ticking = true;
+      window.requestAnimationFrame(handleScroll)
+      ticking = true
     }
-  }, { passive: true });
+  }, { passive: true })
 
   /* ====================
      SMOOTH SCROLL
      ==================== */
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
-      const targetId = this.getAttribute('href');
-      if (targetId === '#') return;
+      const targetId = this.getAttribute('href')
+      if (targetId === '#') return
 
-      const target = document.querySelector(targetId);
+      const target = document.querySelector(targetId)
       if (target) {
-        e.preventDefault();
+        e.preventDefault()
         target.scrollIntoView({
           behavior: 'smooth',
           block: 'start'
-        });
+        })
       }
-    });
-  });
+    })
+  })
 
   /* ====================
      DYNAMIC TEXT ANIMATION (Hero)
      ==================== */
-  const words = document.querySelectorAll('.dynamic-text');
+  const words = document.querySelectorAll('.dynamic-text')
 
   if (words.length > 0) {
-    let wordIndex = 0;
+    let wordIndex = 0
 
-    function changeWord() {
-      const currentWord = words[wordIndex];
-      const nextIndex = (wordIndex + 1) % words.length;
-      const nextWord = words[nextIndex];
+    function changeWord () {
+      const currentWord = words[wordIndex]
+      const nextIndex = (wordIndex + 1) % words.length
+      const nextWord = words[nextIndex]
 
-      if (!currentWord || !nextWord) return;
+      if (!currentWord || !nextWord) return
 
       // Убираем текущее слово
-      currentWord.classList.remove('active');
-      currentWord.classList.add('exit');
+      currentWord.classList.remove('active')
+      currentWord.classList.add('exit')
 
       // Показываем новое слово
-      nextWord.classList.remove('exit');
-      nextWord.classList.add('active');
+      nextWord.classList.remove('exit')
+      nextWord.classList.add('active')
 
       // Очищаем класс exit после завершения анимации
       setTimeout(() => {
-        currentWord.classList.remove('exit');
-      }, 800);
+        currentWord.classList.remove('exit')
+      }, 800)
 
-      wordIndex = nextIndex;
+      wordIndex = nextIndex
     }
 
     // Запускаем смену слов каждые 2.5 секунды
-    setInterval(changeWord, 2500);
+    setInterval(changeWord, 2500)
   }
 
   /* ====================
      AUDIO PLAYERS (About page)
      ==================== */
-  const audioBtns = document.querySelectorAll('.audio-btn');
-  let currentAudio = null;
-  let currentBtn = null;
+  const audioBtns = document.querySelectorAll('.audio-btn')
+  let currentAudio = null
+  let currentBtn = null
 
   if (audioBtns.length > 0) {
     audioBtns.forEach(btn => {
       btn.addEventListener('click', () => {
-        const audioSrc = btn.getAttribute('data-audio');
+        const audioSrc = btn.getAttribute('data-audio')
 
         if (!audioSrc) {
-          console.warn('Audio button has no data-audio attribute:', btn);
-          return;
+          console.warn('Audio button has no data-audio attribute:', btn)
+          return
         }
 
         // Если уже играет этот же аудио — ставим на паузу
         if (currentAudio && currentBtn === btn && !currentAudio.paused) {
-          currentAudio.pause();
-          btn.classList.remove('playing');
-          btn.textContent = 'Послушать отзыв';
-          return;
+          currentAudio.pause()
+          btn.classList.remove('playing')
+          btn.textContent = 'Послушать отзыв'
+          return
         }
 
         // Если играет другой аудио — останавливаем
         if (currentAudio) {
-          currentAudio.pause();
-          currentAudio.currentTime = 0;
+          currentAudio.pause()
+          currentAudio.currentTime = 0
           if (currentBtn) {
-            currentBtn.classList.remove('playing');
-            currentBtn.textContent = 'Послушать отзыв';
+            currentBtn.classList.remove('playing')
+            currentBtn.textContent = 'Послушать отзыв'
           }
         }
 
         // Создаём новое аудио с обработкой ошибок
         try {
-          currentAudio = new Audio(audioSrc);
-          currentBtn = btn;
+          currentAudio = new Audio(audioSrc)
+          currentBtn = btn
 
           // Обработка успешного окончания
           currentAudio.addEventListener('ended', () => {
-            btn.classList.remove('playing');
-            btn.textContent = 'Послушать отзыв';
-            currentAudio = null;
-            currentBtn = null;
-          });
+            btn.classList.remove('playing')
+            btn.textContent = 'Послушать отзыв'
+            currentAudio = null
+            currentBtn = null
+          })
 
           // Обработка ошибок загрузки
           currentAudio.addEventListener('error', (e) => {
-            console.error('Audio loading error:', audioSrc, e);
-            btn.classList.remove('playing');
-            btn.textContent = 'Ошибка загрузки';
-            currentAudio = null;
-            currentBtn = null;
+            console.error('Audio loading error:', audioSrc, e)
+            btn.classList.remove('playing')
+            btn.textContent = 'Ошибка загрузки'
+            currentAudio = null
+            currentBtn = null
 
             // Возвращаем текст через 2 секунды
             setTimeout(() => {
-              btn.textContent = 'Послушать отзыв';
-            }, 2000);
-          });
+              btn.textContent = 'Послушать отзыв'
+            }, 2000)
+          })
 
           // Пробуем воспроизвести
-          const playPromise = currentAudio.play();
+          const playPromise = currentAudio.play()
 
           if (playPromise !== undefined) {
             playPromise
               .then(() => {
-                btn.classList.add('playing');
-                btn.textContent = 'Пауза';
+                btn.classList.add('playing')
+                btn.textContent = 'Пауза'
               })
               .catch(error => {
-                console.error('Audio play error:', error);
-                btn.classList.remove('playing');
-                btn.textContent = 'Ошибка воспроизведения';
-                currentAudio = null;
-                currentBtn = null;
+                console.error('Audio play error:', error)
+                btn.classList.remove('playing')
+                btn.textContent = 'Ошибка воспроизведения'
+                currentAudio = null
+                currentBtn = null
 
                 setTimeout(() => {
-                  btn.textContent = 'Послушать отзыв';
-                }, 2000);
-              });
+                  btn.textContent = 'Послушать отзыв'
+                }, 2000)
+              })
           }
         } catch (error) {
-          console.error('Audio creation error:', error);
-          btn.textContent = 'Ошибка';
+          console.error('Audio creation error:', error)
+          btn.textContent = 'Ошибка'
           setTimeout(() => {
-            btn.textContent = 'Послушать отзыв';
-          }, 2000);
+            btn.textContent = 'Послушать отзыв'
+          }, 2000)
         }
-      });
-    });
+      })
+    })
   }
 
   /* ====================
      TELEGRAM BUTTONS
      ==================== */
-  const telegramBtns = document.querySelectorAll('.btn-start');
+  const telegramBtns = document.querySelectorAll('.btn-start')
   telegramBtns.forEach(btn => {
     btn.addEventListener('click', (e) => {
       // If it's a button, open the link
       if (btn.tagName === 'BUTTON') {
-        window.open('https://t.me/wedesignerz_bot', '_blank');
+        window.open('https://t.me/wedesignerz_bot', '_blank')
       }
-    });
-  });
+    })
+  })
 
   /* ====================
      PROJECTS FILTER (Projects page)
      ==================== */
-  const filterTags = document.querySelectorAll('.filter-tag');
-  const projectCards = document.querySelectorAll('.project-card');
+  const filterTags = document.querySelectorAll('.filter-tag')
+  const projectCards = document.querySelectorAll('.project-card')
 
   if (filterTags.length > 0 && projectCards.length > 0) {
     // Add transition styles to project cards
     projectCards.forEach(card => {
-      card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-    });
+      card.style.transition = 'opacity 0.3s ease, transform 0.3s ease'
+    })
 
     filterTags.forEach(tag => {
       tag.addEventListener('click', () => {
         // Update active state
-        filterTags.forEach(t => t.classList.remove('active'));
-        tag.classList.add('active');
+        filterTags.forEach(t => t.classList.remove('active'))
+        tag.classList.add('active')
 
-        const filter = tag.getAttribute('data-filter');
-        if (!filter) return;
+        const filter = tag.getAttribute('data-filter')
+        if (!filter) return
 
         // Filter projects
         projectCards.forEach(card => {
-          const cardTags = card.getAttribute('data-tags');
+          const cardTags = card.getAttribute('data-tags')
 
           if (filter === 'all') {
-            card.style.display = 'block';
+            card.style.display = 'block'
             setTimeout(() => {
-              card.style.opacity = '1';
-              card.style.transform = 'translateY(0)';
-            }, 50);
+              card.style.opacity = '1'
+              card.style.transform = 'translateY(0)'
+            }, 50)
           } else if (cardTags && cardTags.includes(filter)) {
-            card.style.display = 'block';
+            card.style.display = 'block'
             setTimeout(() => {
-              card.style.opacity = '1';
-              card.style.transform = 'translateY(0)';
-            }, 50);
+              card.style.opacity = '1'
+              card.style.transform = 'translateY(0)'
+            }, 50)
           } else {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(20px)';
+            card.style.opacity = '0'
+            card.style.transform = 'translateY(20px)'
             setTimeout(() => {
-              card.style.display = 'none';
-            }, 300);
+              card.style.display = 'none'
+            }, 300)
           }
-        });
-      });
-    });
+        })
+      })
+    })
   }
 
   /* ====================
      CAROUSEL IMAGE LOADING
      ==================== */
-  const carouselWrapper = document.querySelector('.carousel-wrapper');
-  const carouselTrack = document.querySelector('.carousel-track');
-  const carouselImages = document.querySelectorAll('.carousel-item img');
+  const carouselWrapper = document.querySelector('.carousel-wrapper')
+  const carouselTrack = document.querySelector('.carousel-track')
+  const carouselImages = document.querySelectorAll('.carousel-item img')
 
   if (carouselWrapper && carouselTrack && carouselImages.length > 0) {
-    let loadedCount = 0;
-    const totalImages = carouselImages.length;
+    let loadedCount = 0
+    const totalImages = carouselImages.length
 
     // Функция для проверки загрузки всех изображений
-    function checkAllLoaded() {
-      loadedCount++;
+    function checkAllLoaded () {
+      loadedCount++
 
       // Отмечаем загруженное изображение
-      const img = carouselImages[loadedCount - 1];
+      const img = carouselImages[loadedCount - 1]
       if (img) {
-        img.classList.add('loaded');
-        img.parentElement.classList.add('loaded');
+        img.classList.add('loaded')
+        img.parentElement.classList.add('loaded')
       }
 
       // Когда все изображения загружены — запускаем анимацию
       if (loadedCount >= totalImages) {
         // Небольшая задержка для стабилизации рендера
         setTimeout(() => {
-          carouselWrapper.classList.add('loaded');
-          carouselTrack.classList.add('animate');
-        }, 100);
+          carouselWrapper.classList.add('loaded')
+          carouselTrack.classList.add('animate')
+        }, 100)
       }
     }
 
@@ -337,21 +337,20 @@
     carouselImages.forEach(img => {
       if (img.complete && img.naturalHeight !== 0) {
         // Изображение уже загружено
-        checkAllLoaded();
+        checkAllLoaded()
       } else {
         // Ждём загрузки
-        img.addEventListener('load', checkAllLoaded, { once: true });
-        img.addEventListener('error', checkAllLoaded, { once: true }); // Не блокируем при ошибке
+        img.addEventListener('load', checkAllLoaded, { once: true })
+        img.addEventListener('error', checkAllLoaded, { once: true }) // Не блокируем при ошибке
       }
-    });
+    })
 
     // Fallback: запускаем анимацию через 5 секунд даже если не все загрузились
     setTimeout(() => {
       if (!carouselTrack.classList.contains('animate')) {
-        carouselWrapper.classList.add('loaded');
-        carouselTrack.classList.add('animate');
+        carouselWrapper.classList.add('loaded')
+        carouselTrack.classList.add('animate')
       }
-    }, 5000);
+    }, 5000)
   }
-
-})();
+})()
