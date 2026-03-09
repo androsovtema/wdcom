@@ -13,29 +13,15 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
     
-    - name: Deploy to TimeWeb via SCP
-      uses: appleboy/scp-action@v0.1.7
-      with:
-        host: 5.129.199.33
-        username: root
-        key: ${{ secrets.TIMEWEB_SSH_KEY }}
-        source: "."
-        target: "/var/www/wedesignerz"
-        rm: true
-        strip_components: 0
-        exclude: |
-          .git
-          .github
-          README.md
-          .gitignore
-          .DS_Store
-    
-    - name: Verify deployment
+    - name: Deploy to TimeWeb via SSH
       uses: appleboy/ssh-action@v1.0.3
       with:
         host: 5.129.199.33
         username: root
         key: ${{ secrets.TIMEWEB_SSH_KEY }}
         script: |
+          echo "Starting deployment..."
+          cd /var/www/wedesignerz
+          git pull origin main
           echo "Deployment completed!"
-          ls -la /var/www/wedesignerz/
+          ls -la
