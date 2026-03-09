@@ -42,14 +42,6 @@
 </head>
 
 <body>
-  <!-- Мгновенная установка состояния логотипа до отрисовки -->
-  <script>
-    (function () {
-      if (window.scrollY > 100) {
-        document.querySelector('.header').classList.add('scrolled');
-      }
-    })();
-  </script>
   <!-- Header -->
   <header class="header">
     <a class="logo" href="index.html" aria-label="We Designerz — на главную">
@@ -60,7 +52,7 @@
     <nav class="nav" aria-label="Главная навигация">
       <a href="projects.html">Проекты</a>
       <a href="about.html">О нас</a>
-      <button class="btn-start" onclick="window.open('https://t.me/wedesignerz_bot', '_blank')">Начать проект</button>
+      <button class="btn-start">Начать проект</button>
     </nav>
 
     <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false" aria-controls="nav">
@@ -69,6 +61,13 @@
       <span></span>
     </button>
   </header>
+  <script>
+    (function () {
+      if (window.scrollY > 100) {
+        document.querySelector('.header').classList.add('scrolled');
+      }
+    })();
+  </script>
 
   <main>
     <!-- Hero -->
@@ -272,7 +271,7 @@
         разбираться в задаче, а вы получите ответ в тот же день.
       </p>
 
-      <a href="https://t.me/wedesignerz_bot" target="_blank" class="btn-primary" class="btn-margin-xs">Начать проект</a>
+      <a href="https://t.me/wedesignerz_bot" target="_blank" class="btn-primary btn-margin-xs">Начать проект</a>
 
     </section>
   </main>

@@ -13,12 +13,12 @@
   <meta property="og:title" content="Eazy Energy — We Designerz">
   <meta property="og:description" content="Дизайн упаковки для энергетического напитка.">
   <meta property="og:type" content="article">
-  <meta property="og:url" content="https://wedesignerz.com/projects/eazyenergy">
+  <meta property="og:url" content="https://wedesignerz.com/projects/eazyenergy.html">
   <meta property="og:image" content="../assets/images/projects/eazyenergy/og-image.jpg">
 
   <title>Eazy Energy — We Designerz</title>
   <link rel="icon" type="image/png" href="../assets/icons/favicon.png" />
-  <link rel="canonical" href="https://wedesignerz.com/projects/eazyenergy">
+  <link rel="canonical" href="https://wedesignerz.com/projects/eazyenergy.html">
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -29,14 +29,6 @@
 </head>
 
 <body>
-  <!-- Мгновенная установка состояния логотипа до отрисовки -->
-  <script>
-    (function () {
-      if (window.scrollY > 100) {
-        document.querySelector('.header').classList.add('scrolled');
-      }
-    })();
-  </script>
   <header class="header">
     <a class="logo" href="../index.html" aria-label="We Designerz — на главную">
       <img src="../assets/logos/WDLogo.svg" alt="" class="logo-desktop" aria-hidden="true">
@@ -45,12 +37,19 @@
     <nav class="nav">
       <a href="../projects.html">Проекты</a>
       <a href="../about.html">О нас</a>
-      <button class="btn-start" onclick="window.open('https://t.me/wedesignerz_bot', '_blank')">Начать проект</button>
+      <button class="btn-start">Начать проект</button>
     </nav>
     <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
   </header>
+  <script>
+    (function () {
+      if (window.scrollY > 100) {
+        document.querySelector('.header').classList.add('scrolled');
+      }
+    })();
+  </script>
 
   <main>
     <div class="back-nav">
@@ -158,7 +157,7 @@
           <p class="metric-description">От запуска до масштабирования</p>
         </div>
         <div class="metric-card">
-          <span class="metric-number">5+</span>
+          <span class="metric-number">7</span>
           <span class="metric-label">Городов тура</span>
           <p class="metric-description">Встречи с подписчиками, розыгрыши, главный приз — Ford Mustang</p>
         </div>
@@ -172,8 +171,8 @@
 
     <section class="next-project" id="next">
       <div class="section-label">Следующий проект</div>
-      <a href="viril.html" class="next-project-link">
-        <span class="next-project-name">Viril</span>
+      <a href="ceskylev.html" class="next-project-link">
+        <span class="next-project-name">Cesky Lev</span>
         <span class="next-project-arrow">→</span>
       </a>
     </section>

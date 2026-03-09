@@ -1,0 +1,2069 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ненашева Яна - WE DESIGNERZ</title>
+  <link rel="icon" type="image/png" href="/assets/icons/favicon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon.png" />
+  <link rel="apple-touch-icon" href="/assets/icons/favicon.png" />
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /*************************
+     *  RESET & BASE STYLES  *
+     *************************/
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html,body{font-family:'Inter',sans-serif;font-size:16px;color:#000;background:#fff;}
+    a{color:black;text-decoration:none;}
+    img{display:block;max-width:100%;height:auto;}
+
+    /* Spacing helper */
+    :root{
+      /* Container paddings */
+      --space-desktop:48px;
+      --space-tablet:32px;
+      --space-mobile:16px;
+    }
+
+    html, body {
+      max-width: 100vw;
+      overflow-x: hidden;
+    }
+
+    /* Generic container */
+    .container{width:100%;padding:0 var(--space-desktop);margin-inline:auto;}
+
+    /***********  HEADER  ***********/
+    .header{display:flex;align-items:center;justify-content:space-between;height:64px;border-bottom:1px solid #efefef;position:relative;z-index:1100;}
+    .logo{font-weight:600;font-size:16px;line-height:20px;white-space:nowrap;}
+    .nav{display:flex;gap:32px;font-size:14px;line-height:18px;letter-spacing:.2px; transition:opacity .3s ease;}
+    .btn-start{font-size:14px;line-height:18px;letter-spacing:.2px;background:none;border:none;cursor:pointer;}
+
+    /* Burger */
+    .burger{display:none;background:none;border:none;cursor:pointer;width:28px;height:24px;position:relative;z-index:1200;}
+    .burger span{display:block;width:100%;height:2px;background:#000;margin:5px 0;transition:transform .3s,opacity .3s,background .3s;}
+    .burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);} 
+    .burger.open span:nth-child(2){opacity:0;} 
+    .burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);} 
+
+    /* ── Header colouring while mobile menu is open ── */
+    .header.open .logo { color:#fff; }
+    .header.open .burger span { background:#fff; }
+
+    /* Mobile nav overlay */
+    .nav.open{
+      position:fixed;
+      inset:0;
+      background:#000;
+      color:#fff;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      gap:32px;
+      font-size:22px;
+      line-height:32px;
+      /* —--- исправление —--- */
+      display:flex;
+      opacity:1;
+    }
+    .nav.open a,
+    .nav.open .btn-start{
+      font: inherit;          /* наследует font-size, line-height, weight */
+      letter-spacing: inherit;
+      padding:0;
+      color:#fff;
+    }
+
+    /***********  SECTIONS LAYOUT  ***********/
+    .section{display:flex;gap:64px;margin-top:160px;}
+    .section__title{width:20%;font-size:14px;line-height:20px;letter-spacing:.2px;font-weight:400;}
+    .section__content{flex:1;}
+
+    /*********** Общие стили для кнопок ***********/
+    .btn-projects,
+    .btn-we,
+    .btn-start-work,
+    .btn-download {
+      font-weight: 400;             /* вес текста */
+      font-size: 13px;              /* размер текста */
+      line-height: 20px;            /* высота строки */
+      letter-spacing: 0.4px;        /* межбуквенный интервал */
+      padding: 12px 16px;           /* паддинги: сверху/снизу 12px, слева/справа 16px */
+      border: 1px solid #E0E0E0;    /* обводка: цвет E0E0E0, толщина 1px */
+      border-radius: 4px;           /* скругление 4px */
+      background-color: #fff;       /* фон */
+      color: #000;                  /* цвет текста */
+      cursor: pointer;              /* курсор */
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    /* Отдельные отступы для каждого варианта */
+    .btn-projects { margin-top: 64px; }
+    .btn-we       { margin-top: 24px; }
+    .btn-start-work { margin-top: 24px; }
+    .btn-download { margin-top: 24px; }
+
+    /* Ховер-состояние кнопок */
+    .btn-projects:hover,
+    .btn-we:hover,
+    .btn-start-work:hover,
+    .btn-download:hover {
+      background-color: #f2f2f2;
+      border-color: #000;
+    }
+
+    /***********  FOOTER  ***********/
+    .footer {
+      margin-top: 160px;
+      background: #000;
+      color: #fff;
+      overflow-x: hidden;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto auto;
+      gap: 32px;
+      align-items: start;
+      max-width: 100%;
+      overflow-wrap: break-word;
+      padding: 48px;
+    }
+    .footer-logo {
+      grid-column: 1 / 2;
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 18px;
+    }
+    .footer-slogan {
+      grid-column: 2 / 4;
+      width: 70%;
+      font-size: 26px;
+      line-height: 36px;
+      letter-spacing: 0.2px;
+      font-weight: 400;
+      margin-bottom: 160px;
+    }
+    .footer-time {
+      grid-column: 1 / 2;
+      font-size: 14px;
+      line-height: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .footer-time > #local-time {
+      color: #fff;
+      margin-bottom: 4px;
+    }
+
+    .footer-time > .label {
+      color: #888;
+      margin: 0;
+    }
+
+    .footer-time > .label + .label {
+      margin-top: 0;
+    }
+
+    .footer-principles {
+      grid-column: 2 / 3;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 12px;
+      line-height: 32px;
+    }
+    .footer-principles a {
+      color: #444;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 12px;
+    }
+    .footer-principles a:hover {
+      color: #aaa;
+    }
+    .footer-copy {
+      grid-column: 3 / 4;
+      font-size: 14px;
+      line-height: 20px;
+      text-align: right;
+    }
+
+    /******************  ПРОЕКТ  ******************/
+    .project-container {
+      max-width: 100%;
+      margin: 0 auto;
+    }
+
+    /***** Клиент *****/
+    .client h2 {
+      font-size: 26px;
+      font-weight: 400;
+    }
+
+    /***** Логотип *****/
+    .logo-symbol {
+      margin-top: 160px;
+    }
+
+    .logo-item {
+      display: flex;              /* гибкое выравнивание содержимого */
+      flex-direction: column;     /* лого сверху, подпись снизу */
+      align-items: center;        /* центрируем по горизонтали */
+    }
+
+    .logo-caption {
+      font-size: 14px;
+      color: #000;
+    }
+
+    /***** Описания логотипа *****/
+    .concept-text {
+      margin-top: 80px;
+      line-height: 24px;
+      font-weight: 400;
+    }
+
+    .concept-features {
+      margin-top: 40px;
+    }
+
+    .concept-features p {
+      font-size: 16px;
+      line-height: 24px;
+      margin-bottom: 16px;
+    }
+
+    .concept-features li {
+      font-size: 16px;
+      line-height: 24px;
+      margin-bottom: 8px;
+      list-style-position: inside;
+    }
+
+    .final-text {
+      margin-top: 40px;
+      font-size: 16px;
+      line-height: 24px;
+    }
+
+    /***** Охранные поля логотипа *****/
+    .about-security-title {
+      margin-top: 80px;
+      line-height: 24px;
+      font-weight: 400;
+    }
+
+    .logo-security-item {
+      display: flex;              /* гибкое выравнивание содержимого */
+      flex-direction: column;     /* лого сверху, подпись снизу */
+      align-items: center;        /* центрируем по горизонтали */
+    }
+
+    .logo-security-caption {
+      font-size: 14px;
+      color: #000;
+      margin-top: 8px;
+    }
+
+    .about-security-text {
+      margin-top: 40px;
+      line-height: 24px;
+      font-weight: 400;
+    }
+
+    /***** Цветовая палитра логотипа *****/
+    .logo-color-title {
+      margin-top: 80px;
+      line-height: 24px;
+      font-weight: 400;
+    }
+
+    .logo-container,
+    .logo-security-container,
+    .logo-color-palette {
+      display: flex;
+      gap: 40px;
+      justify-content: center; /* изменить с left на center */
+      flex-wrap: wrap;
+      align-items: flex-start; /* добавить для выравнивания по верху */
+    }
+
+    .logo-color-item {
+      display: flex;              /* гибкое выравнивание содержимого */
+      flex-direction: column;     /* лого сверху, подпись снизу */
+      align-items: center;        /* центрируем по горизонтали */
+    }
+
+    .logo-item img,
+    .logo-security-item img,
+    .logo-color-item img {
+      height: 240px;
+      width: auto; /* явно указать auto */
+    }
+
+    .logo-color-caption {
+      font-size: 14px;
+      color: #000;
+    }
+
+    .logo-color-informations {
+      margin-top: 40px;
+      display: grid;
+      gap: 40px;
+    }
+
+    .logo-color-type {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 24px;
+    }
+
+    .logo-color-type-info {
+      font-size: 16px;
+      line-height: 24px;
+      margin-top: 8px;
+    }
+
+    /***** Размеры и масштабирование логотипа *****/
+    .logo-sizes-title {
+      margin-top: 80px;
+      line-height: 24px;
+      font-weight: 400;
+    }
+
+    .logo-sizes-text {
+      margin-top: 40px;
+      line-height: 24px;
+      font-weight: 400;
+    }
+
+    /***** Цвет *****/
+    .color-palette {
+      display: grid;
+      width: 100%;                                /* занять всю ширину .section__content */
+      grid-template-columns:                       /* auto-fit — столько столбцов, сколько влезет */
+        repeat(auto-fit, minmax(100px, 1fr));      /* минимальная ширина 100px, иначе равные фракции */
+      gap: 40px;                                   /* десктоп: 40px */
+    }
+
+    .color-block {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;  /* выравнивание по левой стороне */
+    }
+
+    .color-item {
+      width: 100%;                                /* ширина под свои колонки */
+      aspect-ratio: 1 / 1;                        /* всегда квадрат */
+    }
+
+    .color-title,
+    .color-hex {
+      margin: 0;
+      padding: 0;
+    }
+
+    .color-title,
+    .color-hex {
+      margin-top: 8px;
+      font-size: 16px;
+      line-height: 16px;
+      font-weight: 400;
+    }
+
+    .color-details {
+      margin-top: 80px;
+    }
+
+    .color-details p {
+      font-size: 20px;
+      line-height: 30px;
+      font-weight: 400;
+    }
+
+    .color-informations {
+      margin-top: 80px;
+      display: grid;
+      gap: 40px;
+    }
+
+    .color-name {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 24px;
+    }
+
+    .color-role {
+      font-size: 16px;
+      line-height: 24px;
+      margin-top: 16px;
+    }
+
+    .color-meaning {
+      font-size: 16px;
+      line-height: 24px;
+      margin-top: 8px;
+    }
+
+    .color-usage {
+      font-size: 16px;
+      line-height: 24px;
+      margin-top: 8px;
+    }
+
+    .color-nousage {
+      font-size: 16px;
+      line-height: 24px;
+      margin-top: 8px;
+    }
+
+    .color-details .color-ratio {
+      margin-top: 80px;
+      font-size: 16px;
+      font-weight: 400;
+      color: #000;
+    }
+
+    .color-table {
+      width: 100%;
+      margin-top: 40px;
+      border-collapse: collapse;
+    }
+
+    .color-table th, .color-table td {
+      padding: 14px 15px;
+      text-align: left;
+      font-size: 16px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .color-table th {
+      font-weight: 400;
+    }
+
+    /***** Типографика *****/
+    .typography {
+      margin-top: 160px;
+    }
+
+    .font-family {
+      font-size: 20px;
+      line-height: 30px;
+      font-weight: 400;
+      margin-bottom: 80px;
+    }
+
+    .font-description {
+      font-size: 16px;
+      line-height: 24px;
+      font-weight: 400;
+      color: #000;
+      margin-bottom: 80px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .font-all-variants {
+      margin-top: 80px;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .font-variant-name {
+      font-size: 16px;
+      line-height: 24px;
+      margin-bottom: 16px;
+    }
+
+    .font-details p {
+      font-size: 16px;
+      line-height: 24px;
+      margin-bottom: 12px;
+    }
+
+    .font-details .where-use {
+      margin-bottom: 8px;
+    }
+
+    .font-details li {
+      font-size: 16px;
+      line-height: 24px;
+      margin-bottom: 4px;
+      list-style-position: inside;
+    }
+
+    /***** Водяной знак *****/
+    .watermark {
+      margin-top: 160px;
+    }
+
+    .watermark img {
+      width: 100%;        /* растягиваем на всю ширину секции */
+      height: 300px;      /* фиксируем максимальную высоту */
+      object-fit: cover;  /* сохраняем пропорции и обрезаем лишнее */
+      object-position: center; /* (опционально) центрируем область обрезки */
+    }
+
+    .watermark-text {
+      margin-top: 80px;
+    }
+
+    .watermark-text p {
+      font-size: 20px;
+      line-height: 30px;
+      font-weight: 400;
+    }
+
+    .watermark-info {
+      margin-top: 80px;
+      display: grid;
+    }
+
+    .watermark-recommendations {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 24px;
+    }
+
+    .watermark-color {
+      font-size: 16px;
+      line-height: 24px;
+      margin-top: 16px;
+    }
+
+    .watermark-opacity {
+      font-size: 16px;
+      line-height: 24px;
+      margin-top: 8px;
+    }
+
+    .watermark-position {
+      font-size: 16px;
+      line-height: 24px;
+      margin-top: 8px;
+    }
+
+    .watermark-usage {
+      font-size: 16px;
+      line-height: 24px;
+      margin-top: 8px;
+    }
+
+    /***** Паттерн *****/
+    .pattern {
+      margin-top: 160px;
+    }
+
+    .pattern img {
+      width: 100%;        /* растягиваем на всю ширину секции */
+      height: 300px;      /* фиксируем максимальную высоту */
+      object-fit: cover;  /* сохраняем пропорции и обрезаем лишнее */
+      object-position: center; /* (опционально) центрируем область обрезки */
+    }
+
+    .pattern-text {
+      margin-top: 80px;
+    }
+
+    .pattern-text p {
+      font-size: 20px;
+      line-height: 30px;
+      font-weight: 400;
+    }
+
+    .pattern-info {
+      margin-top: 80px;
+      display: grid;
+    }
+    
+    .pattern-recommendations {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 24px;
+    }
+
+    .pattern-color {
+      font-size: 16px;
+      line-height: 24px;
+      margin-top: 16px;
+    }
+
+    .pattern-usage {
+      font-size: 16px;
+      line-height: 24px;
+      margin-top: 8px;
+    }
+
+    /***** Иконки и Шейпы - НОВАЯ ГИБКАЯ СТРУКТУРА *****/
+    .icons-grid,
+    .shapes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 40px;
+      align-items: start;
+    }
+
+    .icon-item,
+    .shapes-item {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
+    }
+
+    .icon-group,
+    .shapes-group {
+      display: flex;
+      gap: 16px;
+      justify-content: flex-start;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .icon-item img,
+    .shapes-item img {
+      height: 48px;
+      width: auto;
+      flex-shrink: 0;
+    }
+
+    .shapes-item img {
+      height: 80px;
+    }
+
+    .icon-caption,
+    .shapes-caption {
+      font-size: 14px;
+      color: #000;
+      line-height: 20px;
+      text-align: left;
+    }
+
+    .icons-text,
+    .shapes-text {
+      margin-top: 80px;
+    }
+
+    .icons-text p,
+    .shapes-text p {
+      font-size: 20px;
+      line-height: 30px;
+      font-weight: 400;
+    }
+
+    .icons-info,
+    .shapes-info {
+      margin-top: 80px;
+      display: grid;
+    }
+    
+    .icons-recommendations,
+    .shapes-recommendations {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 24px;
+    }
+
+    .icons-color,
+    .icons-size,
+    .icons-indents,
+    .icons-usage,
+    .shapes-color,
+    .shapes-size,
+    .shapes-indents,
+    .shapes-usage {
+      font-size: 16px;
+      line-height: 24px;
+      margin-top: 8px;
+    }
+
+    /***** Контактная информация *****/
+    .contact {
+      margin-top: 160px;
+      margin-bottom: 160px;
+    }
+
+    .contact-text {
+      font-size: 20px;
+      line-height: 30px;
+      font-weight: 400;
+      margin-bottom: 40px;
+    }
+
+    /* Стили для попапа с цветовыми примерами */
+    .color-details .color-use-sample {
+      margin-top: 80px;
+      font-size: 16px;
+      line-height: 24px;
+      font-weight: 400;
+      text-align: left;
+    }
+
+    .btn-preview {
+      font-weight: 400;
+      font-size: 13px;
+      line-height: 20px;
+      letter-spacing: 0.4px;
+      padding: 12px 16px;
+      border: 1px solid #E0E0E0;
+      border-radius: 4px;
+      background-color: #fff;
+      color: #000;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s;
+      margin-top: 32px;
+      display: block;
+    }
+
+    .btn-preview:hover {
+      background-color: #f2f2f2;
+      border-color: #000;
+    }
+
+    /* Попап overlay */
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(26, 26, 26, 0.85);
+      backdrop-filter: blur(8px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      padding: 40px;
+      box-sizing: border-box;
+    }
+
+    .popup-overlay.active {
+      display: flex;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .popup-content {
+      background: #DADADA;
+      border-radius: 20px;
+      max-width: 1200px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      position: relative;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+      animation: slideUp 0.4s ease;
+    }
+
+    @keyframes slideUp {
+      from { 
+        transform: translateY(50px);
+        opacity: 0;
+      }
+      to { 
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .popup-header {
+      padding: 50px 50px 30px;
+      border-bottom: 2px solid #1A1A1A;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(135deg, #DADADA 0%, #f0f0f0 100%);
+      border-radius: 20px 20px 0 0;
+    }
+
+    .popup-header h2 {
+      font-size: 28px;
+      font-weight: 600;
+      margin: 0;
+      color: #1A1A1A;
+      letter-spacing: -0.5px;
+    }
+
+    .popup-close {
+      background: #1A1A1A;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+      color: #DADADA;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+      font-weight: 300;
+    }
+
+    .popup-close:hover {
+      background: #D8A31A;
+      color: #1A1A1A;
+      transform: rotate(90deg);
+    }
+
+    .popup-body {
+      padding: 50px;
+      background: #DADADA;
+      border-radius: 0 0 20px 20px;
+    }
+
+    /* Стили элементов в попапе */
+    .popup-elements-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+    }
+
+    .popup-element-card {
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 8px 40px rgba(26, 26, 26, 0.15);
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(26, 26, 26, 0.1);
+    }
+
+    .popup-element-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 60px rgba(26, 26, 26, 0.25);
+    }
+
+    .popup-element-card h3 {
+      margin-bottom: 20px;
+      font-size: 20px;
+      font-weight: 500;
+      letter-spacing: -0.3px;
+    }
+
+    .popup-element-card p {
+      font-size: 15px;
+      line-height: 24px;
+      margin-bottom: 0;
+      font-weight: 400;
+    }
+
+    /* Социальный пост - доминирует светло-серый (70%) */
+    .popup-social-post {
+      background: linear-gradient(135deg, #DADADA 0%, #f5f5f5 50%, #DADADA 100%);
+      color: #1A1A1A;
+      border-left: 8px solid #D8A31A;
+      position: relative;
+    }
+
+    .popup-social-post::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(180deg, #007F6D, transparent);
+    }
+
+    .popup-social-post::after {
+      content: '';
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      width: 40px;
+      height: 40px;
+      background: radial-gradient(circle, #D8A31A 20%, transparent 70%);
+      opacity: 0.3;
+      border-radius: 50%;
+    }
+
+    /* Мерч - доминирует шоколадный с горчичными акцентами */
+    .popup-merch-item {
+      background: linear-gradient(135deg, #3E2C23 0%, #2a1f17 70%, #1A1A1A 100%);
+      color: #DADADA;
+      border: 3px solid #D8A31A;
+      position: relative;
+    }
+
+    .popup-merch-item::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      height: 6px;
+      background: linear-gradient(90deg, #D8A31A, #007F6D, #D8A31A);
+      border-radius: 16px 16px 0 0;
+    }
+
+    .popup-merch-item::after {
+      content: '';
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, #D8A31A, transparent);
+    }
+
+    /* Упаковка - доминирует изумрудный с горчичными деталями */
+    .popup-package {
+      background: linear-gradient(135deg, #007F6D 0%, #005c56 50%, #003d3a 100%);
+      color: #DADADA;
+      position: relative;
+      border: 2px solid rgba(216, 163, 26, 0.3);
+    }
+
+    .popup-package::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, #D8A31A, transparent);
+    }
+
+    .popup-package::after {
+      content: '';
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      background: radial-gradient(circle, #D8A31A 30%, transparent 70%);
+      border-radius: 50%;
+      opacity: 0.4;
+    }
+
+    /* Визитка - доминирует белый/светло-серый с минимальными акцентами */
+    .popup-business-card {
+      background: linear-gradient(135deg, #ffffff 0%, #DADADA 100%);
+      color: #1A1A1A;
+      border: 1px solid rgba(62, 44, 35, 0.2);
+      position: relative;
+    }
+
+    .popup-business-card::before {
+      content: '';
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 50px;
+      height: 4px;
+      background: linear-gradient(90deg, #D8A31A, #3E2C23);
+      border-radius: 2px;
+    }
+
+    .popup-business-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 80px;
+      height: 80px;
+      background: radial-gradient(circle, rgba(216, 163, 26, 0.1) 50%, transparent 70%);
+    }
+
+    .popup-accent {
+      background: linear-gradient(45deg, #D8A31A, #b8911a);
+      color: #1A1A1A;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-weight: 600;
+      box-shadow: 0 2px 8px rgba(216, 163, 26, 0.3);
+    }
+
+    /******************  TABLET  ≤ 1024px  ******************/
+    @media (max-width:1024px){
+      .container{
+        padding:0 var(--space-tablet);   /* 32 px слева/справа */
+      }      
+      .section{flex-direction:column;gap:56px;margin-top:160px;}
+      .section__title{width:100%;}
+      /* Nav spacing stays */
+      .nav{gap:24px;flex-wrap:wrap;}
+      
+      /******** CLIENT ********/
+      .client h2{font-size:24px;line-height:34px;}
+      
+      /******** LOGO SYMBOL ********/
+      .logo-symbol{margin-top:160px;}
+      
+      /* --- Логотипы и их варианты ------------------------ */
+      .logo-container,
+      .logo-security-container,
+      .logo-color-palette {
+        display: flex;
+        gap: 40px;
+        justify-content: center; /* изменить с left на center */
+        flex-wrap: wrap;
+        align-items: flex-start; /* добавить для выравнивания по верху */
+      }
+
+      .logo-item,
+      .logo-security-item,
+      .logo-color-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      /* --- Описания логотипа ------------------------ */
+      .concept-text,
+      .about-security-title,
+      .about-security-text,
+      .logo-color-title,
+      .logo-sizes-title,
+      .logo-sizes-text{
+        font-size:16px;
+        line-height:24px;
+      }
+      
+      /* --- Таблички-описания в две колонки --------------- */
+      .logo-color-informations,
+      .color-informations{
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .color-palette {
+        gap: 30px;                                /* планшет: 30px */
+      }
+      
+      /* --- Цвет ------------------------ */
+      .color{margin-top:160px;}
+      .color-details p{font-size:18px;line-height:28px;}
+      .color-details{margin-top:60px;}
+      .color-informations{margin-top:60px;}
+      .color-details .color-ratio{margin-top:60px;}
+      .color-table{margin-top:30px;}
+      .color-table th, .color-table td{font-size:14px;padding:12px;}
+      
+      /* --- Типографика ------------------------ */
+      .typography{margin-top:160px;}
+      .font-family{font-size:18px;line-height:28px;margin-bottom:60px;}
+      .font-description{margin-bottom:60px;}
+      .font-all-variants{margin-top:60px;gap:32px;}
+      
+      /* --- Водяной знак и паттерн ------------------------ */
+      .watermark,
+      .pattern{margin-top:160px;}
+      .watermark img,
+      .pattern img{height:240px;}
+      .watermark-text,
+      .pattern-text{margin-top:60px;}
+      .watermark-text p,
+      .pattern-text p{font-size:18px;line-height:28px;}
+      .watermark-info,
+      .pattern-info{margin-top:60px;}
+      
+      /* --- Иконки и шейпы: НОВЫЕ СТИЛИ ------------------------ */
+      .icons,
+      .shapes {
+        margin-top: 160px;
+      }
+
+      .icons-grid,
+      .shapes-grid {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 32px;
+      }
+      
+      .icons-text,
+      .shapes-text{margin-top:60px;}
+      .icons-text p,
+      .shapes-text p{font-size:18px;line-height:28px;}
+      .icons-info,
+      .shapes-info{margin-top:60px;}
+      
+      /* --- Контакты ------------------------ */
+      .contact{margin-top:160px;margin-bottom:160px;}
+      .contact-text{font-size:18px;line-height:28px;margin-bottom:32px;}
+      .btn-download{margin-top:32px;}
+
+      /******** FOOTER ********/
+      .footer-grid{
+        display:flex;           /* вместо сетки – столбец */
+        flex-direction:column;
+        align-items:flex-start; /* выравниваем по левому краю */
+        gap:0;                  /* управляем интервалами вручную */
+        /* 32 px сверху/снизу, 32 px (var(--space-tablet)) слева/справа */
+        padding:32px var(--space-tablet);
+      }
+
+      /* сброс дефолтных внешних отступов, чтобы не мешали точным цифрам */
+      .footer-grid > *{margin:0;}
+
+      .footer-logo      {order:1;}
+      .footer-slogan    {
+        order:2;
+        margin-top:160px;       /* logo → slogan = 160 px */
+        margin-bottom:0;
+        width:100%;
+      }
+      .footer-principles{
+        order:3;
+        margin-top:32px;        /* slogan → principles = 32 px */
+      }
+      .footer-time      {
+        order:4;
+        margin-top:160px;       /* principles → time = 160 px */
+      }
+      .footer-copy      {
+        order:5;
+        margin-top:80px;        /* time → copyright = 80 px */
+      }
+
+      .popup-overlay {
+        padding: 30px;
+      }
+      
+      .popup-content {
+        max-height: 80vh;
+      }
+      
+      .popup-header {
+        padding: 40px 40px 24px;
+      }
+      
+      .popup-header h2 {
+        font-size: 24px;
+      }
+      
+      .popup-body {
+        padding: 40px;
+      }
+      
+      .popup-elements-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      
+      .popup-element-card {
+        padding: 28px;
+      }
+    }
+
+    /******************  MOBILE  ≤ 600px  ******************/
+    @media (max-width:600px){
+      :root{font-size:14px;} /* slight downscale */
+      .container{padding:0 var(--space-mobile);}      
+      .header{height:56px;}
+      .nav{display:none;opacity:0;} 
+      .burger{display:block;}
+      .section{margin-top:120px;gap:24px;}
+      .section__title{width:100%;font-size:13px;line-height:20px;letter-spacing:0.4px;font-weight:400;}
+      
+      /******** CLIENT ********/
+      .client h2{font-size:18px;line-height:28px;letter-spacing:0.2px;}
+      
+      /******** TASK ********/
+      .task .section__content p{font-size:15px;line-height:24px;letter-spacing:0.1px;}
+      
+      /******** LOGO SYMBOL ********/
+      .logo-symbol{margin-top:120px;}
+      
+      /* --- Описания логотипа ------------------------ */
+      .concept-text{margin-top:60px;}
+      .concept-text p{font-size:15px;line-height:24px;letter-spacing:0.1px;}
+      .concept-features{margin-top:32px;}
+      .concept-features p{font-size:15px;line-height:24px;margin-bottom:12px;}
+      .concept-features li{font-size:15px;line-height:24px;margin-bottom:6px;}
+      .final-text{margin-top:32px;}
+      .final-text p{font-size:15px;line-height:24px;}
+      
+      .about-security-title{margin-top:60px;}
+      .about-security-title p{font-size:15px;line-height:24px;}
+      .about-security-text{margin-top:32px;}
+      .about-security-text p{font-size:15px;line-height:24px;}
+      
+      .logo-color-title{margin-top:60px;}
+      .logo-color-title p{font-size:15px;line-height:24px;}
+      
+      .logo-sizes-title{margin-top:60px;}
+      .logo-sizes-title p{font-size:15px;line-height:24px;}
+      .logo-sizes-text{margin-top:32px;}
+      .logo-sizes-text p{font-size:15px;line-height:24px;}
+      
+      .logo-caption,
+      .logo-security-caption,
+      .logo-color-caption{font-size:13px;line-height:20px;letter-spacing:0.4px;}
+      
+      /* --- Цвет ------------------------ */
+      .color{margin-top:120px;}
+      .color-title,
+      .color-hex{font-size:13px;line-height:16px;}
+      .color-details{margin-top:60px;}
+      .color-details p{font-size:15px;line-height:24px;letter-spacing:0.1px;}
+      .color-informations{margin-top:60px;gap:32px;}
+      .color-name{font-size:15px;line-height:24px;}
+      .color-role,
+      .color-meaning,
+      .color-usage,
+      .color-nousage{font-size:15px;line-height:24px;margin-top:12px;}
+      .color-details .color-ratio{margin-top:60px;font-size:15px;}
+      .color-table{margin-top:32px;}
+      .color-table th, .color-table td{font-size:13px;padding:10px 8px;}
+
+      .color-palette {
+        grid-template-columns: 1fr 1fr;           /* строго два столбца */
+        gap: 20px;                                /* уменьшенный отступ для мобильных */
+      }
+
+      /* --- Логотипы: стопкой ----------------------------- */
+      .logo-container,
+      .logo-security-container,
+      .logo-color-palette {
+        display: flex;
+        gap: 40px;
+        justify-content: center; /* изменить с left на center */
+        flex-wrap: wrap;
+        align-items: flex-start; /* добавить для выравнивания по верху */
+      }
+
+      .logo-item,
+      .logo-security-item,
+      .logo-color-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .logo-item img,
+      .logo-security-item img,
+      .logo-color-item img {
+        height: 180px;
+        width: auto;
+      }
+
+      /* --- Таблички-описания в одну колонку -------------- */
+      .logo-color-informations,
+      .color-informations{
+        grid-template-columns: 1fr;
+      }
+      
+      .logo-color-type{font-size:15px;line-height:24px;}
+      .logo-color-type-info{font-size:15px;line-height:24px;margin-top:6px;}
+      
+      /* --- Типографика ------------------------ */
+      .typography{margin-top:120px;}
+      .font-family{font-size:18px;line-height:28px;margin-bottom:60px;}
+      .font-description{margin-bottom:60px;gap:20px;}
+      .font-description p{font-size:15px;line-height:24px;letter-spacing:0.1px;}
+      .font-all-variants{margin-top:60px;gap:32px;}
+      .font-variant-name{font-size:15px;line-height:24px;margin-bottom:12px;}
+      .font-details p{font-size:15px;line-height:24px;margin-bottom:10px;}
+      .font-details li{font-size:15px;line-height:24px;}
+      
+      /* --- Водяной знак и паттерн ------------------------ */
+      .watermark,
+      .pattern{margin-top:120px;}
+      .watermark img,
+      .pattern img{height:200px;}
+      .watermark-text,
+      .pattern-text{margin-top:60px;}
+      .watermark-text p,
+      .pattern-text p{font-size:15px;line-height:24px;letter-spacing:0.1px;}
+      .watermark-info,
+      .pattern-info{margin-top:60px;}
+      .watermark-recommendations,
+      .pattern-recommendations{font-size:15px;line-height:24px;}
+      .watermark-color,
+      .watermark-opacity,
+      .watermark-position,
+      .watermark-usage,
+      .pattern-color,
+      .pattern-usage{font-size:15px;line-height:24px;margin-top:12px;}
+      
+      /* --- Иконки и шейпы: МОБИЛЬНЫЕ СТИЛИ ------------------------ */
+      .icons,
+      .shapes {
+        margin-top: 120px;
+      }
+
+      .icons-grid,
+      .shapes-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .icon-item img {
+        height: 40px;
+      }
+
+      .shapes-item img {
+        height: 64px;
+      }
+      
+      .icons-text,
+      .shapes-text{margin-top:60px;}
+      .icons-text p,
+      .shapes-text p{font-size:15px;line-height:24px;letter-spacing:0.1px;}
+      .icons-info,
+      .shapes-info{margin-top:60px;}
+      .icons-recommendations,
+      .shapes-recommendations{font-size:15px;line-height:24px;}
+      .icons-color,
+      .icons-size,
+      .icons-indents,
+      .icons-usage,
+      .shapes-color,
+      .shapes-size,
+      .shapes-indents,
+      .shapes-usage{font-size:15px;line-height:24px;}
+      .icon-caption,
+      .shapes-caption{font-size:13px;line-height:20px;letter-spacing:0.4px;}
+      
+      /* --- Контакты и загрузка ------------------------ */
+      .contact{margin-top:120px;margin-bottom:120px;}
+      .contact-text{margin-bottom:28px;}
+      .contact-text p{font-size:18px;line-height:28px;letter-spacing:0.2px;}
+      .btn-download{margin-top:28px;}
+
+      /******** FOOTER ********/
+      .footer {
+        margin-top: 100px;
+      }
+      .footer-grid{
+        display:flex;           /* вместо сетки – столбец */
+        flex-direction:column;
+        align-items:flex-start; /* выравниваем по левому краю */
+        gap:0;                  /* управляем интервалами вручную */
+        padding:16px var(--space-mobile);
+      }
+
+      /* сброс дефолтных внешних отступов, чтобы не мешали точным цифрам */
+      .footer-grid > *{margin:0;}
+
+      .footer-logo      {order:1;}
+      .footer-slogan    {
+        order:2;
+        margin-top:160px;       /* logo → slogan = 160 px */
+        margin-bottom:0;
+        width:100%;
+      }
+      .footer-principles{
+        order:3;
+        margin-top:32px;        /* slogan → principles = 32 px */
+      }
+      .footer-time      {
+        order:4;
+        margin-top:160px;       /* principles → time = 160 px */
+      }
+      .footer-copy      {
+        order:5;
+        margin-top:80px;        /* time → copyright = 80 px */
+      }
+
+      .popup-overlay {
+        padding: 20px;
+      }
+      
+      .popup-content {
+        border-radius: 16px;
+        max-height: 85vh;
+      }
+      
+      .popup-header {
+        padding: 32px 24px 20px;
+        border-radius: 16px 16px 0 0;
+      }
+      
+      .popup-header h2 {
+        font-size: 22px;
+      }
+      
+      .popup-close {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+      }
+      
+      .popup-body {
+        padding: 32px 24px;
+        border-radius: 0 0 16px 16px;
+      }
+      
+      .popup-elements-grid {
+        gap: 24px;
+      }
+      
+      .popup-element-card {
+        padding: 24px;
+      }
+      
+      .popup-element-card h3 {
+        font-size: 18px;
+        margin-bottom: 16px;
+      }
+      
+      .popup-element-card p {
+        font-size: 14px;
+        line-height: 22px;
+      }
+    }
+</style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <a class="logo" href="/index.html">WE DESIGNERZ</a>
+
+      <nav class="nav">
+        <a href="newpage.html">Студия</a>
+        <a href="newpage.html">Услуги</a>
+        <a href="newpage.html">Проекты</a>
+        <a href="newpage.html">Блог</a>
+        <a href="newpage.html">Магазин</a>
+        <button class="btn-start" onclick="window.open('https://t.me/veteris', '_blank')">Начать&nbsp;проект</button>
+      </nav>
+
+      <button class="burger" id="burger" aria-label="Открыть меню">
+        <span></span><span></span><span></span>
+      </button>
+    </header>
+
+    <!-- Project Content -->
+    <div class="project-container">
+      <!-- Клиент -->
+      <section class="section client">
+        <div class="section__title">Клиент</div>
+        <div class="section__content">
+          <h2>Ненашева Яна</h2>
+        </div>
+      </section>
+      <!-- Задача -->
+      <section class="section task">
+        <div class="section__title">Задача</div>
+        <div class="section__content">
+          <p>Создать фирменный стиль для персонального бренда «Ненашева Ума Дело»</p>
+        </div>
+      </section>
+      <!-- Логотип -->
+      <section class="section logo-symbol">
+        <div class="section__title">Логотип</div>
+        <div class="section__content">
+          <div class="logo-container">
+            <div class="logo-item">
+              <img src="./assets/logos/logo-symbol.svg" alt="Логотип Ненашева Яна">
+              <div class="logo-caption">Вариант: Знак</div>
+            </div>
+            <div class="logo-item">
+              <img src="./assets/logos/logo-symbol-fill.svg" alt="Логотип Ненашева Яна">
+              <div class="logo-caption">Вариант: Знак с заливкой</div>
+            </div>
+            <div class="logo-item">
+              <img src="./assets/logos/logo-symbol-text.svg" alt="Логотип Ненашева Яна Дело">
+              <div class="logo-caption">Вариант: Знак + Текст</div>
+            </div>
+            <div class="logo-item">
+              <img src="./assets/logos/logo-symbol-text-fill.svg" alt="Логотип Ненашева Яна Дело">
+              <div class="logo-caption">Вариант: Знак с заливкой + Текст</div>
+            </div>
+          </div>
+          
+          <div class="concept-text">
+            <p>Логотип выполнен в виде абстрактного пазла, где на каждой из четырёх сторон — и углубление, и выпуклость.</p>
+          </div>
+          
+          <div class="concept-features">
+            <p>Этот символ — визуальная метафора Яны:</p>
+            <ul>
+              <li>Она многогранна, легко переключается между ролями и сферами — от дизайна до спорта, от аналитики до эмоции.</li>
+              <li>Она гибка и универсальна — находит язык с любым человеком, работает с самыми разными задачами, пространствами, стилями.</li>
+              <li>Она интуитивна, но структурна — умеет быть одновременно творческой и рациональной.</li>
+            </ul>
+          </div>
+          
+          <div class="final-text">
+            <p>Знак отражает идею взаимного контакта и гармонии Яны, где каждый элемент находит своё место, как в пазле.</p>
+          </div>
+
+          <div class="about-security-title">
+            <p>Охранные поля</p>
+          </div>
+
+          <div class="logo-security-container">
+            <div class="logo-security-item">
+              <img src="./assets/logos/logo-symbol-info.svg" alt="Логотип Ненашева Яна">
+              <div class="logo-security-caption">Охранное поле для Знака</div>
+            </div>
+            <div class="logo-security-item">
+              <img src="./assets/logos/logo-symbol-text-info.svg" alt="Логотип Ненашева Яна Дело">
+              <div class="logo-security-caption">Охранное поле для Знака + Текст</div>
+            </div>
+          </div>
+
+          <div class="about-security-text">
+            <p>Охранное поле базируется на высоте большой буквы "Н" из слова "Ненашева" в комбинированном логотипе. Минимальное расстояние от края логотипа до любых других элементов (текст, изображения, границы) должно быть не менее 1,5 высоты буквы "Н". Это правило применимо ко всем носителям (печать, цифровые платформы, мерчандайзинг).</p>
+          </div>
+
+          <div class="logo-color-title">
+            <p>Цветовая палитра</p>
+          </div>
+
+          <div class="logo-color-palette">
+            <div class="logo-color-item">
+              <img src="./assets/logos/logo-color-main.svg" alt="Логотип основного цвета">
+              <div class="logo-color-caption">Основной цвет</div>
+            </div>
+            <div class="logo-color-item">
+              <img src="./assets/logos/logo-color-acent.svg" alt="Логотип горчичного цвета">
+              <div class="logo-color-caption">Дополнительный акцент</div>
+            </div>
+            <div class="logo-color-item">
+              <img src="./assets/logos/logo-color-monochrome.svg" alt="Логотип серого цвета">
+              <div class="logo-color-caption">Монохромный вариант</div>
+            </div>
+          </div>
+
+          <div class="logo-color-informations">
+            <div class="logo-color-info">
+              <div class="logo-color-type">Основной цвет</div>
+              <div class="logo-color-type-info">Черный (RGB: 26, 26, 26; CMYK: 0%, 0%, 0%, 90%) для контура пазла и текста.</div>
+            </div>
+            
+            <div class="logo-color-info">
+              <div class="logo-color-type">Дополнительный акцент</div>
+              <div class="logo-color-type-info">Горчичный (RGB: 216, 163, 26; CMYK: 0%, 25%, 88%, 15%).</div>
+            </div>
+
+            <div class="logo-color-info">
+              <div class="logo-color-type">Монохромный вариант</div>
+              <div class="logo-color-type-info">Разрешен только черно-белый или серый (RGB: 128, 128, 128) для определенных применений (например, факс или гравировка).</div>
+            </div>
+          </div>
+
+          <div class="logo-sizes-title">
+            <p>Размеры и масштабирование</p>
+          </div>
+
+          <div class="logo-sizes-text">
+            <p>Минимальный размер для печати: 1 см в ширину (знаковый логотип) и 2 см в ширину (комбинированный логотип).<br>Сохраняй оригинальные пропорции логотипов. Избегай растяжения или сжатия; используй только масштабирование.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Цвет -->
+      <section class="section color">
+        <div class="section__title">Цвет</div>
+        <div class="section__content">
+          <div class="color-palette">
+            <div class="color-block">
+              <div class="color-item" style="background-color: #D5AC1C;"></div>
+              <p class="color-title">Горчичный</p>
+              <p class="color-hex">#D8A31A</p>
+            </div>
+            <div class="color-block">
+              <div class="color-item" style="background-color: #1D1D1D;"></div>
+              <p class="color-title">Графитовый</p>
+              <p class="color-hex">#1A1A1A</p>
+            </div>
+            <div class="color-block">
+              <div class="color-item" style="background-color: #00847F;"></div>
+              <p class="color-title">Изумрудный</p>
+              <p class="color-hex">#007F6D</p>
+            </div>
+            <div class="color-block">
+              <div class="color-item" style="background-color: #DADADA;"></div>
+              <p class="color-title">Светло-серый</p>
+              <p class="color-hex">#DADADA</p>
+            </div>
+            <div class="color-block">
+              <div class="color-item" style="background-color: #3D2A14;"></div>
+              <p class="color-title">Шоколадный</p>
+              <p class="color-hex">#3E2C23</p>
+            </div>
+          </div>
+          
+          <div class="color-details">
+            <p>Цветовая палитра — это баланс между смелостью и глубиной, жизнью и структурой. Оттенки не просто украшают, а транслируют суть личности и бренда.</p>
+            
+            <div class="color-informations">
+              <div class="color-info">
+                <div class="color-name">Горчичный — #D8A31A</div>
+                <div class="color-role">Роль: основной акцентный цвет</div>
+                <div class="color-meaning">Символика: смелость, энергия, оригинальность, творчество. Это воплощение цвета, как призыв Яны «Иди на цвет!»</div>
+                <div class="color-usage">Где использовать: акценты в Instagram-постах и сторис, подписи и выделения в Reels, стикеры, элементы фирменной упаковки, нашивки и швы на одежде, ручные доработки предметов (одежда, блокноты, сумки).</div>
+                <div class="color-nousage">Не использовать: на больших глянцевых поверхностях в печати без матовой текстуры (может бликовать и терять глубину); избегать сочетания с белым фоном без обводки в типографии — теряется контраст.</div>
+              </div>
+              
+              <div class="color-info">
+                <div class="color-name">Графитный — #1A1A1A</div>
+                <div class="color-role">Роль: цвет текста и визуальной основы.</div>
+                <div class="color-meaning">Символика: интеллект, системность, строгость, основательность.</div>
+                <div class="color-usage">Где использовать: тексты и описания в соцсетях, контуры объектов на мерче, элементы на визитках, нанесение на ткань (чернила или термоперенос), фон под принты.</div>
+                <div class="color-nousage">Не использовать: для печати на натуральных тканях без подложки — может теряться; избегать наложения с шоколадным на физических объектах.</div>
+              </div>
+              
+              <div class="color-info">
+                <div class="color-name">Изумрудный — #007F6D</div>
+                <div class="color-role">Роль: цвет смысла и визуального подтверждения.</div>
+                <div class="color-meaning">Символика: профессионализм, продуманность, спокойствие, зрелость.</div>
+                <div class="color-usage">Где использовать: акценты на упаковке и текстиле, интерьерные элементы бренда (подушки, скатерти, крафтовые материалы), фоны сторис или Reels с настроением «погружения».</div>
+                <div class="color-nousage">Не использовать: на пластиковых поверхностях без фактуры — теряется глубина; в соцсетях не стоит использовать как основной фон — может «гасить» эмоциональную подачу.</div>
+              </div>
+              
+              <div class="color-info">
+                <div class="color-name">Светло-серый — #DADADA</div>
+                <div class="color-role">Роль: нейтральный фон и вспомогательный цвет.</div>
+                <div class="color-meaning">Символика: простота, архитектурность, чистота.</div>
+                <div class="color-usage">Где использовать: фоновые элементы в лентах Instagram, подложки в презентациях, этикетки, плотные ткани, бумага и упаковка.</div>
+                <div class="color-nousage">Не использовать: для типографики в соцсетях — слишком бледный; как основной цвет на одежде может быть «грязным» в носке.</div>
+              </div>
+              
+              <div class="color-info">
+                <div class="color-name">Шоколадный — #3D2C23</div>
+                <div class="color-role">Роль: цвет фундамента и тактильности.</div>
+                <div class="color-meaning">Символика: земля, устойчивость, материальность.</div>
+                <div class="color-usage">Где использовать: визуальные рамки в графике, элементы фирменной бумаги и кожи, принты на одежде, шнурки, бирки.</div>
+                <div class="color-nousage">Не использовать: в сочетании с графитовым на плотных материалах — они могут сливаться; не рекомендуется в цифровых акцентах без яркого сопровождения.</div>
+              </div>
+            </div>
+            
+            <p class="color-ratio">Пропорции использования цветов</p>
+
+            <table class="color-table">
+              <tr>
+                <th>Название</th>
+                <th>HEX</th>
+                <th>Роль</th>
+                <th>Пропорция в работе</th>
+              </tr>
+              <tr>
+                <td>Горчичный</td>
+                <td>#D8A31A</td>
+                <td>Акценты, упаковка</td>
+                <td>15-25%</td>
+              </tr>
+              <tr>
+                <td>Графитовый</td>
+                <td>#1A1A1A</td>
+                <td>Тексты, контуры</td>
+                <td>20-30%</td>
+              </tr>
+              <tr>
+                <td>Изумрудный</td>
+                <td>#007F6D</td>
+                <td>Глубина, премиум</td>
+                <td>10-15%</td>
+              </tr>
+              <tr>
+                <td>Светло-серый</td>
+                <td>#DADADA</td>
+                <td>Фон, подложка</td>
+                <td>35-45%</td>
+              </tr>
+              <tr>
+                <td>Шоколадный</td>
+                <td>#3E2C23</td>
+                <td>Детали, текстиль</td>
+                <td>5-10%</td>
+              </tr>
+            </table>
+
+            <p class="color-use-sample">Посмотрите как это может выглядеть в интерфейсе.</p>
+            <button class="btn-preview" onclick="openColorPreview()">Посмотреть</button>
+
+            <!-- Попап -->
+            <div class="popup-overlay" id="colorPopup">
+              <div class="popup-content">
+                <div class="popup-header">
+                  <h2>Применение цветовой палитры</h2>
+                  <button class="popup-close" onclick="closeColorPreview()">&times;</button>
+                </div>
+                <div class="popup-body">
+                  <div class="popup-elements-grid">
+                    <div class="popup-element-card popup-social-post">
+                      <h3>Instagram пост</h3>
+                      <p>✨ Новый проект в портфолио! <span class="popup-accent">Иди на цвет!</span> — это не только слоган, но и философия создания ярких интерьеров.</p>
+                    </div>
+                    
+                    <div class="popup-element-card popup-merch-item">
+                      <h3>Фирменная одежда</h3>
+                      <p>Толстовка с вышивкой логотипа горчичным цветом. Швы и нашивки подчеркивают авторский подход к деталям.</p>
+                    </div>
+                    
+                    <div class="popup-element-card popup-package">
+                      <h3>Упаковка</h3>
+                      <p>Премиальная упаковка для интерьерных аксессуаров с изумрудным фоном, создающим ощущение глубины и профессионализма.</p>
+                    </div>
+                    
+                    <div class="popup-element-card popup-business-card">
+                      <h3>Визитная карточка</h3>
+                      <p>Минималистичный дизайн с акцентом на типографику. Графитный текст на светлом фоне обеспечивает читаемость.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Типографика -->
+      <section class="section typography">
+        <div class="section__title">Типографика</div>
+        <div class="section__content typography-content">
+          <div class="font-family">PT Sans</div>
+          <div class="font-description">
+            <p>Шрифт PT Sans — гуманистический гротеск. Он строго информативен, но при этом открыт, человечен и легко читаем. Идеально соответствует бренду Яны: внутри — эмоция, снаружи — структура. Это не просто гарнитура, а целая типографическая история, отражающая культурную и лингвистическую идентичность. Далее несколько интересных фактов о нём.</p>
+            <p>PT Sans был создан в рамках проекта «Общедоступные шрифты» по заказу Роспечати, чтобы обеспечить поддержку всех языков народов Российской Федерации. Он включает символы для 54 титульных языков, что делает его уникальным инструментом для межкультурной коммуникации. Суммарно шрифт PT Sans имеет поддержку 133 языков.</p>
+            <p>Шрифт разработан Александрой Корольковой при участии Ольги Умпелевой и под руководством Владимира Ефимова в студии ParaType. Их цель была создать универсальный и современный шрифт, сочетающий традиции российской типографики с гуманистическими тенденциями.</p>
+            <p>PT Sans распространяется под открытой лицензией SIL Open Font License, что позволяет использовать его как в коммерческих, так и в некоммерческих проектах. Это делает его отличным выбором для веб-дизайна, печатной продукции и интерфейсов.</p>
+            <p>В 2011 году PT Sans и его родственный шрифт PT Serif были удостоены бронзовой награды European Design Awards в номинации «Оригинальная гарнитура», что подтверждает высокое качество и актуальность их дизайна.</p>
+            <p>PT Sans — это шрифт, который сочетает в себе культурное наследие, техническую продуманность и современный дизайн, делая его отличным выбором для проектов, стремящихся к универсальности и глубине.</p>
+          </div>
+          
+          <div class="font-all-variants">
+            <div class="font-variant">
+              <div class="font-variant-name">PT Sans Regular</div>
+              <div class="font-details">
+                <p>Роль: основной текст, описания, подписи.</p>
+                <p class="where-use">Где использовать?</p>
+                <ul>
+                  <li>Абзацы в презентациях</li>
+                  <li>Тексты на сайте</li>
+                  <li>Описание постов в соцсетях</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="font-variant">
+              <div class="font-variant-name">PT Sans Bold</div>
+              <div class="font-details">
+                <p>Роль: заголовки и смысловые акценты.</p>
+                <p class="where-use">Где использовать?</p>
+                <ul>
+                  <li>Заголовки секций и блоков</li>
+                  <li>Выделение важных слов или тезисов</li>
+                  <li>CTA-кнопки («Смотреть проект», «Написать Яне»)</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="font-variant">
+              <div class="font-variant-name">PT Sans Italic</div>
+              <div class="font-details">
+                <p>Роль: вставки, цитаты, эмоциональные интонации.</p>
+                <p class="where-use">Где использовать?</p>
+                <ul>
+                  <li>Цитаты Яны</li>
+                  <li>Комментарии от руки, «внутренний голос»</li>
+                  <li>Подписи под фото, сторителлинг-элементы</li>
+                </ul>
+              </div>
+            </div>
+        </div>
+        </div>
+      </section>
+
+      <section class="section watermark">
+        <div class="section__title">Водяной знак</div>
+        <div class="section__content">
+          <img src="./assets/watermark/watermark.svg" alt="watermark">
+          <div class="watermark-text">
+            <p>Водяной знак — это элемент, который помогает защитить ваш контент от копирования и использования без разрешения. Он создан на основе логотипа "Ненашева Ума Дела" (лого-знак + текст). Водяной знак помогает вам контролировать использование вашего контента и обеспечивает вам право на его использование.</p>
+            <div class="watermark-info">
+              <div class="watermark-recommendations">Рекомендации по использованию</div>
+              <div class="watermark-color">Цвет: Графитовый (#1A1A1A) на светлых фонах, Светло-серый (#DADADA) на темных. Для акцента пазл можно выделить Горчичным (#D8A31A).</div>
+              <div class="watermark-opacity">Прозрачность: Установите 10–15%, чтобы не отвлекать от контента.</div>
+              <div class="watermark-position">Размещение: Размещайте по диагонали или по центру с минимальной плотностью.</div>
+              <div class="watermark-usage">Применение: Подходит для фотографий, презентаций и документов. Не используйте на изображениях менее 200 px по ширине.</div>
+            </div>
+          </div>
+      </section>
+
+      <section class="section pattern">
+        <div class="section__title">Паттерн</div>
+        <div class="section__content">
+          <img src="./assets/pattern/pattern.svg" alt="pattern">
+          <div class="pattern-text">
+            <p>Паттерн — это повторяющийся рисунок, который помогает создать уникальный визуальный образ бренда. Он создан из логотипа "Ненашева Ума Дела" и представляет собой повторяющийся элемент пазла.</p>
+            <div class="pattern-info">
+              <div class="pattern-recommendations">Рекомендации по использованию</div>
+              <div class="pattern-color">Цвет: Линии и пазлы — Шоколадный (#3E2C23). Для акцента выделяйте пазлы Изумрудным (#007F6D) или Горчичным (#D8A31A).</div>
+              <div class="pattern-usage">Применение: Используйте на упаковке, фонах брендированных материалов, внутренних частях папок. Избегайте наложения на текст или ключевые элементы.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section icons">
+        <div class="section__title">Иконки</div>
+        <div class="section__content">
+          <div class="icons-grid">
+            <div class="icon-item">
+              <div class="icon-group">
+                <img src="./assets/icons/contact1.svg" alt="contact1">
+                <img src="./assets/icons/contact2.svg" alt="contact2">
+              </div>
+              <div class="icon-caption">Контакты — для обратной связи и сотрудничества</div>
+            </div>
+            <div class="icon-item">
+              <div class="icon-group">
+                <img src="./assets/icons/creative1.svg" alt="creative1">
+                <img src="./assets/icons/creative2.svg" alt="creative2">
+              </div>
+              <div class="icon-caption">Креатив — нестандартные штуки и арт</div>
+            </div>
+            <div class="icon-item">
+              <div class="icon-group">
+                <img src="./assets/icons/idea1.svg" alt="idea1">
+                <img src="./assets/icons/idea2.svg" alt="idea2">
+              </div>
+              <div class="icon-caption">Идеи - инсайты, совты, вдохновение</div>
+            </div>
+            <div class="icon-item">
+              <div class="icon-group">
+                <img src="./assets/icons/interior1.svg" alt="interior1">
+                <img src="./assets/icons/interior2.svg" alt="interior2">
+              </div>
+              <div class="icon-caption">Интерьеры - проекты и вдохновение в дизайне</div>
+            </div>
+            <div class="icon-item">
+              <div class="icon-group">
+                <img src="./assets/icons/life1.svg" alt="life1">
+                <img src="./assets/icons/life2.svg" alt="life2">
+                <img src="./assets/icons/life3.svg" alt="life3">
+              </div>
+              <div class="icon-caption">Жизнь - личное, лайфстайл, настроение</div>
+            </div>
+            <div class="icon-item">
+              <div class="icon-group">
+                <img src="./assets/icons/me1.svg" alt="me1">
+                <img src="./assets/icons/me2.svg" alt="me2">
+                <img src="./assets/icons/me3.svg" alt="me3">
+              </div>
+              <div class="icon-caption">Обо мне - немного истории и путь в креативе</div>
+            </div>
+            <div class="icon-item">
+              <div class="icon-group">
+                <img src="./assets/icons/portfolio1.svg" alt="portfolio1">
+                <img src="./assets/icons/portfolio2.svg" alt="portfolio2">
+              </div>
+              <div class="icon-caption">Портфолио - лучшие визуалы и работы</div>
+            </div>
+            <div class="icon-item">
+              <div class="icon-group">
+                <img src="./assets/icons/process1.svg" alt="process1">
+                <img src="./assets/icons/process2.svg" alt="process2">
+              </div>
+              <div class="icon-caption">Процесс - как создаются проекты изнутри</div>
+            </div>
+            <div class="icon-item">
+              <div class="icon-group">
+                <img src="./assets/icons/review1.svg" alt="review1">
+                <img src="./assets/icons/review2.svg" alt="review2">
+              </div>
+              <div class="icon-caption">Отзывы - впечатления клиентов</div>
+            </div>
+          </div>
+          <div class="icons-text">
+            <p>Иконки представлены в минималистичном стиле и охватывают категории: коммуникация, творчество, интерьер, идеи и проекты. Они предназначены для цифровых и печатных материалов.</p>
+            <div class="icons-info">
+              <div class="icons-recommendations">Рекомендации по использованию</div>
+              <div class="icons-color">Цвет: Используйте базовый Графитовый (#1A1A1A) для основного дизайна. Для акцентов применяйте Горчичный (#D8A31A) или Изумрудный (#007F6D). Светло-серый (#DADADA) подойдет для темных фонов.</div>
+              <div class="icons-size">Размер: Минимальный размер — 24x24 px для цифровых носителей, 0.5 см для печати.</div>
+              <div class="icons-indents">Отступы: Оставляйте свободное пространство в 1/4 высоты иконки.</div>
+              <div class="icons-usage">Применение: Подходит для навигации, инфографики или выделения функций. Избегайте плотного наложения с другими элементами.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section shapes">
+        <div class="section__title">Шейпы</div>
+        <div class="section__content">
+          <div class="shapes-grid">
+            <div class="shapes-item">
+              <div class="shapes-group">
+                <img src="./assets/shapes/maffin1.svg" alt="maffin1">
+                <img src="./assets/shapes/maffin2.svg" alt="maffin2">
+              </div>
+              <div class="shapes-caption">Маффин с изюмом - отсылка к питомцам</div>
+            </div>
+            <div class="shapes-item">
+              <div class="shapes-group">
+                <img src="./assets/shapes/vortex.svg" alt="vortex">
+              </div>
+              <div class="shapes-caption">Вихрь - постоянное движение и генерация идей</div>
+            </div>
+            <div class="shapes-item">
+              <div class="shapes-group">
+                <img src="./assets/shapes/tattoo.svg" alt="tattoo">
+              </div>
+              <div class="shapes-caption">Отсылка к тату - татуировка на руке в фирменном стиле бренда</div>
+            </div>
+            <div class="shapes-item">
+              <div class="shapes-group">
+                <img src="./assets/shapes/brush.svg" alt="brush">
+              </div>
+              <div class="shapes-caption">Кисть - отсылка к творческой натуре</div>
+            </div>
+            <div class="shapes-item">
+              <div class="shapes-group">
+                <img src="./assets/shapes/spiral.svg" alt="spiral">
+              </div>
+              <div class="shapes-caption">Спираль - олицетворяет внутренний рост и развитие</div>
+            </div>
+            <div class="shapes-item">
+              <div class="shapes-group">
+                <img src="./assets/shapes/flower.svg" alt="flower">
+              </div>
+              <div class="shapes-caption">Геометрический цветок - символизирует баланс, который ты привносишь в свою работу</div>
+            </div>
+            <div class="shapes-item">
+              <div class="shapes-group">
+                <img src="./assets/shapes/union.svg" alt="union">
+              </div>
+              <div class="shapes-caption">Объединение - внешний круг отражает умение объединять идеи, а точка - внимание к деталям</div>
+            </div>
+          </div>
+          <div class="shapes-text">
+            <p>Шейпы включают геометрические и абстрактные формы (спирали, пазлы, круги), добавляя динамику дизайну. Они созданы на основе логотипа "Ненашева Ума Дела".</p>
+            <div class="shapes-info">
+              <div class="shapes-recommendations">Рекомендации по использованию</div>
+              <div class="shapes-color">Цвет: Используйте смежные оттенки с фоном. Альтернативно, выбирайте бледные или темные оттенки Горчичного, чтобы слегка выделить шейпы на фоне.</div>
+              <div class="shapes-position">Размещение: Используйте как декоративные элементы в углах или подложки под текст с прозрачностью.</div>
+              <div class="shapes-size">Масштаб: Минимальный размер — 1 см для печати, 32 px для цифровых носителей. Не увеличивайте более чем в 5 раз от исходного размера.</div>
+              <div class="shapes-combination">Сочетание: Комбинируйте не более 2–3 шейпов для гармонии.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Загрузка -->
+      <section class="section contact">
+        <div class="section__title">Загрузка</div>
+        <div class="section__content">
+          <div class="contact-text">
+            <p>Нажмите книпку ниже, чтобы скачать все материлы по данному проекту.</p>
+          </div>
+          <button class="btn-download" onclick="downloadMaterials()">Скачать</button>
+        </div>
+      </section>
+
+      <!-- Контакты -->
+      <section class="section contact">
+        <div class="section__title">Контакты</div>
+        <div class="section__content">
+          <div class="contact-text">
+            <p>Если остались вопросы или появился новый запрос — напишите нам.</p>
+          </div>
+          <button class="btn-start-work" onclick="window.open('https://t.me/veteris', '_blank')">Связаться</button>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <!-- Верхняя строка -->
+      <div class="footer-logo">WE DESIGNERZ</div>
+      <div class="footer-slogan">Мы — небольшая команда дизайнеров, которая создает индивидуальные решения на основе сути, а не трендов.<br>Мы — партнёры по смыслу, функции и форме.</div>
+
+      <!-- Нижняя строка -->
+      <div class="footer-time">
+        <div id="local-time"></div>
+        <div class="label">Местное время</div>
+        <div class="label">Работаем по всему миру</div>
+      </div>
+      <div class="footer-principles">
+        <a href="newpage.html">ПРИНЦИПЫ</a>
+        <a href="newpage.html">ВАКАНСИИ</a>
+        <a href="newpage.html">КОНТАКТЫ</a>
+        <a href="newpage.html">СОЦСЕТИ</a>
+      </div>      
+      <div class="footer-copy">© 2025 WE DESIGNERZ</div>
+    </div>
+  </footer>
+
+  <script>
+    /* Burger toggle */
+    const burger = document.getElementById('burger');
+    const nav    = document.querySelector('.nav');
+    const header = document.querySelector('.header');
+
+    burger.addEventListener('click', () => {
+      burger.classList.toggle('open');
+      nav.classList.toggle('open');
+      header.classList.toggle('open');
+      document.body.style.overflow = nav.classList.contains('open') ? 'hidden' : '';
+    });
+
+    /* Добавляем в кнопку загрузки временную ссылку для скачивания материалов */
+    function downloadMaterials() {
+      const link = document.createElement('a'); // делаем «скрытую» ссылку
+      link.href     = './materials.zip';        // путь до архива (в той же папке)
+      link.download = 'materials.zip';          // имя файла при сохранении
+      document.body.appendChild(link);          // вставляем в DOM
+      link.click();                             // «кликаем» по ней
+      link.remove();                            // убираем, больше не нужен
+    }
+
+    /* Обновление времени по часовому поясу Бали (GMT+8) */
+    function updateTime(){
+      const now = new Date();
+      // форматируем не по локали посетителя, а по зоне Asia/Makassar
+      const balitime = now.toLocaleTimeString('ru-RU', {
+        hour:   '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        timeZone: 'Asia/Makassar'  // фиксированный таймзон Бали
+      });
+      document.getElementById('local-time').textContent = balitime;
+    }
+    setInterval(updateTime,1000);
+    updateTime();
+
+    /* обработчик кнопки «Начать проект» */
+    document.getElementById('btn-start')
+    .addEventListener('click', () => alert('Открыть форму для начала проекта'));
+
+    /* Функции для попапа с цветовыми примерами */
+    function openColorPreview() {
+      const popup = document.getElementById('colorPopup');
+      popup.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeColorPreview() {
+      const popup = document.getElementById('colorPopup');
+      popup.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    // Закрытие по клику на overlay
+    document.getElementById('colorPopup').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeColorPreview();
+      }
+    });
+
+    // Закрытие по Escape
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeColorPreview();
+      }
+    });
+  </script>
+</body>
+</html>

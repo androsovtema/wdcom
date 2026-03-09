@@ -144,16 +144,7 @@ img.logo-mobile {
   transition: none;
 }
 
-/* Мобильная версия */
-@media (max-width: 768px) {
-  img.logo-desktop {
-    display: none;
-  }
 
-  img.logo-mobile {
-    display: block;
-  }
-}
 
 
 .nav {
@@ -809,65 +800,6 @@ section {
   opacity: 1;
 }
 
-/* Текстовая ссылка */
-.text-link {
-  font-size: 14px;
-  color: var(--moss);
-}
-
-/*************************
- *  PROJECTS GRID  *
- *************************/
-.projects-hero {
-  padding-top: var(--space-lg);
-  padding-bottom: var(--space-sm);
-}
-
-.projects-filter {
-  padding-top: 0;
-  padding-bottom: var(--space-sm);
-}
-
-.filter-label {
-  font-size: 14px;
-  color: var(--stone-light);
-  margin-bottom: 16px;
-}
-
-.filter-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.filter-tag {
-  background: transparent;
-  border: 1px solid rgba(90, 107, 78, 0.2);
-  color: var(--stone);
-  padding: 8px 16px;
-  border-radius: 4px 6px 5px 3px;
-  font-size: 14px;
-  cursor: pointer;
-  transition: all 0.3s var(--ease-out);
-  font-family: 'Inter', sans-serif;
-}
-
-.filter-tag:hover {
-  border-color: var(--moss);
-  color: var(--moss);
-}
-
-.filter-tag.active {
-  background: var(--moss);
-  color: var(--cream);
-  border-color: var(--moss);
-}
-
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(300px, 1fr));
-  gap: 80px 60px;
-}
 
 /* Первая карточка — на всю ширину */
 .project-card:first-child {
@@ -879,90 +811,11 @@ section {
   aspect-ratio: 21/9;
 }
 
-.project-link {
-  display: block;
-  text-decoration: none;
-  color: inherit;
-  transition: transform 0.4s var(--ease-out);
-}
 
-.project-link:hover {
-  transform: translateY(-8px);
-}
-
-.project-image {
-  width: 100%;
-  aspect-ratio: 4/3;
-  object-fit: cover;
-  border-radius: 4px 6px 5px 3px;
-  margin-bottom: 24px;
-  transition: opacity 0.4s var(--ease-out), filter 0.4s var(--ease-out);
-}
-
-.project-link:hover .project-image {
-  opacity: 0.9;
-}
-
-.project-info {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.project-name {
-  font-size: 28px;
-  font-family: 'Cormorant Garamond', serif;
-  color: var(--charcoal);
-  margin: 0;
-}
-
-.project-category {
-  font-size: 14px;
-  color: var(--moss);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin: 0;
-}
-
-.project-description {
-  font-size: 15px;
-  color: var(--stone);
-  line-height: 1.6;
-  margin: 0;
-  max-width: 90%;
-}
-
-.project-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 8px;
-}
-
-.project-tag {
-  font-size: 12px;
-  color: var(--stone-light);
-  background: rgba(90, 107, 78, 0.05);
-  padding: 4px 10px;
-  border-radius: 4px;
-}
-
-@media (max-width: 768px) {
-  .projects-grid {
-    grid-template-columns: 1fr;
-    gap: 48px;
-  }
-
-  .project-card:first-child {
-    grid-column: span 1;
-  }
-
-  .project-card:first-child .project-image {
-    aspect-ratio: 4/3;
-  }
-}
 
 .text-link {
+  font-size: 14px;
+  color: var(--moss);
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -1907,11 +1760,6 @@ section {
     display: none;
   }
 
-  /* Мобильное меню - анимация открытия */
-  .nav {
-    display: none;
-  }
-
   .nav.open {
     position: fixed;
     top: 0;
@@ -1963,7 +1811,6 @@ section {
     padding: 12px 24px;
   }
 
-  /* Шапка при открытом меню */
   /* Шапка при открытом меню */
   .header.open {
     background: var(--deep-forest);
@@ -2161,6 +2008,75 @@ section {
   .footer-links {
     gap: 20px;
   }
+
+  img.logo-desktop {
+    display: none;
+  }
+
+  img.logo-mobile {
+    display: block;
+  }
+
+  .project-card:first-child {
+    grid-column: span 1;
+  }
+
+  .project-card:first-child .project-image {
+    aspect-ratio: 4/3;
+  }
+
+  /* Уменьшаем отступы back-nav на мобильных */
+  .back-nav {
+    padding: var(--space-xs) var(--space-xs) 0;
+  }
+
+  /* Уменьшаем высоту карусели на ~33% (280px -> 190px) */
+  .carousel-item {
+    height: 190px;
+  }
+
+  /* Уменьшаем padding на мобильных (пропорционально высоте) */
+  .carousel-wrapper {
+    padding: 24px 0;
+  }
+
+  /* Отключаем pause при наведении/нажатии на мобильных */
+  .carousel-wrapper:hover .carousel-track,
+  .carousel-wrapper:hover .carousel-track.animate {
+    animation-play-state: running;
+  }
+
+  /* Анимация пунктов меню */
+  .nav.open a,
+  .nav.open .btn-start {
+    opacity: 0;
+    animation: fadeInUp 0.4s var(--ease-out) forwards;
+  }
+
+  .nav.open a:nth-child(1) {
+    animation-delay: 0.1s;
+  }
+
+  .nav.open a:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+
+  .nav.open .btn-start {
+    animation-delay: 0.3s;
+    margin-top: 20px;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 }
 
 @media (max-width: 480px) {
@@ -2259,77 +2175,11 @@ section {
   margin-bottom: var(--space-sm);
 }
 
-/* ====================
-   CAROUSEL MOBILE FIXES
-   ==================== */
 
-@media (max-width: 768px) {
-
-  /* Уменьшаем отступы back-nav на мобильных */
-  .back-nav {
-    padding: var(--space-xs) var(--space-xs) 0;
-  }
-
-  /* Уменьшаем высоту карусели на ~33% (280px -> 190px) */
-  .carousel-item {
-    height: 190px;
-  }
-
-  /* Уменьшаем padding на мобильных (пропорционально высоте) */
-  .carousel-wrapper {
-    padding: 24px 0;
-  }
-
-  /* Отключаем pause при наведении/нажатии на мобильных */
-  .carousel-wrapper:hover .carousel-track,
-  .carousel-wrapper:hover .carousel-track.animate {
-    animation-play-state: running;
-  }
-}
 
 
 /* Отключение скролла при открытом меню */
 body.menu-open {
   overflow: hidden;
   height: 100vh;
-}
-
-
-/* ====================
-   MOBILE MENU ANIMATIONS
-   ==================== */
-
-@media (max-width: 768px) {
-
-  /* Анимация пунктов меню */
-  .nav.open a,
-  .nav.open .btn-start {
-    opacity: 0;
-    animation: fadeInUp 0.4s var(--ease-out) forwards;
-  }
-
-  .nav.open a:nth-child(1) {
-    animation-delay: 0.1s;
-  }
-
-  .nav.open a:nth-child(2) {
-    animation-delay: 0.2s;
-  }
-
-  .nav.open .btn-start {
-    animation-delay: 0.3s;
-    margin-top: 20px;
-  }
-
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
 }

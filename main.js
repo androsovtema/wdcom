@@ -240,6 +240,19 @@
   }
 
   /* ====================
+     TELEGRAM BUTTONS
+     ==================== */
+  const telegramBtns = document.querySelectorAll('.btn-start');
+  telegramBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      // If it's a button, open the link
+      if (btn.tagName === 'BUTTON') {
+        window.open('https://t.me/wedesignerz_bot', '_blank');
+      }
+    });
+  });
+
+  /* ====================
      PROJECTS FILTER (Projects page)
      ==================== */
   const filterTags = document.querySelectorAll('.filter-tag');
@@ -302,7 +315,7 @@
     // Функция для проверки загрузки всех изображений
     function checkAllLoaded() {
       loadedCount++;
-      
+
       // Отмечаем загруженное изображение
       const img = carouselImages[loadedCount - 1];
       if (img) {
