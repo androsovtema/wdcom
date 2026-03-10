@@ -389,9 +389,14 @@
     requestAnimationFrame(updateCarousel)
 
     // Обработчики мыши и тачпада
+    let startY = 0
+    let isTouchMove = false
+
     const startDrag = (e) => {
       isDragging = true
-      startX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX
+      isTouchMove = e.type.includes('touch')
+      startX = isTouchMove ? e.touches[0].pageX : e.pageX
+      startY = isTouchMove ? e.touches[0].pageY : e.pageY
       currentDragX = startX
       lastDragX = startX
       dragVelocity = 0
@@ -399,17 +404,34 @@
 
     const onDrag = (e) => {
       if (!isDragging) return
-      currentDragX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX
+      
+      if (isTouchMove) {
+        const currentY = e.touches[0].pageY
+        const currentX = e.touches[0].pageX
+        
+        const deltaX = Math.abs(currentX - startX)
+        const deltaY = Math.abs(currentY - startY)
+        
+        // Значительное движение по горизонтали предотвращает вертикальный скролл страницы
+        if (deltaX > deltaY && deltaX > 5) {
+          if (e.cancelable) e.preventDefault()
+        }
+        
+        currentDragX = currentX
+      } else {
+        currentDragX = e.pageX
+      }
     }
 
     const stopDrag = () => {
       if (!isDragging) return
       isDragging = false
+      isTouchMove = false
     }
 
-    // Touch events
+    // Touch events - preventDefault requires non-passive event listeners for touchmove
     carouselTrack.addEventListener('touchstart', startDrag, { passive: true })
-    window.addEventListener('touchmove', onDrag, { passive: true })
+    window.addEventListener('touchmove', onDrag, { passive: false })
     window.addEventListener('touchend', stopDrag)
     window.addEventListener('touchcancel', stopDrag)
 
