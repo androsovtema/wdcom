@@ -748,39 +748,43 @@ section {
   margin-right: -50vw;
   padding: 40px 0;
   background: var(--cream-warm);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
 }
 
 .carousel-track {
   display: flex;
   gap: 24px;
   width: max-content;
-  /* Анимация отключена по умолчанию, включается через JS после загрузки */
-  animation: none;
+  cursor: grab;
+  will-change: transform;
 }
 
-.carousel-track.animate {
-  animation: marquee 90s linear infinite;
-}
-
-.carousel-wrapper:hover .carousel-track.animate {
-  animation-play-state: paused;
-}
-
-@keyframes marquee {
-  0% {
-    transform: translateX(0);
-  }
-
-  100% {
-    transform: translateX(-50%);
-  }
+.carousel-track:active {
+  cursor: grabbing;
 }
 
 .carousel-item {
-  height: 280px;
+  height: clamp(240px, 30vh, 400px);
   flex-shrink: 0;
   border-radius: 4px 6px 5px 3px;
   overflow: hidden;
+  position: relative;
+  transition: opacity 0.4s var(--ease-out), transform 0.4s var(--ease-out), filter 0.4s var(--ease-out);
+}
+
+@media (min-width: 1024px) {
+  .carousel-track:hover .carousel-item {
+    opacity: 0.6;
+    filter: grayscale(80%);
+  }
+
+  .carousel-track .carousel-item:hover {
+    opacity: 1;
+    filter: grayscale(0%);
+    transform: scale(1.02);
+    z-index: 2;
+  }
 }
 
 .carousel-item img {

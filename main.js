@@ -302,55 +302,129 @@
   }
 
   /* ====================
-     CAROUSEL IMAGE LOADING
+     CAROUSEL INTERACTIVITY & PHYSICS
      ==================== */
   const carouselWrapper = document.querySelector('.carousel-wrapper')
   const carouselTrack = document.querySelector('.carousel-track')
   const carouselImages = document.querySelectorAll('.carousel-item img')
 
   if (carouselWrapper && carouselTrack && carouselImages.length > 0) {
+    // 1. Появление изображений
     let loadedCount = 0
-    const totalImages = carouselImages.length
-
-    // Функция для проверки загрузки всех изображений
-    function checkAllLoaded () {
-      loadedCount++
-
-      // Отмечаем загруженное изображение
-      const img = carouselImages[loadedCount - 1]
-      if (img) {
+    function markImageLoaded (img) {
+      if (img && !img.classList.contains('loaded')) {
         img.classList.add('loaded')
-        img.parentElement.classList.add('loaded')
-      }
-
-      // Когда все изображения загружены — запускаем анимацию
-      if (loadedCount >= totalImages) {
-        // Небольшая задержка для стабилизации рендера
-        setTimeout(() => {
-          carouselWrapper.classList.add('loaded')
-          carouselTrack.classList.add('animate')
-        }, 100)
+        if (img.parentElement) img.parentElement.classList.add('loaded')
       }
     }
-
-    // Отслеживаем загрузку каждого изображения
     carouselImages.forEach(img => {
+      // Отключаем нативный drag & drop изображений
+      img.addEventListener('dragstart', e => e.preventDefault())
+
       if (img.complete && img.naturalHeight !== 0) {
-        // Изображение уже загружено
-        checkAllLoaded()
+        markImageLoaded(img)
+        loadedCount++
       } else {
-        // Ждём загрузки
-        img.addEventListener('load', checkAllLoaded, { once: true })
-        img.addEventListener('error', checkAllLoaded, { once: true }) // Не блокируем при ошибке
+        img.addEventListener('load', () => { markImageLoaded(img); loadedCount++ }, { once: true })
+        img.addEventListener('error', () => { markImageLoaded(img); loadedCount++ }, { once: true })
       }
     })
-
-    // Fallback: запускаем анимацию через 5 секунд даже если не все загрузились
+    
+    // Запускаем карусель плавно
     setTimeout(() => {
-      if (!carouselTrack.classList.contains('animate')) {
-        carouselWrapper.classList.add('loaded')
-        carouselTrack.classList.add('animate')
+      carouselImages.forEach(markImageLoaded)
+      carouselWrapper.classList.add('loaded')
+    }, 2000)
+
+    // 2. Движение и физика
+    let currentX = 0
+    let autoScrollingSpeed = 1 // px per frame
+    let isDragging = false
+    let startX = 0
+    let currentDragX = 0
+    let dragVelocity = 0
+    let lastTime = performance.now()
+    let lastDragX = 0
+
+    function updateCarousel (time) {
+      if (!lastTime) lastTime = time
+      lastTime = time
+
+      // Ширина оригинального набора картинок (трек содержит дубли для бесконечности)
+      const trackWidth = carouselTrack.scrollWidth / 2
+
+      if (isDragging) {
+        // Движемся за курсором/пальцем
+        const dx = currentDragX - lastDragX
+        currentX -= dx
+        
+        // Вычисляем скорость
+        dragVelocity = dx
+        lastDragX = currentDragX
+      } else {
+        // Авто скролл + инерция
+        currentX += autoScrollingSpeed - dragVelocity
+        dragVelocity *= 0.95 // затухание
+        if (Math.abs(dragVelocity) < 0.1) dragVelocity = 0
       }
-    }, 5000)
+
+      // Бесконечный цикл
+      if (currentX >= trackWidth) {
+        currentX -= trackWidth
+      } else if (currentX <= 0) {
+        currentX += trackWidth
+      }
+
+      // Вычисляем наклон в зависимости от скорости
+      const currentSpeed = isDragging ? dragVelocity : (dragVelocity - autoScrollingSpeed)
+      let skewAngle = currentSpeed * 0.3
+      skewAngle = Math.max(-10, Math.min(10, skewAngle))
+
+      // Применяем трансформации (минус тк мы двигаем влево)
+      carouselTrack.style.transform = `translateX(${-currentX}px) skewX(${skewAngle}deg)`
+
+      requestAnimationFrame(updateCarousel)
+    }
+
+    requestAnimationFrame(updateCarousel)
+
+    // Обработчики мыши и тачпада
+    const startDrag = (e) => {
+      isDragging = true
+      startX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX
+      currentDragX = startX
+      lastDragX = startX
+      dragVelocity = 0
+    }
+
+    const onDrag = (e) => {
+      if (!isDragging) return
+      currentDragX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX
+    }
+
+    const stopDrag = () => {
+      if (!isDragging) return
+      isDragging = false
+    }
+
+    // Touch events
+    carouselTrack.addEventListener('touchstart', startDrag, { passive: true })
+    window.addEventListener('touchmove', onDrag, { passive: true })
+    window.addEventListener('touchend', stopDrag)
+    window.addEventListener('touchcancel', stopDrag)
+
+    // Mouse events
+    carouselTrack.addEventListener('mousedown', startDrag)
+    window.addEventListener('mousemove', onDrag)
+    window.addEventListener('mouseup', stopDrag)
+    
+    // Пауза при наведении
+    carouselTrack.addEventListener('mouseenter', () => {
+      autoScrollingSpeed = 0
+    })
+    carouselTrack.addEventListener('mouseleave', () => {
+      autoScrollingSpeed = 1
+      stopDrag()
+    })
   }
 })()
