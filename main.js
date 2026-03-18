@@ -16,7 +16,7 @@
   const header = document.querySelector('.header')
   const navLinks = document.querySelectorAll('.nav a')
 
-  function toggleMenu (isOpen) {
+  function toggleMenu(isOpen) {
     if (!burger || !nav || !header) return
 
     burger.classList.toggle('open', isOpen)
@@ -27,7 +27,7 @@
     document.body.style.overflow = isOpen ? 'hidden' : ''
   }
 
-  function closeMenu () {
+  function closeMenu() {
     toggleMenu(false)
   }
 
@@ -65,7 +65,7 @@
      ==================== */
   let ticking = false
 
-  function handleScroll () {
+  function handleScroll() {
     if (!header) return
 
     const currentScroll = window.scrollY
@@ -118,7 +118,7 @@
   if (words.length > 0) {
     let wordIndex = 0
 
-    function changeWord () {
+    function changeWord() {
       const currentWord = words[wordIndex]
       const nextIndex = (wordIndex + 1) % words.length
       const nextWord = words[nextIndex]
@@ -247,7 +247,7 @@
     btn.addEventListener('click', (e) => {
       // If it's a button, open the link
       if (btn.tagName === 'BUTTON') {
-        window.open('https://t.me/wedesignerz_bot', '_blank')
+        window.open('https://t.me/androsovart', '_blank')
       }
     })
   })
@@ -311,7 +311,7 @@
   if (carouselWrapper && carouselTrack && carouselImages.length > 0) {
     // 1. Появление изображений
     let loadedCount = 0
-    function markImageLoaded (img) {
+    function markImageLoaded(img) {
       if (img && !img.classList.contains('loaded')) {
         img.classList.add('loaded')
         if (img.parentElement) img.parentElement.classList.add('loaded')
@@ -329,7 +329,7 @@
         img.addEventListener('error', () => { markImageLoaded(img); loadedCount++ }, { once: true })
       }
     })
-    
+
     // Запускаем карусель плавно
     setTimeout(() => {
       carouselImages.forEach(markImageLoaded)
@@ -346,7 +346,7 @@
     let lastTime = performance.now()
     let lastDragX = 0
 
-    function updateCarousel (time) {
+    function updateCarousel(time) {
       if (!lastTime) lastTime = time
       lastTime = time
 
@@ -357,7 +357,7 @@
         // Движемся за курсором/пальцем
         const dx = currentDragX - lastDragX
         currentX -= dx
-        
+
         // Вычисляем скорость
         dragVelocity = dx
         lastDragX = currentDragX
@@ -404,19 +404,19 @@
 
     const onDrag = (e) => {
       if (!isDragging) return
-      
+
       if (isTouchMove) {
         const currentY = e.touches[0].pageY
         const currentX = e.touches[0].pageX
-        
+
         const deltaX = Math.abs(currentX - startX)
         const deltaY = Math.abs(currentY - startY)
-        
+
         // Значительное движение по горизонтали предотвращает вертикальный скролл страницы
         if (deltaX > deltaY && deltaX > 5) {
           if (e.cancelable) e.preventDefault()
         }
-        
+
         currentDragX = currentX
       } else {
         currentDragX = e.pageX
@@ -439,7 +439,7 @@
     carouselTrack.addEventListener('mousedown', startDrag)
     window.addEventListener('mousemove', onDrag)
     window.addEventListener('mouseup', stopDrag)
-    
+
     // Пауза при наведении
     carouselTrack.addEventListener('mouseenter', () => {
       autoScrollingSpeed = 0
