@@ -2061,8 +2061,11 @@ section {
   }
 
   /* Уменьшаем отступы back-nav на мобильных */
-  .back-nav {
+  body .back-nav {
     padding: var(--space-xs) var(--space-xs) 0;
+    max-width: 100%;
+    margin: 0;
+    box-sizing: border-box;
   }
 
   /* Уменьшаем высоту карусели на ~33% (280px -> 190px) */
