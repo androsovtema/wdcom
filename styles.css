@@ -2068,7 +2068,7 @@ section {
   }
 
   .project-card:first-child .project-image {
-    aspect-ratio: 4/3;
+    aspect-ratio: 16/9;
   }
 
   /* Уменьшаем отступы back-nav на мобильных */
