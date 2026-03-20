@@ -449,4 +449,22 @@
       stopDrag()
     })
   }
+
+  /* ====================
+     CLIENTS LOGOS PROTECTION
+     Защита логотипов от скачивания
+     ==================== */
+  const clientLogos = document.querySelectorAll('.clients-logos .logo-item img')
+  clientLogos.forEach(logo => {
+    // Блокировка контекстного меню (правый клик)
+    logo.addEventListener('contextmenu', (e) => {
+      e.preventDefault()
+      return false
+    })
+    // Блокировка drag & drop
+    logo.addEventListener('dragstart', (e) => {
+      e.preventDefault()
+      return false
+    })
+  })
 })()
