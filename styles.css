@@ -591,31 +591,16 @@ section {
 
 .logos-marquee-track {
   display: flex;
-  gap: 160px;
+  gap: 80px;
   align-items: center;
   width: max-content;
   min-width: 100%;
   flex-wrap: nowrap;
   will-change: transform;
   backface-visibility: hidden;
-  transform: translateZ(0);
-  animation: marquee 35s linear infinite;
 }
 
-/* пауза при наведении на любой логотип */
-.logos-marquee-track:hover {
-  animation-play-state: paused;
-}
-
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(-50%);
-  }
-}
+/* анимация marquee теперь управляется через JS */
 
 .logo-item {
   display: flex;
@@ -1935,8 +1920,7 @@ section {
   }
 
   .logos-marquee-track {
-    gap: 100px;
-    animation-duration: 30s;
+    gap: 60px;
     flex-wrap: nowrap;
     min-width: 100%;
   }

@@ -451,6 +451,65 @@
   }
 
   /* ====================
+     CLIENTS LOGOS MARQUEE
+     Плавная бегущая строка логотипов
+     ==================== */
+  const marqueeTrack = document.querySelector('.logos-marquee-track')
+  if (marqueeTrack) {
+    // Удаляем CSS-анимацию и делаем плавный скролл через JS
+    marqueeTrack.style.animation = 'none'
+    
+    let position = 0
+    let speed = 0.5 // пикселей за кадр
+    let isPaused = false
+    let rafId = null
+    
+    // Получаем ширину оригинального контента (первые 10 элементов)
+    const originalContentWidth = () => {
+      const items = marqueeTrack.querySelectorAll('.logo-item')
+      let width = 0
+      for (let i = 0; i < 10; i++) {
+        if (items[i]) {
+          width += items[i].offsetWidth + 80 // gap
+        }
+      }
+      return width
+    }
+    
+    let contentWidth = originalContentWidth()
+    
+    function animate() {
+      if (!isPaused) {
+        position += speed
+        
+        // Когда прошли половину (один полный набор), сбрасываем в 0
+        if (position >= contentWidth) {
+          position = 0
+        }
+        
+        marqueeTrack.style.transform = `translateX(-${position}px)`
+      }
+      rafId = requestAnimationFrame(animate)
+    }
+    
+    // Пауза при наведении
+    marqueeTrack.addEventListener('mouseenter', () => {
+      isPaused = true
+    })
+    marqueeTrack.addEventListener('mouseleave', () => {
+      isPaused = false
+    })
+    
+    // Обновляем ширину при ресайзе
+    window.addEventListener('resize', () => {
+      contentWidth = originalContentWidth()
+    })
+    
+    // Запускаем анимацию
+    animate()
+  }
+
+  /* ====================
      CLIENTS LOGOS PROTECTION
      Защита логотипов от скачивания
      ==================== */
