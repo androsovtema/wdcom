@@ -812,7 +812,7 @@ section {
 
 /* Первая карточка — горизонтальный aspect ratio */
 .project-card:first-child .project-image {
-  aspect-ratio: 21/9;
+  aspect-ratio: 16/9;
 }
 
 
@@ -1364,7 +1364,7 @@ section {
 
 .project-image {
   width: 100%;
-  aspect-ratio: 16/10;
+  aspect-ratio: 16/9;
   object-fit: cover;
   border-radius: 4px 6px 5px 3px;
   transition: all 0.5s var(--ease-out);
