@@ -1589,8 +1589,13 @@ section {
   aspect-ratio: 16/9;
 }
 
-.gallery-item:not(.gallery-featured):not(.gallery-wide) {
-  aspect-ratio: 3/4;
+.gallery-vertical {
+  grid-column: span 1;
+  aspect-ratio: 9/16;
+}
+
+.gallery-item:not(.gallery-featured):not(.gallery-wide):not(.gallery-vertical) {
+  aspect-ratio: 16/9;
 }
 
 /* Project Results */
@@ -2024,6 +2029,11 @@ section {
   .gallery-wide {
     grid-column: span 1;
     aspect-ratio: 16/9;
+  }
+
+  .gallery-vertical {
+    grid-column: span 1;
+    aspect-ratio: 9/16;
   }
 
   .next-project-name {
