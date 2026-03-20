@@ -157,6 +157,11 @@ img.logo-mobile {
   font-size: 14px;
   color: var(--stone);
   letter-spacing: 0.2px;
+}
+
+/* Скрываем "Главная" в десктопной навигации */
+.nav-home {
+  display: none;
   position: relative;
   font-weight: 400;
 }
@@ -1824,6 +1829,11 @@ section {
   .nav.open a {
     color: var(--cream);
     font-size: 22px;
+  }
+
+  /* Показываем "Главная" в мобильном меню */
+  .nav.open .nav-home {
+    display: block;
   }
 
   /* Инвертированная кнопка "Начать проект" */
