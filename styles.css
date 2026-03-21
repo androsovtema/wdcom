@@ -217,6 +217,8 @@ img.logo-mobile {
   height: 20px;
   position: relative;
   z-index: 1200;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
 }
 
 .burger span {
@@ -1007,6 +1009,8 @@ section {
   display: flex;
   cursor: pointer;
   height: 100%;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
 }
 
 .swatch-circle {
