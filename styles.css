@@ -187,7 +187,7 @@ img.logo-mobile {
 
 .btn-start,
 .nav a.btn-start {
-  font-family: 'Inter', sans-serif;
+  font-family: Inter, sans-serif;
   font-size: 13px;
   letter-spacing: 0.3px;
   background: transparent;
@@ -324,25 +324,25 @@ section {
   letter-spacing: -0.02em;
   opacity: 0;
   transform: translateY(30px);
-  animation: fadeUp 0.8s var(--ease-out) forwards;
+  animation: fade-up 0.8s var(--ease-out) forwards;
   animation-delay: 0.1s;
 }
 
 .hero .hero-subtitle {
   opacity: 0;
   transform: translateY(30px);
-  animation: fadeUp 0.8s var(--ease-out) forwards;
+  animation: fade-up 0.8s var(--ease-out) forwards;
   animation-delay: 0.3s;
 }
 
 .hero .btn-primary {
   opacity: 0;
   transform: translateY(30px);
-  animation: fadeUp 0.8s var(--ease-out) forwards;
+  animation: fade-up 0.8s var(--ease-out) forwards;
   animation-delay: 0.5s;
 }
 
-@keyframes fadeUp {
+@keyframes fade-up {
   to {
     opacity: 1;
     transform: translateY(0);
@@ -768,7 +768,6 @@ section {
   padding: 40px 0;
   background: var(--cream-warm);
   mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
 }
 
 .carousel-track {
@@ -936,7 +935,7 @@ section {
   max-width: 900px;
   opacity: 0;
   transform: translateY(30px);
-  animation: fadeUp 0.8s var(--ease-out) forwards;
+  animation: fade-up 0.8s var(--ease-out) forwards;
   animation-delay: 0.3s;
 }
 
@@ -1808,10 +1807,10 @@ section {
     overflow: hidden;
 
     /* Анимация появления */
-    animation: menuSlideDown 0.4s var(--ease-out) forwards;
+    animation: menu-slide-down 0.4s var(--ease-out) forwards;
   }
 
-  @keyframes menuSlideDown {
+  @keyframes menu-slide-down {
     from {
       opacity: 0;
       transform: translateY(-20px);
@@ -2096,7 +2095,7 @@ section {
   .nav.open a,
   .nav.open .btn-start {
     opacity: 0;
-    animation: fadeInUp 0.4s var(--ease-out) forwards;
+    animation: fade-in-up 0.4s var(--ease-out) forwards;
   }
 
   .nav.open a:nth-child(1) {
@@ -2113,7 +2112,7 @@ section {
     margin-top: 20px;
   }
 
-  @keyframes fadeInUp {
+  @keyframes fade-in-up {
     from {
       opacity: 0;
       transform: translateY(20px);
