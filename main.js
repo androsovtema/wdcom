@@ -459,9 +459,11 @@
     const originalContentWidth = () => {
       const items = marqueeTrack.querySelectorAll('.logo-item');
       let width = 0;
+      const gapStr = window.getComputedStyle(marqueeTrack).gap;
+      const gap = gapStr && gapStr !== 'normal' ? parseInt(gapStr) : 80;
       for (let i = 0; i < 10; i++) {
         if (items[i]) {
-          width += items[i].offsetWidth + 80; // gap
+          width += items[i].offsetWidth + gap; // используем динамический gap
         }
       }
       return width;

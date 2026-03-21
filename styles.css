@@ -1926,7 +1926,7 @@ section {
   }
 
   .logos-marquee-track {
-    gap: 60px;
+    gap: 40px;
     flex-wrap: nowrap;
     min-width: 100%;
   }
