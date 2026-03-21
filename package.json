@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "We Designerz - Design Studio",
   "main": "main.js",
+  "type": "module",
   "scripts": {
     "lint:js": "eslint '**/*.js'",
     "lint:js:fix": "eslint '**/*.js' --fix",
