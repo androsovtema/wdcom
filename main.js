@@ -240,17 +240,8 @@
   }
 
   /* ====================
-     TELEGRAM BUTTONS
+     TELEGRAM BUTTONS (Removed in favor of anchor tags)
      ==================== */
-  const telegramBtns = document.querySelectorAll('.btn-start');
-  telegramBtns.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      // If it's a button, open the link
-      if (btn.tagName === 'BUTTON') {
-        window.open('https://t.me/androsovart', '_blank');
-      }
-    });
-  });
 
   /* ====================
      PROJECTS FILTER (Projects page)

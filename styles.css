@@ -1,3 +1,5 @@
+/* stylelint-disable no-descending-specificity */
+
 /*************************
  *  ПРИРОДНАЯ ПАЛИТРА    *
  *************************/
@@ -15,13 +17,11 @@
   --cream-dark: #d4cfc4;
   --charcoal: #3a3a3a;
   --deep-forest: #2d3628;
-
   --space-xl: 180px;
   --space-lg: 120px;
   --space-md: 80px;
   --space-sm: 48px;
   --space-xs: 24px;
-
   --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
@@ -38,7 +38,7 @@
 
 html,
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: Inter, sans-serif;
   font-size: 16px;
   color: var(--charcoal);
   background: var(--cream);
@@ -99,9 +99,9 @@ h4 {
   left: 0;
   right: 0;
   z-index: 1100;
-  background: rgba(245, 242, 235, 0.92);
+  background: rgb(245 242 235 / 92%);
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(90, 107, 78, 0.08);
+  border-bottom: 1px solid rgb(90 107 78 / 8%);
 }
 
 .logo {
@@ -185,13 +185,14 @@ img.logo-mobile {
   width: 100%;
 }
 
-.btn-start {
+.btn-start,
+.nav a.btn-start {
   font-family: 'Inter', sans-serif;
   font-size: 13px;
   letter-spacing: 0.3px;
   background: transparent;
   color: var(--moss);
-  border: 1px solid rgba(90, 107, 78, 0.3);
+  border: 1px solid rgb(90 107 78 / 30%);
   cursor: pointer;
   padding: 10px 20px;
   border-radius: 4px 6px 5px 3px;
@@ -199,7 +200,8 @@ img.logo-mobile {
   font-weight: 400;
 }
 
-.btn-start:hover {
+.btn-start:hover,
+.nav a.btn-start:hover {
   background: var(--moss);
   color: var(--cream);
   border-color: var(--moss);
@@ -247,7 +249,7 @@ img.logo-mobile {
 }
 
 /* Десктопное меню (вне медиа-запроса мобильных) */
-@media (min-width: 769px) {
+@media (width >= 769px) {
   .nav.open {
     position: fixed;
     inset: 0;
@@ -267,7 +269,7 @@ img.logo-mobile {
     font: inherit;
     color: var(--cream);
     background: transparent;
-    border-color: rgba(245, 242, 235, 0.3);
+    border-color: rgb(245 242 235 / 30%);
   }
 }
 
@@ -288,7 +290,7 @@ section {
 }
 
 .section-label {
-  font-family: 'Inter', sans-serif;
+  font-family: Inter, sans-serif;
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -491,7 +493,7 @@ section {
 }
 
 .step-title {
-  font-family: 'Inter', sans-serif;
+  font-family: Inter, sans-serif;
   font-size: 18px;
   font-weight: 400;
   color: var(--deep-forest);
@@ -745,7 +747,7 @@ section {
   transition: all 0.3s var(--ease-out);
   border: none;
   cursor: pointer;
-  font-family: 'Inter', sans-serif;
+  font-family: Inter, sans-serif;
   text-decoration: none;
 }
 
@@ -757,18 +759,15 @@ section {
 
 /* Карусель работ */
 .carousel-wrapper {
-  margin-top: var(--space-sm);
-  margin-bottom: var(--space-sm);
+  margin: var(--space-sm) -50vw var(--space-sm) -50vw;
   overflow: hidden;
   width: 100vw;
   position: relative;
   left: 50%;
   right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
   padding: 40px 0;
   background: var(--cream-warm);
-  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
   mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
 }
 
@@ -793,7 +792,7 @@ section {
   transition: opacity 0.4s var(--ease-out), transform 0.4s var(--ease-out), filter 0.4s var(--ease-out);
 }
 
-@media (min-width: 1024px) {
+@media (width >= 1024px) {
   .carousel-track:hover .carousel-item {
     opacity: 0.6;
     filter: grayscale(80%);
@@ -814,6 +813,7 @@ section {
   object-fit: cover;
   position: relative;
   z-index: 1;
+
   /* Плавное появление */
   opacity: 0;
   transition: opacity 0.3s ease;
@@ -893,7 +893,7 @@ section {
  *************************/
 .footer {
   padding: var(--space-sm) var(--space-md);
-  border-top: 1px solid rgba(90, 107, 78, 0.1);
+  border-top: 1px solid rgb(90 107 78 / 10%);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1018,7 +1018,7 @@ section {
   background-size: cover;
   background-position: center;
   background-blend-mode: multiply;
-  box-shadow: 0 10px 30px rgba(90, 107, 78, 0.05);
+  box-shadow: 0 10px 30px rgb(90 107 78 / 5%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1053,25 +1053,25 @@ section {
 .swatch-item:hover .swatch-moss {
   transform: scale(1.05);
   border-radius: 50%;
-  box-shadow: 0 15px 35px rgba(90, 107, 78, 0.15);
+  box-shadow: 0 15px 35px rgb(90 107 78 / 15%);
 }
 
 .swatch-item:hover .swatch-clay {
   transform: scale(1.05);
   border-radius: 50%;
-  box-shadow: 0 15px 35px rgba(155, 107, 90, 0.2);
+  box-shadow: 0 15px 35px rgb(155 107 90 / 20%);
 }
 
 .swatch-item:hover .swatch-stone {
   transform: scale(1.05);
   border-radius: 50%;
-  box-shadow: 0 15px 35px rgba(107, 107, 107, 0.15);
+  box-shadow: 0 15px 35px rgb(107 107 107 / 15%);
 }
 
 .swatch-item:hover .swatch-sand {
   transform: scale(1.05);
   border-radius: 50%;
-  box-shadow: 0 15px 35px rgba(139, 115, 85, 0.15);
+  box-shadow: 0 15px 35px rgb(139 115 85 / 15%);
 }
 
 .swatch-label {
@@ -1079,7 +1079,7 @@ section {
   font-style: italic;
   font-size: clamp(16px, 2vw, 22px);
   color: var(--cream);
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 1px 3px rgb(0 0 0 / 30%);
   opacity: 0;
   transform: translateY(10px);
   transition: all 0.4s var(--ease-out);
@@ -1236,12 +1236,12 @@ section {
   font-size: 13px;
   color: var(--moss);
   background: transparent;
-  border: 1px solid rgba(90, 107, 78, 0.3);
+  border: 1px solid rgb(90 107 78 / 30%);
   padding: 8px 16px;
   border-radius: 4px 6px 5px 3px;
   cursor: pointer;
   transition: all 0.3s var(--ease-out);
-  font-family: 'Inter', sans-serif;
+  font-family: Inter, sans-serif;
   font-weight: 400;
   width: fit-content;
 }
@@ -1330,12 +1330,12 @@ section {
   font-size: 14px;
   color: var(--stone);
   background: transparent;
-  border: 1px solid rgba(90, 107, 78, 0.2);
+  border: 1px solid rgb(90 107 78 / 20%);
   padding: 8px 16px;
   border-radius: 4px 6px 5px 3px;
   cursor: pointer;
   transition: all 0.3s var(--ease-out);
-  font-family: 'Inter', sans-serif;
+  font-family: Inter, sans-serif;
   font-weight: 400;
 }
 
@@ -1391,7 +1391,7 @@ section {
 }
 
 .project-card:hover .project-image {
-  box-shadow: 0 20px 40px rgba(90, 107, 78, 0.15);
+  box-shadow: 0 20px 40px rgb(90 107 78 / 15%);
 }
 
 .project-info {
@@ -1431,7 +1431,7 @@ section {
 .project-tag {
   font-size: 12px;
   color: var(--moss);
-  background: rgba(90, 107, 78, 0.08);
+  background: rgb(90 107 78 / 8%);
   padding: 4px 12px;
   border-radius: 4px;
   font-weight: 400;
@@ -1468,7 +1468,7 @@ section {
   flex-wrap: wrap;
   gap: 40px 60px;
   padding-top: var(--space-sm);
-  border-top: 1px solid rgba(90, 107, 78, 0.1);
+  border-top: 1px solid rgb(90 107 78 / 10%);
 }
 
 .meta-item {
@@ -1500,7 +1500,7 @@ section {
 .meta-tag {
   font-size: 13px;
   color: var(--moss);
-  background: rgba(90, 107, 78, 0.08);
+  background: rgb(90 107 78 / 8%);
   padding: 4px 12px;
   border-radius: 4px;
 }
@@ -1587,7 +1587,7 @@ section {
   aspect-ratio: 9/16;
 }
 
-.gallery-item:not(.gallery-featured):not(.gallery-wide):not(.gallery-vertical) {
+.gallery-item:not(.gallery-featured, .gallery-wide, .gallery-vertical) {
   aspect-ratio: 16/9;
 }
 
@@ -1704,7 +1704,7 @@ section {
 .next-project {
   padding-top: var(--space-lg);
   padding-bottom: var(--space-lg);
-  border-top: 1px solid rgba(90, 107, 78, 0.1);
+  border-top: 1px solid rgb(90 107 78 / 10%);
 }
 
 .next-project-link {
@@ -1740,14 +1740,13 @@ section {
  *************************/
 
 /* Tablet landscape - keep 2 columns but reduce gap */
-@media (max-width: 1200px) {
+@media (width <= 1200px) {
   .projects-grid {
     gap: 48px 32px;
   }
 }
 
-@media (max-width: 968px) {
-
+@media (width <= 968px) {
   .team-grid,
   .testimonials-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -1779,7 +1778,7 @@ section {
   }
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .header {
     padding: 0 var(--space-xs);
     height: 70px;
@@ -1791,11 +1790,8 @@ section {
 
   .nav.open {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 100vh;
+    inset: 0;
+    /* stylelint-disable-next-line declaration-block-no-duplicate-properties */
     height: 100dvh;
     width: 100vw;
     background: var(--deep-forest);
@@ -1810,6 +1806,7 @@ section {
     padding: 0;
     margin: 0;
     overflow: hidden;
+
     /* Анимация появления */
     animation: menuSlideDown 0.4s var(--ease-out) forwards;
   }
@@ -2095,6 +2092,7 @@ section {
   }
 
   /* Анимация пунктов меню */
+  /* stylelint-disable-next-line no-duplicate-selectors */
   .nav.open a,
   .nav.open .btn-start {
     opacity: 0;
@@ -2109,6 +2107,7 @@ section {
     animation-delay: 0.2s;
   }
 
+  /* stylelint-disable-next-line no-duplicate-selectors */
   .nav.open .btn-start {
     animation-delay: 0.3s;
     margin-top: 20px;
@@ -2127,8 +2126,7 @@ section {
   }
 }
 
-@media (max-width: 480px) {
-
+@media (width <= 480px) {
   .hero h1,
   .projects-hero h1 {
     font-size: 28px;
@@ -2167,7 +2165,6 @@ section {
  *  REDUCED MOTION  *
  *************************/
 @media (prefers-reduced-motion: reduce) {
-
   *,
   *::before,
   *::after {
