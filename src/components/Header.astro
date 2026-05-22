@@ -1,0 +1,22 @@
+---
+import { site } from '../data/site';
+
+const nav = [
+  { href: '/', label: 'OS' },
+  { href: '/media/', label: 'Медиа' },
+  { href: '/products/', label: 'Продукты' },
+  { href: '/projects/', label: 'Проекты' },
+  { href: '/about/', label: 'О нас' },
+  { href: '/contact/', label: 'Контакты' }
+];
+---
+
+<header class="site-header">
+  <a class="brand" href="/" aria-label="We Designerz — на главную">
+    <img src="/assets/logos/WDLogo.svg" alt="We Designerz" width="142" height="20" />
+  </a>
+  <nav class="site-nav" aria-label="Главная навигация">
+    {nav.map((item) => <a href={item.href}>{item.label}</a>)}
+  </nav>
+  <a class="header-cta" href={site.youtube} target="_blank" rel="noopener noreferrer">Media live</a>
+</header>

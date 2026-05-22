@@ -1,0 +1,67 @@
+---
+import PageShell from '../components/PageShell.astro';
+import { site } from '../data/site';
+
+const routes = [
+  {
+    index: '01',
+    title: 'Дизайн-проект',
+    text: 'Сайт, презентация, визуальная система, упаковка или контент-упаковка.',
+    action: 'Написать в Telegram',
+    href: site.telegram
+  },
+  {
+    index: '02',
+    title: 'Ранний доступ',
+    text: 'Хочу попасть в список ожидания career/HR-продукта как специалист или компания.',
+    action: 'Отправить email',
+    href: `mailto:${site.email}?subject=Ранний доступ WDZ Career Lab`
+  },
+  {
+    index: '03',
+    title: 'Партнёрство',
+    text: 'Коллаборации, интеграции, совместные исследования и продуктовые идеи.',
+    action: 'Обсудить партнёрство',
+    href: `mailto:${site.email}?subject=Партнёрство с We Designerz`
+  },
+  {
+    index: '04',
+    title: 'Вопрос по медиа',
+    text: 'Идея для выпуска, комментарий по каналу, предложение темы или гостя.',
+    action: 'Открыть канал',
+    href: site.youtube
+  }
+];
+---
+
+<PageShell title="Contact Routing" description="Контактный routing screen We Designerz: дизайн-проект, ранний доступ, партнёрство или вопрос по медиа.">
+  <section class="page-hero contact-os">
+    <div>
+      <p class="eyebrow">06 / Inbox routing</p>
+      <h1>Выберите сценарий, система подскажет следующий шаг.</h1>
+      <p>Contact работает как inbox/routing screen: пользователь не ищет общий адрес в футере, а выбирает контекст и получает понятный CTA.</p>
+    </div>
+    <div class="os-card">
+      <p class="card-kicker">Available routes</p>
+      <div class="mini-stack">
+        <div class="mini-row"><span>DESIGN</span><strong>project</strong><em>Telegram</em></div>
+        <div class="mini-row"><span>CAREER</span><strong>early access</strong><em>Email</em></div>
+        <div class="mini-row"><span>MEDIA</span><strong>question</strong><em>Channel</em></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section contact-grid">
+    {routes.map((route) => (
+      <article class="contact-card route-card">
+        <span class="route-index">{route.index}</span>
+        <div>
+          <p class="card-kicker">Routing option</p>
+          <h3>{route.title}</h3>
+          <p>{route.text}</p>
+          <div class="actions"><a class="button-secondary" href={route.href} target={route.href.startsWith('http') ? '_blank' : undefined} rel={route.href.startsWith('http') ? 'noopener noreferrer' : undefined}>{route.action}</a></div>
+        </div>
+      </article>
+    ))}
+  </section>
+</PageShell>

@@ -1,0 +1,82 @@
+---
+import PageShell from '../components/PageShell.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+
+const experiments = [
+  {
+    status: 'IN PROGRESS',
+    title: 'Career matching OS',
+    focus: 'Интервью без ручного поиска',
+    stage: 'Prototype',
+    hypothesis: 'Если специалист заранее задаёт профиль и слоты, а компания описывает роль, встреча может появляться быстрее и точнее.',
+    audience: 'IT/digital специалисты, HR, founders',
+    next: 'Собрать ранний список кандидатов и компаний'
+  },
+  {
+    status: 'EXPERIMENT',
+    title: 'AI portfolio scanner',
+    focus: 'Самооценка портфолио',
+    stage: 'Concept',
+    hypothesis: 'Дизайнеру нужен не абстрактный score, а список слабых мест и конкретных улучшений.',
+    audience: 'Junior/middle designers',
+    next: 'Проверить формат отчёта на 10 портфолио'
+  },
+  {
+    status: 'EXPERIMENT',
+    title: 'Brief clarity kit',
+    focus: 'Структура дизайн-задач',
+    stage: 'Draft',
+    hypothesis: 'Короткий guided brief снижает хаос в старте проекта и ускоряет первый визуальный вариант.',
+    audience: 'Клиенты, дизайнеры, малые команды',
+    next: 'Собрать шаблон и пример заполнения'
+  },
+  {
+    status: 'ARCHIVE',
+    title: 'Design archive tools',
+    focus: 'Каталогизация опыта',
+    stage: 'Backlog',
+    hypothesis: 'Кейсы полезнее, когда они показывают решения, контекст и ограничения, а не только красивые обложки.',
+    audience: 'Команды, студии, авторы',
+    next: 'Связать проекты с тегами и годами'
+  }
+];
+---
+
+<PageShell title="Products" description="Лабораторная доска We Designerz: продуктовые эксперименты, гипотезы, статусы и следующий шаг.">
+  <section class="page-hero products-os">
+    <div>
+      <p class="eyebrow">02 / Product experiments board</p>
+      <h1>Лабораторная доска продуктовых гипотез.</h1>
+      <p>Products — это не магазин и не лендинг. Это board с экспериментами We Designerz: у каждого продукта есть статус, фокус, стадия, гипотеза, аудитория и следующий шаг.</p>
+    </div>
+    <div class="os-card">
+      <p class="card-kicker">Board rules</p>
+      <div class="mini-stack">
+        <div class="mini-row"><span>LIVE</span><strong>публично</strong><em>ready</em></div>
+        <div class="mini-row"><span>IN PROGRESS</span><strong>строится</strong><em>active</em></div>
+        <div class="mini-row"><span>EXPERIMENT</span><strong>проверка</strong><em>learn</em></div>
+        <div class="mini-row"><span>ARCHIVE</span><strong>опыт</strong><em>stored</em></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <SectionHeader eyebrow="Experiments" title="Каждая карточка — продуктовая заметка" text="Поля сделаны как лабораторный протокол, чтобы идея читалась через интерфейс, а не через длинный питч." />
+    <div class="lab-board">
+      {experiments.map((item) => (
+        <article class="product-card">
+          <span class={item.status === 'IN PROGRESS' ? 'status progress' : 'status'}>{item.status}</span>
+          <h3>{item.title}</h3>
+          <div class="product-fields">
+            <div class="field-row"><span>Focus</span><strong>{item.focus}</strong></div>
+            <div class="field-row"><span>Stage</span><strong>{item.stage}</strong></div>
+            <div class="field-row"><span>Hypothesis</span><p>{item.hypothesis}</p></div>
+            <div class="field-row"><span>Audience</span><p>{item.audience}</p></div>
+            <div class="field-row"><span>Next step</span><p>{item.next}</p></div>
+          </div>
+          {item.title === 'Career matching OS' && <div class="actions"><a class="button" href="/products/career/">Открыть интерфейс</a></div>}
+        </article>
+      ))}
+    </div>
+  </section>
+</PageShell>

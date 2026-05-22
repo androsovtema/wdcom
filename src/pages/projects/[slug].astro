@@ -1,0 +1,51 @@
+---
+import { getCollection, render } from 'astro:content';
+import PageShell from '../../components/PageShell.astro';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((project) => ({
+    params: { slug: project.id.replace(/\.mdx?$/, '') },
+    props: { project }
+  }));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+const slug = project.id.replace(/\.mdx?$/, '');
+---
+
+<PageShell title={project.data.title} description={project.data.description} canonical={`/projects/${slug}/`}>
+  <section class="section project-detail-hero">
+    <div>
+      <p class="eyebrow">{project.data.category}</p>
+      <h1>{project.data.title}</h1>
+      <p class="lead">{project.data.description}</p>
+      <ul class="tag-list">
+        {project.data.tags.map((tag) => <li>{tag}</li>)}
+      </ul>
+      <div class="stat-grid">
+        <div class="stat"><strong>{project.data.period}</strong><span>Период</span></div>
+        <div class="stat"><strong>{project.data.team}</strong><span>Команда</span></div>
+      </div>
+    </div>
+    <img src={project.data.cover} alt={`${project.data.title} — обложка кейса`} loading="eager" />
+  </section>
+
+  <section class="section">
+    <div class="prose"><Content /></div>
+    {project.data.stats.length > 0 && (
+      <div class="stat-grid">
+        {project.data.stats.map((stat) => <div class="stat"><strong>{stat.value}</strong><span>{stat.label}</span></div>)}
+      </div>
+    )}
+  </section>
+
+  {project.data.gallery.length > 0 && (
+    <section class="section">
+      <div class="gallery">
+        {project.data.gallery.map((image) => <img src={image} alt={`${project.data.title} — материал проекта`} loading="lazy" />)}
+      </div>
+    </section>
+  )}
+</PageShell>

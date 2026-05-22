@@ -1,0 +1,115 @@
+---
+import { getCollection } from 'astro:content';
+import PageShell from '../components/PageShell.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import { site } from '../data/site';
+
+const projects = (await getCollection('projects')).slice(0, 4);
+
+const apps = [
+  { index: '01', title: 'Media', status: 'LIVE', label: 'MEDIA', href: '/media/', text: 'Медиатека выпусков, тем, плейлистов и исследовательских заметок.' },
+  { index: '02', title: 'Products', status: 'EXPERIMENT', label: 'PRODUCT', href: '/products/', text: 'Доска продуктовых гипотез, прототипов и будущих запусков.' },
+  { index: '03', title: 'Career Lab', status: 'IN PROGRESS', label: 'CAREER', href: '/products/career/', text: 'Псевдо-интерфейс сервиса для матчинга кандидатов, компаний и слотов.' },
+  { index: '04', title: 'Design Archive', status: 'ARCHIVE', label: 'DESIGN', href: '/projects/', text: 'Каталог артефактов: брендинг, сайты, упаковка, презентации и системы.' },
+  { index: '05', title: 'Profiles', status: 'LIVE', label: 'TEAM', href: '/about/', text: 'Профили людей за We Designerz: роли, фокус, опыт и текущие треки.' },
+  { index: '06', title: 'Contact', status: 'LIVE', label: 'ROUTING', href: '/contact/', text: 'Экран маршрутизации: проект, ранний доступ, партнёрство или медиа-вопрос.' }
+];
+---
+
+<PageShell
+  title="WDZ OS — цифровая система We Designerz"
+  description="We Designerz как WDZ OS: медиа, продукты, career lab, дизайн-архив, профили и контактный routing screen."
+>
+  <section class="hero home-os">
+    <div>
+      <p class="eyebrow">WDZ OS / lab index</p>
+      <h1>Единая цифровая система для медиа, продуктов и design research.</h1>
+      <p>We Designerz теперь работает как OS: общий shell, единая дизайн-система и отдельные приложения внутри. Каждая страница использует знакомую цифровую логику, но говорит на собственном языке WDZ.</p>
+      <div class="hero-actions">
+        <a class="button" href="/products/career/">Открыть Career Lab</a>
+        <a class="button-secondary" href="/media/">Перейти в Media</a>
+      </div>
+    </div>
+    <aside class="hero-panel" aria-label="WDZ OS status">
+      <div class="panel-topbar">
+        <span class="meta">System status</span>
+        <span class="status live">LIVE</span>
+      </div>
+      <div class="mini-stack">
+        <div class="mini-row"><span>MEDIA</span><strong>24/7</strong><em>research feed</em></div>
+        <div class="mini-row"><span>PRODUCT</span><strong>02</strong><em>active hypotheses</em></div>
+        <div class="mini-row"><span>CAREER</span><strong>89%</strong><em>match prototype</em></div>
+        <div class="mini-row"><span>ARCHIVE</span><strong>{projects.length}</strong><em>visible cases</em></div>
+      </div>
+      <div>
+        <p class="eyebrow">current focus</p>
+        <h3>Human tech без ощущения бездушного софта.</h3>
+        <p>Крупная типографика, модульные панели, статусы и честные продуктовые формулировки вместо декоративной витрины.</p>
+      </div>
+    </aside>
+  </section>
+
+  <section class="section">
+    <SectionHeader
+      eyebrow="Applications"
+      title="Главный экран WDZ OS"
+      text="Разделы работают как приложения одной системы: общий бренд сохраняется, а интерфейсная метафора меняется под задачу страницы."
+    />
+    <div class="os-grid">
+      {apps.map((app) => (
+        <a class="os-card" href={app.href}>
+          <div class="os-index">
+            <span class="meta">{app.index}</span>
+            <span class={app.status === 'LIVE' ? 'status live' : app.status === 'IN PROGRESS' ? 'status progress' : 'status'}>{app.status}</span>
+          </div>
+          <p class="card-kicker">{app.label}</p>
+          <h3>{app.title}</h3>
+          <p>{app.text}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="section split">
+    <div class="feature-panel">
+      <p class="eyebrow">Priority experiment</p>
+      <h2>Career Lab: календарь, матчинг и подтверждённые встречи.</h2>
+      <p class="lead">Главный продуктовый прототип показывает идею сервиса через интерфейс: профиль специалиста, свободные слоты, match score, карточку компании и CTA для подтверждения встречи.</p>
+      <div class="actions">
+        <a class="button" href="/products/career/">Открыть прототип</a>
+        <a class="button-secondary" href="/contact/">Запросить ранний доступ</a>
+      </div>
+    </div>
+    <ul class="clean-list">
+      <li><strong>LIVE</strong> — медиа и публичная система.</li>
+      <li><strong>IN PROGRESS</strong> — career/HR-эксперимент.</li>
+      <li><strong>EXPERIMENT</strong> — будущие AI/design tools.</li>
+      <li><strong>ARCHIVE</strong> — опыт, из которого растёт продуктовая логика.</li>
+    </ul>
+  </section>
+
+  <section class="section">
+    <SectionHeader
+      eyebrow="Archive preview"
+      title="Артефакты, на которых построена система"
+      text="Проекты остаются в структуре сайта, но выглядят как каталог исследовательских материалов, а не как отдельная студийная витрина."
+    />
+    <div class="project-grid">
+      {projects.map((project) => <ProjectCard project={project} />)}
+    </div>
+    <div class="actions"><a class="button-secondary" href="/projects/">Открыть архив</a></div>
+  </section>
+
+  <section class="section">
+    <div class="feature-panel">
+      <p class="eyebrow">Contact routing</p>
+      <h2>Для каждого сценария есть свой вход.</h2>
+      <p class="lead">Дизайн-проект, ранний доступ, партнёрство или вопрос по медиа — контактная страница работает как routing screen и ведёт к понятному следующему действию.</p>
+      <div class="actions">
+        <a class="button" href="/contact/">Выбрать сценарий</a>
+        <a class="button-secondary" href={site.telegram} target="_blank" rel="noopener noreferrer">Telegram</a>
+      </div>
+    </div>
+  </section>
+</PageShell>

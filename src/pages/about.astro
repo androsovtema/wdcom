@@ -1,0 +1,75 @@
+---
+import PageShell from '../components/PageShell.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+
+const profiles = [
+  {
+    name: 'Артём',
+    role: 'Product / UX designer, арт-директор, автор медиа',
+    image: '/assets/images/team/Artem.jpeg',
+    focus: 'design research, AI, продуктовая логика, career lab',
+    status: 'LIVE',
+    tags: ['DESIGN', 'AI', 'MEDIA']
+  },
+  {
+    name: 'Алина',
+    role: 'Графический дизайнер, визуальные системы и айдентика',
+    image: '/assets/images/team/Alina.jpeg',
+    focus: 'брендинг, графика, упаковка, эстетика проектов',
+    status: 'LIVE',
+    tags: ['DESIGN', 'BRAND', 'ARCHIVE']
+  }
+];
+---
+
+<PageShell title="Profiles" description="Мини-соцсеть We Designerz: профили Артёма и Алины, роли, фокус, теги и текущие направления.">
+  <section class="page-hero profiles-os">
+    <div>
+      <p class="eyebrow">05 / Profiles app</p>
+      <h1>Люди за We Designerz как профили внутри WDZ OS.</h1>
+      <p>About переосмыслен как собственная мини-соцсеть: не лента и не копия знакомых сервисов, а профильный интерфейс с ролями, фокусом, тегами и активными направлениями.</p>
+    </div>
+    <div class="os-card">
+      <p class="card-kicker">Network status</p>
+      <div class="mini-stack">
+        <div class="mini-row"><span>PROFILES</span><strong>02</strong><em>active</em></div>
+        <div class="mini-row"><span>MODE</span><strong>human tech</strong><em>brand</em></div>
+        <div class="mini-row"><span>BASE</span><strong>design</strong><em>system</em></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <SectionHeader eyebrow="Team profiles" title="Две большие карточки вместо обычного about-текста" text="Страница сохраняет человеческое ощущение, но остаётся частью единой цифровой системы." />
+    <div class="profile-grid">
+      {profiles.map((profile) => (
+        <article class="profile-card">
+          <img src={profile.image} alt={`${profile.name} — профиль We Designerz`} loading="lazy" />
+          <div>
+            <span class="status live">{profile.status}</span>
+            <h3>{profile.name}</h3>
+            <p>{profile.role}</p>
+            <div class="product-fields">
+              <div class="field-row"><span>Focus</span><p>{profile.focus}</p></div>
+              <div class="field-row"><span>Tags</span><p>{profile.tags.join(' / ')}</p></div>
+            </div>
+            <div class="profile-stats">
+              <span>media research</span>
+              <span>visual systems</span>
+              <span>product lab</span>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section split">
+    <div>
+      <SectionHeader eyebrow="Origin" title="We Designerz начался с дизайна. Дальше стало интереснее." text="Сначала были брендинг, сайты, презентации, упаковка и визуальные системы. Теперь вокруг этого появились медиа, AI-эксперименты, продукты и исследования digital-карьеры." />
+    </div>
+    <div class="feature-panel">
+      <p class="lead">Дизайн остаётся основой системы, но больше не единственным продуктом бренда. WDZ OS помогает показать это без разрыва между проектами, медиа и будущими сервисами.</p>
+    </div>
+  </section>
+</PageShell>

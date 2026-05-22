@@ -1,0 +1,55 @@
+---
+import '../styles/global.css';
+import { site } from '../data/site';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  ogImage?: string;
+}
+
+const {
+  title = 'We Designerz — медиа и продукты для digital-специалистов',
+  description = site.description,
+  canonical = Astro.url.pathname,
+  ogImage = '/assets/images/og-image.jpg'
+} = Astro.props;
+
+const absoluteTitle = title.includes('We Designerz') ? title : `${title} — We Designerz`;
+const canonicalUrl = new URL(canonical, site.url).toString();
+const ogImageUrl = new URL(ogImage, site.url).toString();
+---
+
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="author" content="We Designerz" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:title" content={absoluteTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={absoluteTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="icon" type="image/png" href="/assets/icons/favicon.png" />
+    <link rel="apple-touch-icon" href="/assets/icons/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>{absoluteTitle}</title>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

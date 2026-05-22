@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 30" width="140" height="30">
+  <!-- Полный текст: We Designerz -->
+  <g class="logo-full">
+    <text x="0" y="22" font-family="Cormorant Garamond, serif" font-size="20" font-weight="500" letter-spacing="0.02em" fill="#2d3628">W</text>
+    <text x="14" y="22" font-family="Cormorant Garamond, serif" font-size="20" font-weight="500" letter-spacing="0.02em" fill="#2d3628" class="logo-fade">e</text>
+    <text x="26" y="22" font-family="Cormorant Garamond, serif" font-size="20" font-weight="500" letter-spacing="0.02em" fill="#2d3628"> </text>
+    <text x="32" y="22" font-family="Cormorant Garamond, serif" font-size="20" font-weight="500" letter-spacing="0.02em" fill="#2d3628">D</text>
+    <text x="46" y="22" font-family="Cormorant Garamond, serif" font-size="20" font-weight="500" letter-spacing="0.02em" fill="#2d3628" class="logo-fade">esignerz</text>
+  </g>
+  
+  <!-- Сокращенный текст: WD -->
+  <text x="0" y="22" font-family="Cormorant Garamond, serif" font-size="20" font-weight="500" letter-spacing="0.02em" fill="#2d3628" class="logo-short">WD</text>
+</svg>

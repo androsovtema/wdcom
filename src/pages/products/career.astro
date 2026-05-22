@@ -1,0 +1,81 @@
+---
+import PageShell from '../../components/PageShell.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+---
+
+<PageShell title="Career Lab" description="Псевдо-интерфейс career/HR-продукта We Designerz: профиль, свободные слоты, match score, компания и подтверждение встречи.">
+  <section class="page-hero career-os">
+    <div>
+      <p class="eyebrow">03 / Career matching app</p>
+      <h1>Работа сама выходит на связь.</h1>
+      <p>Career Lab показывает идею продукта через интерфейс: специалист один раз задаёт профиль и слоты, компания описывает роль, система предлагает match, HR подтверждает встречу.</p>
+      <div class="actions">
+        <a class="button" href="/contact/">Хочу в ранний доступ</a>
+        <a class="button-secondary" href="/contact/">Я нанимаю digital-специалистов</a>
+      </div>
+    </div>
+    <div class="os-card">
+      <p class="card-kicker">Product status</p>
+      <div class="mini-stack">
+        <div class="mini-row"><span>STATUS</span><strong>IN PROGRESS</strong><em>prototype</em></div>
+        <div class="mini-row"><span>MARKET</span><strong>IT / digital</strong><em>first</em></div>
+        <div class="mini-row"><span>GOAL</span><strong>less search</strong><em>more fit</em></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <SectionHeader eyebrow="Pseudo interface" title="Кандидат, компания, календарь и match score" text="Это не рабочий сервис, а демонстрация продуктовой логики через узнаваемый, но собственный интерфейс WDZ." />
+    <div class="career-console">
+      <article class="match-card">
+        <p class="card-kicker">Candidate profile</p>
+        <h3>Product Designer</h3>
+        <p>5 лет опыта, B2B SaaS, UX research, дизайн-системы, AI workflow.</p>
+        <div class="slot-grid">
+          <span class="slot">Mon 11:00</span>
+          <span class="slot">Tue 16:30</span>
+          <span class="slot">Thu 13:00</span>
+          <span class="slot">Fri 10:30</span>
+        </div>
+      </article>
+
+      <article class="match-card">
+        <div class="match-score">
+          <div>
+            <p class="card-kicker">Match score</p>
+            <strong>89%</strong>
+          </div>
+        </div>
+        <div class="actions">
+          <a class="button" href="/contact/">Подтвердить встречу</a>
+          <a class="button-secondary" href="/products/">Назад к board</a>
+        </div>
+      </article>
+
+      <article class="match-card">
+        <p class="card-kicker">Company card</p>
+        <h3>Design-driven product team</h3>
+        <p>Нужен дизайнер, который умеет связывать research, интерфейс, бизнес-метрики и быструю проверку гипотез.</p>
+        <div class="product-fields">
+          <div class="field-row"><span>Format</span><strong>Remote / hybrid</strong></div>
+          <div class="field-row"><span>Stage</span><strong>Growth</strong></div>
+          <div class="field-row"><span>Next</span><p>HR подтверждает кандидата, система ставит слот в календарь обеих сторон.</p></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section split">
+    <div class="feature-panel">
+      <p class="eyebrow">Not a job board</p>
+      <h2>Меньше ручного поиска, больше точных встреч.</h2>
+      <p class="lead">Продуктовая гипотеза в том, что рынок найма можно сделать спокойнее: специалист не откликается в пустоту, а компания не просматривает бесконечный шум.</p>
+    </div>
+    <ul class="clean-list">
+      <li>Профиль и ожидания заполняются один раз.</li>
+      <li>Свободные слоты задаются до матчинга.</li>
+      <li>HR сохраняет контроль над подтверждением.</li>
+      <li>Встреча появляется в календаре обеих сторон.</li>
+    </ul>
+  </section>
+</PageShell>

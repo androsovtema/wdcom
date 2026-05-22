@@ -1,0 +1,74 @@
+---
+import PageShell from '../components/PageShell.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import { mediaTopics, site } from '../data/site';
+
+const videos = [
+  { tag: 'AI', title: 'Как AI меняет работу дизайнера', time: '18 min', image: '/assets/images/carousel/carousel01.jpeg' },
+  { tag: 'CAREER', title: 'Портфолио без лишнего шума', time: '22 min', image: '/assets/images/carousel/carousel08.jpeg' },
+  { tag: 'DESIGN', title: 'Разбор интерфейсной логики', time: '16 min', image: '/assets/images/carousel/carousel12.jpeg' },
+  { tag: 'PRODUCT', title: 'Зачем дизайнеру думать продуктово', time: '25 min', image: '/assets/images/carousel/carousel15.jpeg' },
+  { tag: 'MEDIA', title: 'Личный опыт в digital-среде', time: '14 min', image: '/assets/images/carousel/carousel17.jpeg' },
+  { tag: 'AI', title: 'Инструменты для быстрых гипотез', time: '19 min', image: '/assets/images/carousel/carousel04.jpeg' }
+];
+---
+
+<PageShell title="Media" description="Медиатека We Designerz: видео, темы, плейлисты и подборки про дизайн, AI, карьеру и digital-продукты.">
+  <section class="page-hero media-os">
+    <div>
+      <p class="eyebrow">01 / Media app</p>
+      <h1>Медиатека про дизайн, AI, карьеру и digital-продукты.</h1>
+      <p>Страница устроена как собственная видеоплатформа WDZ: featured-выпуск, сетка карточек, категории, плейлисты и теги. Знакомый сценарий, но без копирования branded UI известных сервисов.</p>
+      <div class="actions"><a class="button" href={site.youtube} target="_blank" rel="noopener noreferrer">Открыть канал</a></div>
+    </div>
+    <div class="os-card">
+      <p class="card-kicker">Library index</p>
+      <div class="mini-stack">
+        {mediaTopics.map((topic) => <div class="mini-row"><span>TAG</span><strong>{topic}</strong><em>active</em></div>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="media-layout">
+      <article class="featured-video">
+        <div class="video-preview">
+          <img src="/assets/images/carousel/carousel03.jpeg" alt="Featured-видео We Designerz" loading="lazy" />
+          <span class="play-mark">PLAY</span>
+        </div>
+        <div class="video-body">
+          <p class="card-kicker">Featured / LIVE</p>
+          <h2>Design research как привычка, а не отдельный процесс.</h2>
+          <p>Главный слот медиатеки: сюда можно подключить последний выпуск, подборку или ручной редакторский выбор.</p>
+        </div>
+      </article>
+      <aside class="os-card">
+        <p class="card-kicker">Playlists</p>
+        <div class="playlist-list">
+          <div class="mini-row"><span>01</span><strong>AI tools</strong><em>6 items</em></div>
+          <div class="mini-row"><span>02</span><strong>Portfolio</strong><em>4 items</em></div>
+          <div class="mini-row"><span>03</span><strong>UX reviews</strong><em>8 items</em></div>
+          <div class="mini-row"><span>04</span><strong>Career lab</strong><em>3 items</em></div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section">
+    <SectionHeader eyebrow="Video grid" title="Карточки выпусков и будущих подборок" text="Карточки используют превью, label, длительность и короткое описание, сохраняя общий язык WDZ OS." />
+    <div class="video-grid">
+      {videos.map((video) => (
+        <article class="video-card">
+          <div class="video-thumb" style={`background-image: linear-gradient(135deg, rgb(255 90 44 / 22%), rgb(23 23 23 / 70%)), url(${video.image}); background-size: cover; background-position: center;`}>
+            <span class="label accent">{video.time}</span>
+          </div>
+          <div class="video-body">
+            <p class="card-kicker">{video.tag}</p>
+            <h3>{video.title}</h3>
+            <p>Короткий выпуск, разбор или заметка в медиасистеме We Designerz.</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+</PageShell>

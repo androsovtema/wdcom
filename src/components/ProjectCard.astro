@@ -1,0 +1,31 @@
+---
+interface Props {
+  project: {
+    id: string;
+    data: {
+      title: string;
+      description: string;
+      category: string;
+      cover: string;
+      tags: string[];
+    };
+  };
+}
+
+const { project } = Astro.props;
+const slug = project.id.replace(/\.mdx?$/, '');
+---
+
+<article class="project-card">
+  <a href={`/projects/${slug}/`}>
+    <img src={project.data.cover} alt={`${project.data.title} — кейс We Designerz`} loading="lazy" decoding="async" />
+    <div>
+      <p class="card-kicker">{project.data.category}</p>
+      <h3>{project.data.title}</h3>
+      <p>{project.data.description}</p>
+      <ul class="tag-list" aria-label="Направления">
+        {project.data.tags.slice(0, 3).map((tag) => <li>{tag}</li>)}
+      </ul>
+    </div>
+  </a>
+</article>

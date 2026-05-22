@@ -1,0 +1,42 @@
+---
+import { getCollection } from 'astro:content';
+import PageShell from '../../components/PageShell.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+
+const projects = await getCollection('projects');
+const categories = Array.from(new Set(projects.map((project) => project.data.category)));
+const tags = Array.from(new Set(projects.flatMap((project) => project.data.tags))).slice(0, 8);
+---
+
+<PageShell title="Design Archive" description="Архив дизайн-артефактов We Designerz: проекты, годы, категории, теги, обложки и краткие описания.">
+  <section class="page-hero archive-os">
+    <div>
+      <p class="eyebrow">04 / Design archive</p>
+      <h1>Каталог дизайн-артефактов, а не витрина студии.</h1>
+      <p>Проекты собраны как архив: обложки, категории, теги и краткие описания помогают увидеть опыт We Designerz как базу для медиа и продуктовых решений.</p>
+    </div>
+    <div class="os-card">
+      <p class="card-kicker">Archive meta</p>
+      <div class="mini-stack">
+        <div class="mini-row"><span>ITEMS</span><strong>{projects.length}</strong><em>visible</em></div>
+        <div class="mini-row"><span>YEARS</span><strong>2021-2026</strong><em>range</em></div>
+        <div class="mini-row"><span>STATUS</span><strong>ARCHIVE</strong><em>indexed</em></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <SectionHeader eyebrow="Filters" title="Годы, категории и теги как архивная навигация" text="Фильтры пока статичные: они задают визуальную и информационную логику будущего каталога." />
+    <div class="archive-rail">
+      <span class="label accent">2026</span>
+      <span class="label">2025</span>
+      <span class="label">2024</span>
+      {categories.map((category) => <span class="label">{category}</span>)}
+      {tags.map((tag) => <span class="label">{tag}</span>)}
+    </div>
+    <div class="project-grid">
+      {projects.map((project) => <ProjectCard project={project} />)}
+    </div>
+  </section>
+</PageShell>
