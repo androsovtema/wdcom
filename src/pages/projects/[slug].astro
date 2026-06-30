@@ -15,7 +15,7 @@ const { Content } = await render(project);
 const slug = project.id.replace(/\.mdx?$/, '');
 ---
 
-<PageShell title={project.data.title} description={project.data.description} canonical={`/projects/${slug}/`}>
+<PageShell title={project.data.title} description={project.data.description} canonical={`/projects/${slug}/`} section={`Archive / ${project.data.title}`} status="ARCHIVE" statusTone="archive">
   <section class="section project-detail-hero">
     <div>
       <p class="eyebrow">{project.data.category}</p>

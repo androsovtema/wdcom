@@ -1,0 +1,52 @@
+---
+const items = [
+  { key: 'home', label: 'Home', href: '/', hint: 'WDZ Home — рабочий стол', icon: '/assets/icons/home-dark.svg' },
+  { key: 'media', label: 'Media', href: '/media/', hint: 'WDZ Media — медиатека', icon: '/assets/icons/media-dark.svg' },
+  { key: 'lab', label: 'Lab', href: '/products/', hint: 'WDZ Lab — продуктовые гипотезы', icon: '/assets/icons/lab-dark.svg' },
+  { key: 'career', label: 'Career', href: '/products/career/', hint: 'WDZ Career — матчинг и слоты', icon: '/assets/icons/settings-dark.svg' },
+  { key: 'archive', label: 'Archive', href: '/projects/', hint: 'WDZ Archive — каталог работ', icon: '/assets/icons/gallery-dark.svg' },
+  { key: 'profiles', label: 'Profiles', href: '/about/', hint: 'WDZ Profiles — команда', icon: '/assets/icons/profile-dark.svg' },
+  { key: 'inbox', label: 'Inbox', href: '/contact/', hint: 'WDZ Inbox — routing screen', icon: '/assets/icons/connection-dark.svg', separatorBefore: true }
+];
+
+const pathname = Astro.url.pathname;
+const norm = (s: string) => (s === '/' ? '/' : s.replace(/\/+$/, ''));
+const here = norm(pathname);
+
+const candidates = items
+  .map((item) => ({ item, href: norm(item.href) }))
+  .filter(({ href }) => here === href || (href !== '/' && here.startsWith(href + '/')) || (href === '/' && here === '/'));
+
+const activeHref = candidates.length
+  ? candidates.reduce((a, b) => (b.href.length > a.href.length ? b : a)).href
+  : null;
+---
+
+<nav class="wdz-dock" aria-label="WDZ Dock — основная навигация">
+  <ul class="wdz-dock-list" role="list">
+    {items.map((item) => {
+      const active = norm(item.href) === activeHref;
+      return (
+        <>
+          {item.separatorBefore && <li class="wdz-dock-separator" aria-hidden="true"></li>}
+          <li>
+            <a
+              class={`wdz-dock-item${active ? ' is-active' : ''}`}
+              href={item.href}
+              aria-label={item.hint}
+              aria-current={active ? 'page' : undefined}
+            >
+              <span class={`wdz-dock-tile wdz-dock-tile--${item.key}`}>
+                <span class="wdz-dock-glyph" aria-hidden="true">
+                  <img src={item.icon} width="40" height="40" alt="" />
+                </span>
+              </span>
+              <span class="wdz-dock-tooltip" aria-hidden="true">{item.label}</span>
+              <span class="wdz-dock-indicator" aria-hidden="true"></span>
+            </a>
+          </li>
+        </>
+      );
+    })}
+  </ul>
+</nav>

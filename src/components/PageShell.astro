@@ -1,19 +1,64 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Header from './Header.astro';
-import Footer from './Footer.astro';
+import StatusBar from './StatusBar.astro';
+import Dock from './Dock.astro';
 
 interface Props {
   title?: string;
   description?: string;
   canonical?: string;
+  section?: string;
+  status?: string;
+  statusTone?: 'live' | 'building' | 'archive' | 'neutral';
+  appName?: string;
 }
+
+const {
+  title,
+  description,
+  canonical,
+  section = 'Home',
+  status = 'LIVE',
+  statusTone = 'live',
+  appName
+} = Astro.props;
+
+const resolvedAppName = appName ?? `WDZ ${section}`;
+const pathname = Astro.url.pathname;
+const cleanPath = pathname === '/' ? '/' : pathname.replace(/\/$/, '');
 ---
 
-<BaseLayout title={Astro.props.title} description={Astro.props.description} canonical={Astro.props.canonical}>
-  <Header />
-  <main>
-    <slot />
-  </main>
-  <Footer />
+<BaseLayout title={title} description={description} canonical={canonical}>
+  <div class="wdz-desktop">
+    <StatusBar section={section} status={status} statusTone={statusTone} />
+
+    <div class="wdz-window-frame" role="region" aria-label={resolvedAppName}>
+      <div class="wdz-window-titlebar">
+        <div class="wdz-window-controls" aria-hidden="true">
+          <span class="wctl wctl--1"></span>
+          <span class="wctl wctl--2"></span>
+          <span class="wctl wctl--3"></span>
+        </div>
+        <div class="wdz-window-title">
+          <span class="wdz-window-glyph" aria-hidden="true">
+            <svg viewBox="0 0 14 14" width="14" height="14"><rect x="1" y="1" width="5" height="5" rx="1"/><rect x="8" y="1" width="5" height="5" rx="1" opacity=".6"/><rect x="1" y="8" width="5" height="5" rx="1" opacity=".6"/><rect x="8" y="8" width="5" height="5" rx="1" fill="var(--accent)"/></svg>
+          </span>
+          <span class="wdz-window-appname">{resolvedAppName}</span>
+          <span class="wdz-window-sep" aria-hidden="true">·</span>
+          <span class="wdz-window-path">{cleanPath}</span>
+        </div>
+        <div class="wdz-window-meta" aria-hidden="true">
+          <span class="wdz-window-tab wdz-window-tab--active">{section}</span>
+          <span class="wdz-window-tab wdz-window-tab--ghost">Notes</span>
+          <span class="wdz-window-tab wdz-window-tab--ghost">+</span>
+        </div>
+      </div>
+
+      <main class="wdz-window-content" id="wdz-window">
+        <slot />
+      </main>
+    </div>
+
+    <Dock />
+  </div>
 </BaseLayout>

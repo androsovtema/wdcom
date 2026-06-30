@@ -1,0 +1,38 @@
+---
+interface Props {
+  section?: string;
+  status?: string;
+  statusTone?: 'live' | 'building' | 'archive' | 'neutral';
+}
+
+const {
+  section = 'Home',
+  status = 'LIVE',
+  statusTone = 'live'
+} = Astro.props;
+---
+
+<header class="wdz-statusbar" role="banner" aria-label="WDZ OS menu bar">
+  <div class="wdz-statusbar-left">
+    <a class="wdz-brand" href="/" aria-label="WDZ OS — рабочий стол">
+      <span class="wdz-brand-mark" aria-hidden="true">
+        <span></span><span></span><span></span><span></span>
+      </span>
+      <span class="wdz-brand-text">WDZ&nbsp;OS</span>
+    </a>
+    <span class="wdz-statusbar-sep" aria-hidden="true"></span>
+    <span class="wdz-menu wdz-menu--active" aria-current="page">{section}</span>
+    <a class="wdz-menu" href="/">Apps</a>
+    <a class="wdz-menu" href="/projects/">Index</a>
+    <a class="wdz-menu" href="/contact/">Help</a>
+  </div>
+
+  <div class="wdz-statusbar-right" aria-label="System status">
+    <span class="wdz-sysmeta" aria-hidden="true">2026</span>
+    <span class="wdz-sysmeta wdz-sysmeta--dim" aria-hidden="true">v0.1</span>
+    <span class={`wdz-status wdz-status--${statusTone}`}>
+      <span class="wdz-status-dot" aria-hidden="true"></span>
+      {status}
+    </span>
+  </div>
+</header>
